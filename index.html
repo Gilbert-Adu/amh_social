@@ -1,11 +1,111 @@
 <!DOCTYPE html>
-<html>
-    <head></head>
-    <body>
-        👋 Social Media for the Amhara people
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <title>Amhara Unity</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <div class="maindiv">
+    <div class="mobile">
+      <div class="head">
+        <div class="notch"></div>
+        <div class="profilebox">
+          <div class="left">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+            <div class="profile">
+              <img src="/images/avatar.jpg" alt="dp">
+              <div class="pdetail">
+                <h3>Abebe</h3>
+                <p>New York Branch</p>
+              </div>
+            </div>
+          </div>
+          <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+        </div>
+      </div>
+      <div class="chatbox">
+        <div class="eachmessage received animate">
+          <p>That sounds great. I’d be happy with that. ❤️</p>
+        </div>
+        <div class="eachmessage received animate">
+          <p>Could you send over some pictures of the project, please?</p>
+        </div>
+        <div class="eachmessage imgbox">
+          <img class="animate" src="/images/project-image-1.jpg" alt="project1">
+          <img class="animate" src="/images/project-image-2.jpg" alt="project2">
+          <img class="animate" src="/images/project-image-3.jpg" alt="project3">
+        </div>
+        <div class="eachmessage sent animate">
+          <p>Here are a few pictures.</p>
+        </div>
+        <div class="eachmessage sent animate">
+          <p>how much can you contribute today?</p>
+        </div>
+        <div class="eachmessage received animate">
+          <p>That look so great!</p>
+        </div>
+        <div class="deal animate">
+          <div class="det">
+            <input type="radio" name="plan">
+            <p>My contribution</p>
+          </div>
+          <p class="price">$29</p>
+        </div>
+        <div class="deal animate">
+          <div class="det">
+            <input type="radio" name="plan">
+            <p>My contribution</p>
+          </div>
+          <p class="price">$49</p>
+        </div>
+    </div>
+    <div class="sendbox">
+      <input type="text" placeholder="Type a message…">
+      <button class="submit"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+    </div>
+    </div>
+    <div class="text">
+      <h1>Coming soon</h1>
+      <p>Amhara Unity</p>
+    </div>
+  </div>
+  <div class="attribution">
+    Being built by Gilbert.<br> 
+    of GENOS DIGITAL.
+  </div>
 
-        <footer>
-            Work in progress by Gilbert ❤️
-        </footer>
-    </body>
+  <script>
+    animate = document.querySelectorAll(".animate");
+submit=document.querySelector(".submit");
+text=document.querySelector(".sendbox input");
+chatbox=document.querySelector(".chatbox");
+submit.addEventListener("click",sendmessage)
+text.addEventListener("keyup",function(e){
+    console.log(e)
+    if (e.key === 'Enter' || e.keyCode === 13)
+    sendmessage()
+})
+start_animation();
+
+function start_animation() {
+  for (let i = 0; i < animate.length; i++) {
+    setTimeout(function () {
+      animate[i].classList.add("animated");
+    }, 300 * i + 300);
+  }
+}
+function sendmessage()
+{
+    data=text.value.trim()
+    if(data!="")
+        chatbox.innerHTML+='<div class="eachmessage sent animated"><p>'+data+'</p></div>'
+    text.value=""
+    chatbox.scrollTop=chatbox.scrollHeight
+}
+  </script>
+</body>
 </html>
