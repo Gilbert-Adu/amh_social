@@ -98,35 +98,80 @@ input[type=button] {
 .show-container {
   display: flex;
   flex-direction: row;
-  margin-top: 20vh;
+  margin-top: 100vh;
   margin-left: 0;
   margin-right: 0;
   height: 70vh;
   
 }
 
+.show-image {
+  width: 50vw;
+  height: 70vh;
+
+
+}
+
 .show-image img {
   width: 50vw;
   height: 70vh;
   object-fit: cover;
-
 }
 
 .show-texts {
-  background-color: #C3FF93;
   width: 50vw;
-  color: #1A4D2E;
-  text-align: center;
-}
-.show-texts p {
-  background-color: #C3FF93;
-  font-size: 30px;
-  margin-top: 30vh;
+  height: 70vh;
+  color: #12372A;
+  border: 2px solid #eee;
+
 }
 
-hr {
+.show-texts p {
+  text-align: center;
+  font-size: 30px;
+
+
+}
+
+.branches-container {
+  border: 5px solid #eee;
+  width: 32vw;
+  height: 50vh;
+  margin: 5vh 10vw;
+  padding: 50px 10px;
+  border-radius: 10px;
+  overflow-x: scroll;
+  overscroll-behavior: contain;
+
+}
+.branch-info {
+  text-decoration: none;
+  width: 30vw;
+  height: 5vh;
+  border: 1px solid #D0D4CA;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-radius: 10px 10px 0 0;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.branch-info span {
+  margin: 10px 10px;
+
+}
+.branch-item {
+  background-color: #DCFFB7;
+
+  
+}
+
+
+
+#form-bar {
   margin-top: 60px; 
-  width: 25vw; 
+  width: 10vw; 
   border: 1px solid #eee;
 }
 
@@ -175,7 +220,7 @@ hr {
 } 
 #mission-bar {
   border: 1px solid #114232;
-  margin: 0 42vw;
+  margin: 0 45vw;
 }
 
 .image-only-container {
@@ -186,6 +231,48 @@ hr {
   width: 100vw;
   height: 50vh;
   object-fit: cover;
+}
+
+.team-text {
+  text-align: center;
+  margin: 10vh auto 0 0;
+  padding-left: 1vw;
+  font-size: 35px;
+  color: #12372A;
+
+}
+
+#team-bar {
+  border: 1px solid #114232;
+  margin: 1vh 45vw 10vh 45vw;
+}
+
+.team-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100vw;
+  height: 10vh;
+  
+  
+}
+
+.team-container p {
+  text-align: center;
+}
+
+.team-member {
+  width: 30vw;
+  height: 50vh;
+  margin: 3vh 1.6vw;
+}
+
+.team-member img {
+  width: 30vw;
+  height: 50vh;
+  object-fit: cover;
+  border-radius: 10%;
+
 }
 
 /* tablet */
@@ -266,24 +353,8 @@ hr {
     
   }
   
-  .show-image img {
-    width: 50vw;
-    height: 70vh;
-    object-fit: cover;
-  
-  }
-  
-  .show-texts {
-    background-color: #C3FF93;
-    width: 50vw;
-    color: #1A4D2E;
-    text-align: center;
-  }
-  .show-texts p {
-    background-color: #C3FF93;
-    font-size: 30px;
-    margin-top: 30vh;
-  }
+
+
 
   .mission-container {
     border: 1px solid #F8FAE5;
@@ -323,10 +394,9 @@ hr {
   .form-container, .signup-container {
     width: 85vw;
   }
-  hr {
+  #form-bar {
     margin-top: 50px; 
     width: 55vw; 
-    border: 2px solid red;
   }
 
   .scroll-down {
@@ -379,33 +449,14 @@ hr {
     margin-top: 20vh;
     margin-left: 0;
     margin-right: 0;
-    height: 70vh;
+    height: 100vh;
     
   }
   
-  .show-image img {
-    width: 100vw;
-    height: 70vh;
-    object-fit: cover;
-  
-  }
-  
-  .show-texts {
-    background-color: #C3FF93;
-    height: 50vh;
-    width: 100vw;
-    color: #1A4D2E;
-    text-align: center;
-  }
-  .show-texts p {
-    background-color: #C3FF93;
-    font-size: 20px;
-    margin-top: 30vh;
-  }
+
 
   .mission-container {
     border: 1px solid #F8FAE5;
-    margin-top: 40vh;
     text-align: center;
     background-color: #F8FAE5;
   }
@@ -414,6 +465,88 @@ hr {
     border: 1px solid #114232;
     margin: 0 22vw;
   }
+
+  .show-image {
+    width: 100vw;
+    height: 50vh;
+  
+  
+  }
+
+  .show-image img {
+    width: 100vw;
+    height: 50vh;
+    object-fit: cover;
+  }
+  
+  .show-texts {
+    width: 100vw;
+    height: 120vh;
+    color: #12372A;
+    font-size: 25px;
+    margin-bottom: 5vh;
+
+  }
+
+  #team-bar {
+    border: 1px solid #114232;
+    margin: 3vh 40vw 10vh 40vw;
+    width: 20vw;
+  }
+
+  .team-container {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 50vh;
+    overflow-x: scroll;
+    
+    
+  }
+  
+  .team-container p {
+    text-align: center;
+  }
+  
+  .team-member {
+    width: 40vw;
+    height: 30vh;
+    margin: 3vh 3vw;
+    display: inline-block;
+  }
+  
+  .team-member img {
+    width: 40vw;
+    height: 30vh;
+    object-fit: cover;
+    border-radius: 10%;
+  
+  }
+
+  .show-texts p {
+    font-size: 30px;
+  
+  
+  }
+
+  .branches-container {
+    width: 80vw;
+    height: 50vh;
+    margin: 1vh 10vw;
+
+  }
+
+  .branch-info {
+    font-size: 10px;
+    width: 70vw;
+    margin-left: 5px;
+  }
+
+  .image-only-container {
+    margin-top: 10vh;
+  }
+
+
 
   
   
