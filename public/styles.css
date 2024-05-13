@@ -325,6 +325,7 @@ input[type=button] {
 
 .message-title {
   width: 30vw;
+  font-size: 18px;
 
 }
 .message-blurb {
@@ -600,6 +601,84 @@ input[type=button] {
     font-size: 10px;
     width: 70vw;
     margin-left: 5px;
+  }
+
+  .message-board-container {
+    margin-top: 20vh;
+    height: 100vh;
+    margin-left: 2vw;
+    margin-right: 2vw;
+  }
+  
+  .board-title {
+    text-align: center;
+    margin-bottom: 5vh;
+    font-size: 25px;
+    color: #12372A;
+    font-weight: bolder;
+  
+  }
+  
+  .message-container {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+  }
+  
+  .message-image {
+    margin-left: 50vw;
+    margin-top: 5vh;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .message-image img {
+    width: 5vw;
+    height: 3vh;
+    object-fit: cover;
+    border-radius: 20%;
+  }
+  
+  .sender-info {
+    margin-left: 1vw;
+    display: flex;
+    flex-direction: column;
+  }
+  .sender-name {
+    width: 20vw;
+    font-size: 12px;
+  }
+  .sender-time {
+    width: 40vw;
+    font-size: 10px;
+  }
+  .message {
+    margin-left: 5vw;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .message-title {
+    width: 30vw;
+    width: 80vw;
+    height: 5vh;
+    text-wrap: wrap;
+    font-size: 15px;
+
+  
+  }
+  .message-blurb {
+    width: 80vw;
+    height: 10vh;
+    margin-top: 1vh;
+    text-wrap: wrap;
+    font-size: 13px;
+  }
+  
+  .cta {
+    margin-right: 5vw;
+    margin-top: 2vh;
+    display: none;
   }
 
   
