@@ -336,6 +336,90 @@ input[type=button] {
   margin-right: 5vw;
   margin-top: 2vh;
 }
+
+
+.guest-section-title {
+  text-align: center;
+  margin-bottom: 5vh;
+  font-size: 45px;
+  color: #12372A;
+
+}
+
+
+
+.guest-articles-container {
+  height: 80vh;
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  background-color: #1A4D2E;
+
+}
+
+.guest-article {
+  border: 1px solid #DDDDDD;
+  background-color: #FFF7F1;
+  width: 20vw;
+  height: 50vh;
+  margin-left: 2vw;
+  margin-top: 10vh;
+  cursor: pointer;
+}
+
+.article-info-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 2vw;
+  margin-right: 2vw;
+  margin-top: 3vh;
+  justify-content: end;
+  background-color: #FFF7F1;
+
+}
+
+.article-poster {
+  margin-top: 3vh;
+  margin-left: 11vw;
+  font-size: 10px;
+  float: right;
+  background-color: #FFF7F1;
+
+}
+.article-blurb {
+  margin-top: 3vh;
+  height: 8vh;
+  font-size: 12px;
+  background-color: #FFF7F1;
+
+}
+.article-image {
+  margin-top: 3vh;
+  height: 20vh;
+}
+
+.article-image img {
+  object-fit: cover;
+  height: 20vh;
+  width: 15.8vw;
+}
+
+.article-title {
+  height: 6vh;
+  font-weight: bold;
+  font-size: 13px;
+  color: #12372A;
+  background-color: #FFF7F1;
+
+
+}
+
+
+
+
+
+
+
 /* tablet */
 @media only screen and (min-width: 768px) and (max-width: 1025px) {
   body {
