@@ -414,6 +414,57 @@ input[type=button] {
 
 }
 
+.contact-container {
+  height: 50vh;
+  margin-top: 20vh;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: row;
+  color: white;
+  justify-content: space-between;
+  background-color: #114232;
+
+}
+footer {
+  background-color: #114232;
+  color: white;
+
+
+}
+.contacts, .find-us, .legals{
+  width: 20vw;
+  height: 13vh;
+  margin-top: 15vh;
+  text-align: left;
+  background-color: #114232;
+
+}
+.contact-title, .find-us-title, .legals-title {
+  font-weight: bold;
+  margin-bottom: 3vh;
+  font-size: 20px;
+}
+.contacts div {
+  background-color: #114232;
+  margin-left: 3vw;
+
+}
+
+.find-us div {
+  background-color: #114232;
+
+}
+
+.legals div {
+  background-color: #114232;
+
+}
+.gradient {
+  width: 100vw;
+}
+
 
 
 
