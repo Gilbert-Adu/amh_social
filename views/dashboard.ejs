@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/dashboard.css">
+    </head>
+    <body>
+        <div id="loading-wrapper">
+            <div id="loading-text">LOADING</div>
+            <div id="loading-content"></div>
+          </div>
+
+          <div class="dashboard" id="dashboard" style="visibility: hidden;">
+            dasboard
+          </div>
+
+          <script>
+            function loadHandler(delay) {
+                const el = document.getElementById('loading-wrapper');
+                if (el) {
+                    setTimeout(() => {
+                        el.style.display = "none";
+                    }, delay);
+                }
+            }
+            function dashboardViewHandler(delay) {
+                const el = document.getElementById('dashboard');
+                if (el) {
+                    setTimeout(() => {
+                        el.style.visibility = "visible";
+                    }, delay);
+                }
+
+            }
+            loadHandler(5000);
+            dashboardViewHandler(6000)
+          </script>
+          
+    </body>
+</html>

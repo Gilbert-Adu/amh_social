@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <title>Amhara Unity</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <link rel="stylesheet" type="text/css" href="/dashboard.css">
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+
+
+</head>
+
+<body>
+    <div id="loading-wrapper">
+        <div id="loading-text"></div>
+        <div id="loading-content"></div>
+      </div>
+
+    <div class="home" id="home" style="visibility: hidden;">
+        <div class="hero-container">
+            <span class="hero-image">
+                <div class="hero-image-container">
+                    <img src="/images/avatar.jpg" alt="">
+                </div>
+            </span>
+            <span class="register-form">
+                <div class="form-container">
+                    <div class="welcome-text" style="font-family: 'Sofia', sans-serif">Amhara Unity</div>
+                    <form action="/dashboard" method="POST">
+                        <input type="email" id="email" name="email" placeholder="Email" required><br><br>
+                        <input type="password" id="password" name="password"  placeholder="Password" required><br><br>
+                        <input type="submit" id="log-in" value="Log in" onclick="logIn()">
+                    </form>
+                    <hr id="form-bar">
+                    <div class="forgot" style="margin-top: 20px; text-align: center;font-size:small; color: #5AB2FF;cursor: pointer;font-weight: bold;" >Forgot password?</div>
+                </div>
+                <div class="signup-container">
+                    <div style=" text-align: center;">Don't have an account? <span style="color: #5AB2FF; font-weight: bold;">Sign up</span></div>
+                </div>
+                <!--scroll down-->
+                <div class="scroll-down">
+                    <span><i class="fa fa-arrow-circle-down" style="font-size: 40px;color: #007F73;"></i></span>
+                </div>
+    
+            </span>
+    
+        </div>
+        <!-- our mission -->
+        <div class="mission-container">
+            <h2 style="margin-top: 15vh;background-color: #F8FAE5;color: #114232;">Our Mission</h2>
+            <hr id="mission-bar">
+            <p style="color: #436850; background-color: #F8FAE5; margin-top: 5vh; width: 50vw; margin: 5vh 25vw;height: 20vh;word-wrap: break-word;">
+                A platform to discuss issues of importance to the Amhara people.
+            </p>
+        </div>
+    
+    
+        <!--national leadership-->
+        <div class="team-text">National Leadership</div>
+        <hr id="team-bar">
+        <div class="team-container">
+            <div>
+                <div class="team-member">
+                    <img src="/images/avatar.jpg" alt="">
+                </div>
+                <p>John Doe</p>
+                <p>CEO</p>
+            </div>
+            <div>
+                <div class="team-member">
+                    <img src="/images/avatar.jpg" alt="">
+                </div>
+                <p>Jiminy Cricket</p>
+                <p>Finance Officer</p>
+    
+            </div>
+            <div>
+                <div class="team-member">
+                    <img src="/images/avatar.jpg" alt="">
+                </div>
+                <p>Steve Powell</p>
+                <p>Marketing Manager</p>
+            </div>
+            
+        </div>
+        <!-- a message section -->
+        <div class="show-container">
+            <div class="show-image">
+                <!--use menelik.jpg-->
+                <img src="/images/menelik.webp" alt="">
+                
+            </div>
+            <div class="show-texts">
+                <p>Regional branches</p>
+                <div class="branches-container">
+                    <div class="branch-info">
+                        <span>Arizona & New Mexico</span>
+                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
+                    </div>
+                    <div class="branch-info">
+                        <span>California</span>
+                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
+                    </div>
+                    <div class="branch-info">
+                        <span>The Carolinas</span>
+                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
+                    </div>
+    
+                    <div class="branch-info">
+                        <span>Colorado</span>
+                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
+                    </div>
+    
+                    <div class="branch-info">
+                        <span>DC, Maryland, & Virginia</span>
+                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
+                    </div>
+    
+                    <div class="branch-info">
+                        <span>Florida</span>
+                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
+                    </div>
+    
+                    <div class="branch-info">
+                        <span>Georgia</span>
+                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
+                    </div>
+    
+                    <div class="branch-info">
+                        <span>Illinois</span>
+                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
+                    </div>
+                    <div class="branch-info">
+                        <span>Kansas</span>
+                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
+                    </div>
+    
+                    <div class="branch-info">
+                        <span>Louisiana</span>
+                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
+                    </div>
+                    <div class="branch-info">
+                        <span>Michigan</span>
+                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
+                    </div>
+                    <div class="branch-info">
+                        <span>Minnesota</span>
+                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
+                    </div>
+                    <div class="branch-info">
+                        <span>Nevada</span>
+                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
+                    </div>
+                    <div class="branch-info">
+                        <span>New England</span>
+                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
+                    </div>
+                    <div class="branch-info">
+                        <span>New York</span>
+                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
+                    </div>
+                    <div class="branch-info">
+                        <span>Ohio</span>
+                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
+                    </div>
+                    <div class="branch-info">
+                        <span>Oregon</span>
+                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
+                    </div>
+                    <div class="branch-info">
+                        <span>Pennsylvania</span>
+                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
+                    </div>
+                    <div class="branch-info">
+                        <span>Tennessee</span>
+                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
+                    </div>
+                    <div class="branch-info">
+                        <span>Texas</span>
+                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
+                    </div>
+                    <div class="branch-info">
+                        <span>Upper Midwest (ID, MT, WY, UT, ND, SD, & NE)</span>
+                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
+                    </div>
+                    <div class="branch-info">
+                        <span>Washington</span>
+                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    
+        
+        <!--message board -->
+        <div class="message-board-container">
+            <div class="board-title">Announcements</div>
+            <div class="all-messages">
+                <!--a message start-->
+                <hr>
+                <div class="message-container">
+                    
+                    <div class="message-image">
+                        <img src="/images/avatar.jpg" alt="">
+                        <div class="sender-info">
+                            <div class="sender-name">Felix Jones</div>
+                            <div class="sender-time" style="color: #DDDDDD;font-style: italic;">Friday, Oct. 18 2023, 6:12 am</div>
+                        </div>
+                    </div>
+                    <div class="message">
+                        <div class="message-title" style="color: #12372A;font-weight: bold;">Title</div>
+                        <div class="message-blurb">Blurb</div>
+                    </div>
+                    <div class="cta">
+                        <span>Read More</span>
+                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
+                    </div>
+                    
+                </div>
+                <hr>
+                <!--a message end-->
+                <hr>
+                <div class="message-container">
+                    
+                    <div class="message-image">
+                        <img src="/images/avatar.jpg" alt="">
+                        <div class="sender-info">
+                            <div class="sender-name">Laurence Brown</div>
+                            <div class="sender-time" style="color: #DDDDDD;font-style: italic;">Friday, Oct. 18 2023, 6:12 am</div>
+                        </div>
+                    </div>
+                    <div class="message">
+                        <div class="message-title" style="color: #12372A;font-weight: bold;">Title</div>
+                        <div class="message-blurb">Blurb</div>
+                    </div>
+                    <div class="cta">
+                        <span>Read More</span>
+                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
+                    </div>
+                    
+                </div>
+                <hr>
+    
+                <hr>
+                <div class="message-container">
+                    
+                    <div class="message-image">
+                        <img src="/images/avatar.jpg" alt="">
+                        <div class="sender-info">
+                            <div class="sender-name">Mary Smith</div>
+                            <div class="sender-time" style="color: #DDDDDD;font-style: italic;">Friday, Oct. 18 2023, 6:12 am</div>
+                        </div>
+                    </div>
+                    <div class="message">
+                        <div class="message-title" style="color: #12372A;font-weight: bold;">Title</div>
+                        <div class="message-blurb">Blurb</div>
+                    </div>
+                    <div class="cta">
+                        <span>Read More</span>
+                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
+                    </div>
+                    
+                </div>
+                <hr>
+                
+                
+            </div>
+        </div>
+        <!--guest articles -->
+        <div class="guest-section-title">Guest Articles</div>
+        <div class="guest-articles-container">
+            <div>
+                <div class="guest-article">
+                    <div class="article-info-container">
+                        <div class="article-title">History of the Amhara People</div>
+                        <div class="article-image">
+                            <img src="/images/avatar.jpg" alt="">
+                        </div>
+                        <div class="article-blurb">
+                            Amharas are a Semitic-speaking ethnic group which is indigenous to Ethiopia.
+                        </div>
+                        <div class="article-poster">James Moses</div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="guest-article">
+                    <div class="article-info-container">
+                        <div class="article-title">History of the Amhara People</div>
+                        <div class="article-image">
+                            <img src="/images/avatar.jpg" alt="">
+                        </div>
+                        <div class="article-blurb">
+                            Amharas are a Semitic-speaking ethnic group which is indigenous to Ethiopia.
+                        </div>
+                        <div class="article-poster">James Moses</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+                <div class="guest-article">
+                    <div class="article-info-container">
+                        <div class="article-title">History of the Amhara People</div>
+                        <div class="article-image">
+                            <img src="/images/avatar.jpg" alt="">
+                        </div>
+                        <div class="article-blurb">
+                            Amharas are a Semitic-speaking ethnic group which is indigenous to Ethiopia.
+                        </div>
+                        <div class="article-poster">James Moses</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+                <div class="guest-article">
+                    <div class="article-info-container">
+                        <div class="article-title">History of the Amhara People</div>
+                        <div class="article-image">
+                            <img src="/images/avatar.jpg" alt="">
+                        </div>
+                        <div class="article-blurb">
+                            Amharas are a Semitic-speaking ethnic group which is indigenous to Ethiopia.
+                        </div>
+                        <div class="article-poster">James Moses</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+                <div class="guest-article">
+                    <div class="article-info-container">
+                        <div class="article-title">History of the Amhara People</div>
+                        <div class="article-image">
+                            <img src="/images/avatar.jpg" alt="">
+                        </div>
+                        <div class="article-blurb">
+                            Amharas are a Semitic-speaking ethnic group which is indigenous to Ethiopia.
+                        </div>
+                        <div class="article-poster">James Moses</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+                <div class="guest-article">
+                    <div class="article-info-container">
+                        <div class="article-title">History of the Amhara People</div>
+                        <div class="article-image">
+                            <img src="/images/avatar.jpg" alt="">
+                        </div>
+                        <div class="article-blurb">
+                            Amharas are a Semitic-speaking ethnic group which is indigenous to Ethiopia.
+                        </div>
+                        <div class="article-poster">James Moses</div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <!--contact section-->
+        <footer>
+            <div class="contact-container">
+                <div class="contacts">
+                    <div class="contact-title">Contact</div>
+                    <div class="contact-email" style="font-size: 12px;">info@amharaunity.com</div>
+                    <div class="tele" style="font-size: 12px;">+1-555-555-5555</div>
+                </div>
+                <div class="find-us">
+                    <div class="find-us-title">Find Us</div>
+                    <div style="font-size: 12px;">Framer Street 22</div>
+                    <div style="font-size: 12px;">Rochester, 14604</div>
+                    <div style="font-size: 12px;">USA</div>
+                </div>
+                <div class="legals">
+                    <div class="legals-title">Legals</div>
+                    <div style="font-size: 12px;">Privacy Policy</div>
+                    <div style="font-size: 12px;">Terms and Conditions of Use</div>
+                </div>
+        
+            </div>
+            <span style="background-color:#114232;font-size: 8px;color: #ddd;display: flex;flex-direction: row;justify-content: flex-end;margin-right: 1vw;cursor: pointer;">© 2024 GENOS DIGITAL</span>
+        </footer>
+    
+    </div>
+    <script>
+        function loadHandler(delay) {
+                const el = document.getElementById('loading-wrapper');
+                if (el) {
+                    setTimeout(() => {
+                        el.style.display = "none";
+                    }, delay);
+                }
+            }
+            function homeViewHandler(delay) {
+                const el = document.getElementById('home');
+                if (el) {
+                    setTimeout(() => {
+                        el.style.visibility = "visible";
+                    }, delay);
+                }
+
+            }
+            loadHandler(2000);
+            homeViewHandler(2500)
+    </script>
+    <script>
+        function logIn(e) {
+            e.preventDefault();
+            var loading = document.getElementById("loading");
+            loading.style.visibility = 'visible';
+
+        }
+
+    </script>
+
+    <script>
+
+var colors = new Array(
+  [26,77,46],
+  [10,104,71],
+  [122,186,120],
+  [141,236,180],
+  [217,237,191],
+  [232,239,207]);
+
+var step = 0;
+//color table indices for: 
+// current color left
+// next color left
+// current color right
+// next color right
+var colorIndices = [0,1,2,3];
+
+//transition speed
+var gradientSpeed = 0.002;
+
+function updateGradient()
+{
+  
+  if ( $===undefined ) return;
+  
+var c0_0 = colors[colorIndices[0]];
+var c0_1 = colors[colorIndices[1]];
+var c1_0 = colors[colorIndices[2]];
+var c1_1 = colors[colorIndices[3]];
+
+var istep = 1 - step;
+var r1 = Math.round(istep * c0_0[0] + step * c0_1[0]);
+var g1 = Math.round(istep * c0_0[1] + step * c0_1[1]);
+var b1 = Math.round(istep * c0_0[2] + step * c0_1[2]);
+var color1 = "rgb("+r1+","+g1+","+b1+")";
+
+var r2 = Math.round(istep * c1_0[0] + step * c1_1[0]);
+var g2 = Math.round(istep * c1_0[1] + step * c1_1[1]);
+var b2 = Math.round(istep * c1_0[2] + step * c1_1[2]);
+var color2 = "rgb("+r2+","+g2+","+b2+")";
+
+ $('#gradient').css({
+   background: "-webkit-gradient(linear, left top, right top, from("+color1+"), to("+color2+"))"}).css({
+    background: "-moz-linear-gradient(left, "+color1+" 0%, "+color2+" 100%)"});
+  
+  step += gradientSpeed;
+  if ( step >= 1 )
+  {
+    step %= 1;
+    colorIndices[0] = colorIndices[1];
+    colorIndices[2] = colorIndices[3];
+    
+    //pick two new target color indices
+    //do not pick the same as the current one
+    colorIndices[1] = ( colorIndices[1] + Math.floor( 1 + Math.random() * (colors.length - 1))) % colors.length;
+    colorIndices[3] = ( colorIndices[3] + Math.floor( 1 + Math.random() * (colors.length - 1))) % colors.length;
+    
+  }
+  
+}
+
+setInterval(updateGradient,10);
+    </script>
+    
+</body>
+
+</html>
