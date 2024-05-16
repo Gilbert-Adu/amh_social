@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
         <link rel="stylesheet" type="text/css" href="/dashboard.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+
     </head>
     <body>
         <div id="loading-wrapper">
@@ -10,9 +17,132 @@
           </div>
 
           <div class="dashboard" id="dashboard" style="visibility: hidden;">
-            dasboard
+            <div class="nav-container">
+                <div class="app-name">Amhara Unity</div>
+                <div class="username"> Hi there <%= data.firstName %>! </div>
+            </div>
+
+            <div class="panels-container">
+                <div class="tabs-group">
+                    <div   id="branch-tab" class="branch-tab" onclick="highlightTab()">
+                        <p style="margin-left: 1vw; margin-top: 1vh;">Arizona & New Mexico</p>
+                        <i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;margin-left: 1vw; margin-top: 1vh;"></i>
+                    </div>
+                    <div   id="branch-tab" class="branch-tab" onclick="highlightTab()">
+                        <p style="margin-left: 1vw; margin-top: 1vh;">California</p>
+                        <i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;margin-left: 1vw; margin-top: 1vh;"></i>
+                    </div>
+                    <div   id="branch-tab" class="branch-tab" onclick="highlightTab()">
+                        <p style="margin-left: 1vw; margin-top: 1vh;">The Carolinas</p>
+                        <i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;margin-left: 1vw; margin-top: 1vh;"></i>
+                    </div>
+                    <div   id="branch-tab" class="branch-tab" onclick="highlightTab()">
+                        <p style="margin-left: 1vw; margin-top: 1vh;">Colorado</p>
+                        <i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;margin-left: 1vw; margin-top: 1vh;"></i>
+                    </div>
+                    <div   id="branch-tab" class="branch-tab" onclick="highlightTab()">
+                        <p style="margin-left: 1vw; margin-top: 1vh;">DC, Maryland, & Virginia</p>
+                        <i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;margin-left: 1vw; margin-top: 1vh;"></i>
+                    </div>
+                    <div   id="branch-tab" class="branch-tab" onclick="highlightTab()">
+                        <p style="margin-left: 1vw; margin-top: 1vh;">Florida</p>
+                        <i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;margin-left: 1vw; margin-top: 1vh;"></i>
+                    </div>
+                    
+                    <div   id="branch-tab" class="branch-tab" onclick="highlightTab()">
+                        <p style="margin-left: 1vw; margin-top: 1vh;">Georgia</p>
+                        <i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;margin-left: 1vw; margin-top: 1vh;"></i>
+                    </div>
+                    <div   id="branch-tab" class="branch-tab" onclick="highlightTab()">
+                        <p style="margin-left: 1vw; margin-top: 1vh;">Illinois</p>
+                        <i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;margin-left: 1vw; margin-top: 1vh;"></i>
+                    </div>
+                    <div   id="branch-tab" class="branch-tab" onclick="highlightTab()">
+                        <p style="margin-left: 1vw; margin-top: 1vh;">Kansas</p>
+                        <i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;margin-left: 1vw; margin-top: 1vh;"></i>
+                    </div>
+                    <div   id="branch-tab" class="branch-tab" onclick="highlightTab()">
+                        <p style="margin-left: 1vw; margin-top: 1vh;">Louisiana</p>
+                        <i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;margin-left: 1vw; margin-top: 1vh;"></i>
+                    </div>
+                    <div   id="branch-tab" class="branch-tab" onclick="highlightTab()">
+                        <p style="margin-left: 1vw; margin-top: 1vh;">Michigan</p>
+                        <i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;margin-left: 1vw; margin-top: 1vh;"></i>
+                    </div>
+                    <div   id="branch-tab" class="branch-tab" onclick="highlightTab()">
+                        <p style="margin-left: 1vw; margin-top: 1vh;">Nevada</p>
+                        <i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;margin-left: 1vw; margin-top: 1vh;"></i>
+                    </div>
+                    <div   id="branch-tab" class="branch-tab" onclick="highlightTab()">
+                        <p style="margin-left: 1vw; margin-top: 1vh;">New England</p>
+                        <i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;margin-left: 1vw; margin-top: 1vh;"></i>
+                    </div>
+                    <div   id="branch-tab" class="branch-tab" onclick="highlightTab()">
+                        <p style="margin-left: 1vw; margin-top: 1vh;">New York</p>
+                        <i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;margin-left: 1vw; margin-top: 1vh;"></i>
+                    </div>
+                    <div   id="branch-tab" class="branch-tab" onclick="highlightTab()">
+                        <p style="margin-left: 1vw; margin-top: 1vh;">Ohio</p>
+                        <i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;margin-left: 1vw; margin-top: 1vh;"></i>
+                    </div>
+                    <div   id="branch-tab" class="branch-tab" onclick="highlightTab()">
+                        <p style="margin-left: 1vw; margin-top: 1vh;">Oregon</p>
+                        <i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;margin-left: 1vw; margin-top: 1vh;"></i>
+                    </div>
+                    <div   id="branch-tab" class="branch-tab" onclick="highlightTab()">
+                        <p style="margin-left: 1vw; margin-top: 1vh;">Pennsylvania</p>
+                        <i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;margin-left: 1vw; margin-top: 1vh;"></i>
+                    </div>
+                    <div   id="branch-tab" class="branch-tab" onclick="highlightTab()">
+                        <p style="margin-left: 1vw; margin-top: 1vh;">Tennessee</p>
+                        <i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;margin-left: 1vw; margin-top: 1vh;"></i>
+                    </div>
+                    <div   id="branch-tab" class="branch-tab" onclick="highlightTab()">
+                        <p style="margin-left: 1vw; margin-top: 1vh;">Texas</p>
+                        <i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;margin-left: 1vw; margin-top: 1vh;"></i>
+                    </div>
+                    <div   id="branch-tab" class="branch-tab" onclick="highlightTab()">
+                        <p style="margin-left: 1vw; margin-top: 1vh;">Upper Midwest</p>
+                        <i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;margin-left: 1vw; margin-top: 1vh;"></i>
+                    </div>
+                    <div  id="branch-tab" class="branch-tab" onclick="highlightTab()">
+                        <p style="margin-left: 1vw; margin-top: 1vh;">Washington</p>
+                        <i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;margin-left: 1vw; margin-top: 1vh;"></i>
+                    </div>
+                    
+                    
+                    
+                    <div class="tabs-buttons">
+                        <button style="background-color: #5AB2FF;color: white;height: 5vh;width: 10vw;border: 1px solid #5AB2FF;border-radius: 5px;">View blogs</button>
+                        <button style="background-color: #C40C0C;color: white;height: 5vh;width: 10vw;border: 1px solid #C40C0C;border-radius: 5px;">Log Out</button>
+                    </div>
+                    
+                </div>
+                <div class="messaging-area">
+                    <div class="text-area">1</div>
+                    <div class="messaging-panel">
+                        <input type="text" value="" placeholder="say something..." style="width: 71vw;border-radius: 10px;border: 1px solid #ddd">
+                        <input type="button" value="Send" style="margin-right: 0.5vw;background-color: #007F73;color: white;width: 8vw;border: 1px solid #007F73;margin-left: 0.2vw;border-radius: 5px;">
+                    </div>
+                </div>
+            </div>
+            
           </div>
 
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <script>
+            
+          </script>
           <script>
             function loadHandler(delay) {
                 const el = document.getElementById('loading-wrapper');

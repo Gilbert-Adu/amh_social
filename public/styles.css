@@ -30,7 +30,12 @@
   width: 32vw;
   height: 60vh;
 }
-
+.form-container-signup {
+  border: 1px solid #DDDDDD;
+  padding: 50px;
+  width: 32vw;
+  height: 85vh;
+}
 .form-container form {
   margin-top: 70px;
 }
@@ -48,6 +53,12 @@
   object-fit: cover;
 }
 
+.hero-image-container-signup img {
+  width: 30vw;
+  height: 85vh;
+  object-fit: cover;
+}
+
 .welcome-text {
   width: 25vw;
   margin-left: 2vw;
@@ -60,7 +71,7 @@
 
 }
 
-input[type=email] {
+input[type=email]{
   background-color: #eee; 
   height: 5vh; 
   width: 25vw; 
@@ -68,7 +79,7 @@ input[type=email] {
   border-radius: 5px;
 }
 
-input[type=password] {
+input[type=password], input[type=text]  {
   background-color: #eee; 
   height: 5vh; 
   width: 25vw; 
@@ -98,7 +109,7 @@ input[type=submit] {
 .show-container {
   display: flex;
   flex-direction: row;
-  margin-top: 100vh;
+  margin-top: 10vh;
   margin-left: 0;
   margin-right: 0;
   height: 70vh;
@@ -249,7 +260,7 @@ input[type=submit] {
   flex-direction: row;
   flex-wrap: wrap;
   width: 100vw;
-  height: 10vh;
+  height: fit-content;
   
   
 }
@@ -274,7 +285,7 @@ input[type=submit] {
 
 .message-board-container {
   margin-top: 20vh;
-  height: 100vh;
+  height: fit-content;
   margin-left: 2vw;
   margin-right: 2vw;
 }
@@ -291,7 +302,15 @@ input[type=submit] {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding-top:  1vh;
+  padding-bottom: 1vh;
+  margin-top: 0.5vh;
 }
+
+
 
 .message-image {
   margin-left: 5vw;
@@ -311,6 +330,7 @@ input[type=submit] {
   display: flex;
   flex-direction: column;
 }
+
 .sender-name {
   width: 20vw;
 }
@@ -338,18 +358,21 @@ input[type=submit] {
 }
 
 
+
+
 .guest-section-title {
   text-align: center;
   margin-bottom: 5vh;
   font-size: 45px;
   color: #12372A;
+  margin-top: 10vh;
 
 }
 
 
 
 .guest-articles-container {
-  height: 80vh;
+  height: fit-content;
   display: flex;
   flex-direction: row;
   overflow-x: scroll;
@@ -469,7 +492,44 @@ footer {
   visibility: hidden;
 }
 
+.toggle-register {
+  background-color: #fff;
+	width: 30%;
+	margin: auto;
+	border: 3px solid #2ecc71;
+	border-radius: 10px;
+	padding: 20px;
+	text-align: center;
+	position: relative;
+	top: -310px;
 
+}
+#cross{
+	position: absolute;
+    left: 94%;
+    top: 0px;
+    color: #cc2e2e;
+	font-size: 18;
+	font-weight: bold;
+	background-color: transparent;
+	border: 0
+}
+h1{margin-top: 0px}
+
+
+#overlay {
+  position: fixed; /* Sit on top of the page content */
+  visibility: hidden; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+  z-index: 1; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+}
 
 
 

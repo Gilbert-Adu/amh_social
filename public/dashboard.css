@@ -1,6 +1,12 @@
 
   
   
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+  }
+  
   #loading-wrapper {
     position: fixed;
     width: 100%;
@@ -139,4 +145,95 @@
     text-align: center;
     background-color: #888;
   }
+
+  .nav-container {
+    border: 1px solid #ddd;
+    border-radius: 0 0 10px 10px;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+    height: 8vh;
+  }
+
+  .username {
+    margin-right: 3vw;
+    margin-top: 2vh;
+  }
+  .app-name {
+    margin-left: 2vw;
+    margin-top: 2vh;
+    font-size: 18px;
+
+    font-family: 'Sofia', sans-serif;
+    background: linear-gradient(to right, #f32170, #ff6b08,#cf23cf, #eedd44);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+
+  }
+
+  .panels-container {
+    display: flex;
+    flex-direction: row;
+  }
+  .tabs-group {
+    border: 1px solid #ddd;
+    width: 20vw;
+    height: 92vh;
+    overflow-x: scroll;
+    overscroll-behavior: contain;
+
+  }
+  .messaging-area {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 80vw;
+    height: 92vh;
+    display: flex;
+    flex-direction: column;
+
+  }
+  .branch-tab {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    height: 5vh;
+    display: flex;
+    flex-direction: row;
+    margin-top: 0.5vh;
+    cursor: pointer;
+
+  }
+
+  .branch-tab:hover {
+    background-color: #ddd;
+  }
+  
+
+  .text-area {
+    border: 1px solid #ddd;
+    width: 80vw;
+    height: 85vh;
+  }
+  .messaging-panel {
+    border: 1px solid #ddd;
+    width: 80vw;
+    height: 7vh;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .tabs-buttons {
+    display: flex;
+    flex-direction: row;
+    margin-top: 5vh;
+    margin-right: 3vw;
+
+  }
+  .tabs-buttons button {
+    margin-left: 1vh;
+    cursor: pointer;
+  }
+
+
   
