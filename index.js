@@ -21,14 +21,21 @@ db.once('open', () => console.log('connected to MongoDB'));
 
 
 
-let allUsers = [];
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
 
 app.get("/", (req, res) =>{
-    res.render('home');
+    try {
+        res.render('home');
+
+
+    }catch(err) {
+        res.render('error');
+
+
+    }
 });
 app.get("/register", (req, res) => {
     res.render('register')
@@ -60,7 +67,8 @@ app.post("/r/messaging", async (req, res) => {
 
         })
         .catch((err) => {
-            console.log(err.message);
+            res.render('error');
+
         })
 
 
@@ -78,7 +86,9 @@ app.post("/messaging", async (req, res) => {
 
         const user = await User.findOne({email}).exec();
         if (!user) {
-            res.send("user not found")
+            res.render('error', {message: "Email or Password is incorrect!", desc: "", solution: "Try another email or password", code: ""});
+
+            //res.send("user not found")
         }
         const passwordMatch = bcrypt.compare(password, user.password);
         if (passwordMatch) {
@@ -91,6 +101,8 @@ app.post("/messaging", async (req, res) => {
 
 
     }catch(err) {
+        res.render('error');
+
 
     }
 
