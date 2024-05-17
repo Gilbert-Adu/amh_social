@@ -24,42 +24,44 @@
 
     <div class="home" id="home" style="visibility: hidden;">
         <div class="hero-container">
-            <span class="hero-image">
-                <div class="hero-image-container">
+            <div class="hero-image-container">
+                <div class="image-wrapper">
                     <img src="/images/avatar.jpg" alt="">
                 </div>
-            </span>
-            <span class="register-form">
-                <div class="form-container">
-                    <div class="welcome-text" style="font-family: 'Sofia', sans-serif">Amhara Unity</div>
+            </div>
+            <div class="hero-form-container">
+                <div class="welcome-text" style="font-family: 'Sofia', sans-serif">Amhara Unity</div>
+                <div class="form-wrappper" style="margin-left: 2vw;margin-right: 2vw;height: fit-content;width: fit-content;margin-top: 10vh;">
                     <form action="/messaging" method="POST">
-                        <input type="email" id="email" name="email" placeholder="Email" required><br><br>
-                        <input type="password" id="password" name="password"  placeholder="Password" required><br><br>
-                        <input type="submit" id="log-in" value="Log in" onclick="logIn()">
+                        <input type="email" id="email" name="email" placeholder="Email" required> <br><br>
+                        <input type="password" id="password" name="password" placeholder="Password" required> <br><br>
+                        <input type="submit" id="log-in" value="Log in" onclick="logIn()"> <br><br>
+
                     </form>
-                    <hr id="form-bar">
-                    <div class="forgot" style="margin-top: 20px; text-align: center;font-size:small; color: #5AB2FF;cursor: pointer;font-weight: bold;" >Forgot password?</div>
                 </div>
                 <div class="signup-container">
-                    <div style=" text-align: center;">Don't have an account? <span style="color: #5AB2FF; font-weight: bold;cursor: pointer;" id="sign-up"><a href="/register" style="text-decoration: none;">Sign up</a></span></div>
+                    <div class="sign-up">
+                        Don't have an account? <a href="/register" style="text-decoration: none;color: #5AB2FF; font-weight: bold;cursor: pointer;">Sign Up</a>
+                    </div>
+                    
+                    <div class="forgot">
+                        <a href="" style="text-decoration: none;color: #5AB2FF;cursor: pointer;">Forgot password?</a>
+                    </div>
+
                 </div>
-                <!--scroll down-->
-                <div class="scroll-down">
-                    <span><i class="fa fa-arrow-circle-down" style="font-size: 40px;color: #007F73;"></i></span>
-                </div>
-    
-            </span>
-    
+            </div>  
         </div>
-        <!-- our mission -->
+        <!--mission container-->
         <div class="mission-container">
-            <h2 style="margin-top: 15vh;background-color: #F8FAE5;color: #114232;">Our Mission</h2>
-            <hr id="mission-bar">
-            <p class="mission-statement">
-                A platform to discuss issues of importance to the Amhara people.
-            </p>
+            <div class="mission-header">
+                Our Mission
+                <hr class="mission-bar">
+            </div>
+            <div class="mission-body">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, maxime qui voluptas ratione hic delectus voluptatibus illo perferendis error temporibus animi amet, vero sunt quasi aut eos veritatis atque eveniet!
+            </div>
         </div>
-    
+        
     
         <!--national leadership-->
         <div class="team-text">National Leadership</div>

@@ -17,11 +17,13 @@
       <div class="hero-container">
         <span class="hero-image">
             <div class="hero-image-container-signup">
-                <img src="/images/avatar.jpg" alt="">
+                <div class="image-wrapper-signup">
+                    <img src="/images/avatar.jpg" alt="">
+                </div>
             </div>
         </span>
         <span class="register-form">
-            <div class="form-container-signup">
+            <div class="hero-form-container-signup">
                 <div class="welcome-text" style="font-family: 'Sofia', sans-serif">Amhara Unity</div>
                 <form action="/r/messaging" method="POST" style="margin-top: 2vh;">
                   <input type="text" id="firstName" name="firstName" placeholder="First name" required><br><br>
@@ -35,7 +37,7 @@
                     <input type="text" id="city" name="city" placeholder="Your City" required><br><br>
                     <input type="text" id="state" name="state" placeholder="Your State" required><br><br>
 
-                    <label for="age">I am 18+</label>
+                    <label for="age" id="age-label">I am 18+</label>
                     <input type="checkbox" name="age"><br><br>
 
                     <input type="submit" id="log-in" value="Create account" onclick="logIn()">

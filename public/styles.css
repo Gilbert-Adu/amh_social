@@ -10,102 +10,207 @@
   background-color: #F6F5F5;
 }
 
-/* desktop */
-  .hero-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 5vh;
-    height: 100vh;
-  
-  }
-  
-.hero-container span {
-  margin: 20px;
-}
-
-.form-container {
-  border: 1px solid #DDDDDD;
-  padding: 50px;
-  width: 32vw;
-  height: 60vh;
-}
-.form-container-signup {
-  border: 1px solid #DDDDDD;
-  padding: 50px;
-  width: 32vw;
-  height: 85vh;
-}
-.form-container form {
-  margin-top: 70px;
-}
-
-.signup-container {
-  border: 1px solid #DDDDDD;
-  width: 32vw;
-  height: 8vh;
-  margin-top: 2vh;
+body {
+  margin: 0 auto;
 
 }
-.hero-image-container img {
-  width: 30vw;
-  height: 70vh;
+
+.hero-container {
+  height: fit-content;
+  margin-left: 5vw;
+  margin-right: 5vw;
+  display: flex;
+  flex-direction: row;
+}
+
+.hero-image-container {
+  margin-left: 5vw;
+  margin-right: 0.5vw;
+  width: 40vw;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  height: 80vh;
+
+}
+
+.hero-image-container-signup {
+  margin-left: 5vw;
+  margin-right: 0.5vw;
+  width: 40vw;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  height: 80vh;
+
+}
+
+.image-wrapper {
+  width: 40vw;
+  height: 80vh;
+}
+.image-wrapper img {
+  width: 40vw;
+  height: 80vh;
   object-fit: cover;
 }
 
-.hero-image-container-signup img {
-  width: 30vw;
-  height: 85vh;
+.image-wrapper-signup {
+  width: 40vw;
+  height: 80vh;
+}
+.image-wrapper-signup img {
+  width: 40vw;
+  height: 80vh;
   object-fit: cover;
+}
+
+.hero-form-container {
+  border: 1px solid #ddd;
+  margin-right: 5vw;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+
+}
+
+.hero-form-container-signup {
+  border: 1px solid #ddd;
+  margin-right: 5vw;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  height: 80vh;
+
+}
+.form-wrapper {
+  margin-left: 5vw;
+  margin-right: 5vw;
+  width: fit-content;
 }
 
 .welcome-text {
-  width: 25vw;
-  margin-left: 2vw;
-  font-size: 50px;
-
+  margin-left: 5vw;
+  margin-right: 5vw;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  height: fit-content;
+  text-align: center;
+  font-size: 25px;
   background: linear-gradient(to right, #f32170, #ff6b08,#cf23cf, #eedd44);
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
 
-
 }
 
-input[type=email]{
-  background-color: #eee; 
-  height: 5vh; 
-  width: 25vw; 
-  border: 1px solid #eee;
+
+input[type=email], input[type=password], input[type=text] {
+  border: 1px solid #ddd;
+  margin-left: 5vw;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
   border-radius: 5px;
+
+  
 }
 
-input[type=password], input[type=text]  {
-  background-color: #eee; 
-  height: 5vh; 
-  width: 25vw; 
-  border: 1px solid #eee;
+input[type=checkbox] {
+  border: 1px solid #ddd;
+  margin-left: 1vw;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
   border-radius: 5px;
+
+  
 }
 
+#age-label {
+  margin-left: 5vw;
+
+
+}
 input[type=submit] {
-  height: 4vh;
-  width: 25vw; 
+  border: 1px solid #ddd;
+  margin-left: 10vw;
+  margin-right: 10vw;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  border-radius: 5px;
   background-color:  #41B06E; 
-  border: 1px solid #8DECB4;
-  border-radius: 10px; 
+  border: 1px solid #41B06E;
+  border-radius: 5px; 
   color: white; 
   cursor: pointer; 
   font-weight: bold;
 }
 
-.signup-container div {
-  margin-top: 20px;
+.form-bar {
+  border: 1px solid #ddd;
+  margin-left: 5vw;
+  margin-right: 5vw;
+  
 }
 
-.scroll-down {
-  margin-top: 12vh;
+.signup-container {
+  border: 1px solid #ddd;
+  margin-left: 5vw;
+  margin-right: 5vw;
+  height: fit-content;
+  margin-top: 15vh;
 }
 
+.sign-up {
+  font-size: 12px;
+  text-align: center;
+}
+
+.forgot {
+  font-size: 10px;
+  text-align: center;
+}
+
+
+
+.mission-container {
+
+  margin-left: 0;
+  margin-right: 0;
+  width: 100vw;
+  height: 50vh;
+  color: #114232;
+  background: #F8FAE5;
+
+}
+
+.mission-header {
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+  height: fit-content;
+  margin-top: 5vh;
+  margin-left: 5vw;
+  margin-right: 5vw;
+  text-align: center;
+  font-size: 30px;
+  color: #114232;
+  background: #F8FAE5;
+  
+}
+
+.mission-body {
+  color: #114232;
+  background: #F8FAE5;
+  margin-left: 5vw;
+  margin-right: 5vw;
+  height: fit-content;
+  text-align: center;
+  
+}
+
+.mission-bar {
+  border: 1px solid #114232;
+  width: 20vw;
+  margin-left: 35vw;
+}
 .show-container {
   display: flex;
   flex-direction: row;
@@ -187,7 +292,7 @@ input[type=submit] {
 
 #form-bar {
   margin-top: 60px; 
-  width: 10vw; 
+  width: 32vw; 
   border: 1px solid #eee;
 }
 
@@ -198,20 +303,6 @@ input[type=submit] {
   animation-iteration-count: infinite; 
 } 
 
-.mission-container {
-  border: 1px solid #F8FAE5;
-  height: fit-content;
-  text-align: center;
-  background-color: #F8FAE5;
-}
-.mission-statement {
-  color: #436850;
-  background-color: #F8FAE5;
-  margin-top: 5vh;
-  width: 80vw;
-  height: fit-content;
-  margin: 5vh 10vw;
-}
 
 @keyframes bounce { 
   from { 
@@ -242,10 +333,6 @@ input[type=submit] {
       transform: translate3d(0, 50px, 0); 
   } 
 } 
-#mission-bar {
-  border: 1px solid #114232;
-  margin: 0 45vw;
-}
 
 
 
@@ -549,71 +636,6 @@ h1{margin-top: 0px}
 
 /* tablet */
 @media only screen and (min-width: 768px) and (max-width: 1025px) {
-  body {
-    overflow-x: hidden;
-  }
-  .hero-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 5vh;
-    height: 100vh;
-
-  }
-  .hero-image-container img {
-    width: 40vw;
-  }
-  .register-form {
-    top: 0;
-  }
-  /* new additions */
-  .form-container {
-    width: 45vw;
-    padding-left: 40px;
-  }
-  .welcome-text {
-    margin-left: 10px;
-    width: 40vw;
-    font-size: 45px;
-    
-  }
-  input[type=email] {
-    background-color: #eee; 
-    height: 5vh; 
-    width: 35vw; 
-    border: 1px solid #eee;
-    border-radius: 5px;
-  }
-
-  input[type=password] {
-    background-color: #eee; 
-    height: 5vh; 
-    width: 35vw; 
-    border: 1px solid #eee;
-    border-radius: 5px;
-  }
-  input[type=submit] {
-    height: 4vh;
-    width: 35vw; 
-    background-color:  #41B06E; 
-    border: 1px solid #8DECB4;
-    border-radius: 10px; 
-    color: white; 
-    cursor: pointer; 
-    font-weight: bold;
-  }
-
-  .signup-container {
-    border: 1px solid #DDDDDD;
-    width: 45vw;
-    height: 8vh;
-    margin-top: 2vh;
-  
-  }
-  .signup-container div {
-    margin-top: 45px;
-  }
-
   /* section 2 for tablet */
   .show-container {
     display: flex;
@@ -624,16 +646,13 @@ h1{margin-top: 0px}
     height: 70vh;
     
   }
+
+  
   
 
 
 
-  .mission-container {
-    border: 1px solid #F8FAE5;
-    height: 50vh;
-    text-align: center;
-    background-color: #F8FAE5;
-  }
+ 
 
 
   
@@ -643,77 +662,8 @@ h1{margin-top: 0px}
 
 /* Mobile Phone Viewpoint */
 @media only screen and (max-width: 767px) {
-  body {
-    overflow-x: hidden;
-  }
-  .hero-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: 1vh;
-    margin-left: 10px;
-    height: 100vh;
 
   
-  }
-  .hero-image {
-    display: none;
-  }
-
-  .form-container {
-    height: 70vh;
-  }
-  .form-container, .signup-container {
-    width: 85vw;
-  }
-  #form-bar {
-    margin-top: 50px; 
-    width: 55vw; 
-  }
-
-  .scroll-down {
-    margin-top: 15px;
-    margin-left: 33vw;
-  }
- 
-
-
-
-  /* new additions mobile */
-  .welcome-text {
-    width: 80vw;
-    font-size: 30px;
-  }
-  input[type=email] {
-    background-color: #eee; 
-    height: 5vh; 
-    width: 55vw; 
-    border: 1px solid #eee;
-    border-radius: 5px;
-  }
-
-  input[type=password] {
-    background-color: #eee; 
-    height: 5vh; 
-    width: 55vw; 
-    border: 1px solid #eee;
-    border-radius: 5px;
-  }
-  input[type=button] {
-    height: 4vh;
-    width: 55vw; 
-    background-color:  #41B06E; 
-    border: 1px solid #8DECB4;
-    border-radius: 10px; 
-    color: white; 
-    cursor: pointer; 
-    font-weight: bold;
-  }
-
-  .signup-container {
-    margin-top: 20px;
-  }
-
   /* section 2 for mobile */
   .show-container {
     display: flex;
@@ -724,19 +674,11 @@ h1{margin-top: 0px}
     height: 100vh;
     
   }
+
+  
   
 
 
-  .mission-container {
-    border: 1px solid #F8FAE5;
-    text-align: center;
-    background-color: #F8FAE5;
-  }
-
-  #mission-bar {
-    border: 1px solid #114232;
-    margin: 0 22vw;
-  }
 
   .show-image {
     width: 100vw;
