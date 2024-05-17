@@ -33,6 +33,7 @@
     border-radius: 5px;
     margin-top: 1vh;
     margin-right: 2vw;
+    cursor: pointer;
   }
 
   .content-container {
@@ -62,6 +63,8 @@
     text-align: center;
     font-style: italic;
     color: #B5C0D0;
+    font-family: Helvetica Neue;
+
   }
 
   .blurb {
@@ -69,9 +72,11 @@
     margin-left: 10vw;
     margin-right: 10vw;
     margin-top: 5vh;
-    height: 8vh;
+    height: fit-content;
     background-color: #EEEEEE;
     max-width: 80vw;
+    font-family: Helvetica Neue;
+
 
   }
 
@@ -81,6 +86,9 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     line-height: 200%;
+    color: #2E4F4F;
+
+
 
   
   }
@@ -107,15 +115,23 @@
   }
 
   .blog-content {
-    border: 1px solid red;
     margin-left: 10vw;
     margin-right: 10vw;
     margin-top: 5vh;
     height: fit-content;
+    font-family: Helvetica Neue;
 
   }
 
   .blog-content p {
-    line-height: 200%;
+    line-height: 230%;
   }
+
+  /* Mobile Phone Viewpoint */
+@media only screen and (max-width: 767px) {
+  .write-btn {
+    width: 20vw;
+    cursor: pointer;
+  }
+}
   

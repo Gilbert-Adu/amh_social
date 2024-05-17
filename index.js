@@ -20,6 +20,7 @@ db.on('error', console.error.bind(console, 'Mongo DB connection error'));
 db.once('open', () => console.log('connected to MongoDB'));
 
 
+app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -109,7 +110,22 @@ app.post("/messaging", async (req, res) => {
     
 });
 
+//change to view all blogs
 app.get('/blog', (req, res) => {
+    //const blogContent = await req.body.data;
+    //console.log('submitted not showing')
+    res.render('blog');
+
+});
+
+app.get('/submit-a-blog', (req, res) => {
+    res.render('submitBlog');
+});
+
+//get the blog content
+app.post('/submit-a-blog', async(req, res) => {
+    //const blogContent = await req.body.data;
+    //console.log('submitted not showing')
     res.render('blog');
 });
 

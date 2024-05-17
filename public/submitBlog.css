@@ -1,0 +1,48 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+  }
+
+ 
+
+.blog-form {
+    margin-top: 5vh;
+    margin-left: 35vh;
+}
+.navbar-container {
+    border: 1px solid #ddd;
+    height: 8vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+
+  }
+
+  .app-name {
+    margin-left: 2vw;
+    margin-top: 2vh;
+    font-size: 18px;
+
+    font-family: 'Sofia', sans-serif;
+    background: linear-gradient(to right, #f32170, #ff6b08,#cf23cf, #eedd44);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+
+  }
+.submit-btn {
+    width: 8vw;
+    background-color: #5AB2FF;
+    color: white;
+    padding: 2vh 2vw;
+    margin-right: 1vw;
+    margin-top: 1vh;
+    border: 1px solid #5AB2FF;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background-color: #10439F;
+}
+
