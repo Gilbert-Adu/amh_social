@@ -179,7 +179,7 @@
   }
   .tabs-group {
     border: 1px solid #ddd;
-    width: 20vw;
+    width: 50vw;
     height: 92vh;
     overflow-x: scroll;
     overscroll-behavior: contain;
@@ -188,7 +188,7 @@
   .messaging-area {
     border: 1px solid #ddd;
     border-radius: 5px;
-    width: 80vw;
+    width: 50vw;
     height: 92vh;
     display: flex;
     flex-direction: column;
@@ -214,10 +214,13 @@
     border: 1px solid #ddd;
     width: 80vw;
     height: 85vh;
-  }
+    overflow-x: scroll;
+    overscroll-behavior: contain;
+
+}
   .messaging-panel {
     border: 1px solid #ddd;
-    width: 80vw;
+    width: 50vw;
     height: 7vh;
     display: flex;
     flex-direction: row;
@@ -234,6 +237,56 @@
     margin-left: 1vh;
     cursor: pointer;
   }
+
+  .messages-sent {
+    width: 40vw;
+
+  }
+
+  .messages-received {
+    width: 40vw;
+    height: 100%;
+  }
+
+ 
+
+.sent-bubble {
+  width: fit-content;
+  height: fit-content;
+  float: right;
+  margin-right: 0.2vw;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  
+}
+
+.received-bubble {
+  width: fit-content;
+  height: fit-content;
+  float: left;
+  margin-right: 0.2vw;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  
+}
+
+.message-content {
+  height: 100%;
+  border-left: 2px solid green;
+  padding: 1vh 1vw;
+  margin-top: 2vh;
+
+}
+
+.message-content-received {
+  height: 100%;
+  border-left: 2px solid red;
+  padding: 1vh 1vw;
+  margin-top: 2vh;
+
+}
+
+
 
 
   

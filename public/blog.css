@@ -127,6 +127,17 @@
     line-height: 230%;
   }
 
+  .added-section {
+    height: fit-content;
+    margin-top: 3vh;
+  }
+
+  .added-section h2 {
+    font-size: 18px;
+    font-weight: bold;
+
+  }
+
   /* Mobile Phone Viewpoint */
 @media only screen and (max-width: 767px) {
   .write-btn {

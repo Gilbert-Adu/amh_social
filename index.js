@@ -121,12 +121,13 @@ app.get('/blog', (req, res) => {
 app.get('/submit-a-blog', (req, res) => {
     res.render('submitBlog');
 });
-
 //get the blog content
 app.post('/submit-a-blog', async(req, res) => {
     //const blogContent = await req.body.data;
     //console.log('submitted not showing')
-    res.render('blog');
+    const numSections = req.body.title.length;
+    //console.log(req.body);
+    res.render('blog', {message: req.body, numSections: numSections});
 });
 
 
