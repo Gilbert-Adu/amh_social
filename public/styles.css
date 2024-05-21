@@ -79,6 +79,21 @@ body {
   height: 80vh;
 
 }
+
+.no-posts {
+  border: 2px dotted green;
+  border-radius: 10px;
+  padding: 3vh 3vw;
+  color: green;
+  font-weight: bold;
+  text-align: center;
+  }
+
+  .no-posts-container {
+    width: 100vw;
+    height: fit-content;
+    margin: 2vh 2vw;
+  }
 .form-wrapper {
   margin-left: 5vw;
   margin-right: 5vw;
@@ -479,7 +494,7 @@ input[type=submit] {
   border: 1px solid #DDDDDD;
   background-color: #FFF7F1;
   width: 20vw;
-  height: 50vh;
+  height: fit-content;
   margin-left: 2vw;
   margin-top: 10vh;
   cursor: pointer;
@@ -509,8 +524,13 @@ input[type=submit] {
 .article-blurb {
   margin-top: 3vh;
   height: fit-content;
-  width: fit-content;
-  font-size: 12px;
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 15.8vw;
+
+  font-size: 10.5px;
   background-color: #FFF7F1;
 
 }

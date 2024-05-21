@@ -274,106 +274,43 @@
         <!--guest articles -->
         <div class="guest-section-title">Guest Articles</div>
         <div class="guest-articles-container">
-            <div>
-                <a href="/blog" style="text-decoration: none;cursor: pointer;">
-                    <div class="guest-article">
-                        <div class="article-info-container">
-                            <div class="article-title">History of the Amhara People</div>
-                            <div class="article-image">
-                                <img src="/images/avatar.jpg" alt="">
+
+            <% if (posts.length > 0) { %>
+                <% for(let i = 0; i < posts.length; i++) { %>
+                
+                    <div>
+                        <a href="/blog/<%= posts[i]._id %>" style="text-decoration: none;cursor: pointer;">
+                            <div class="guest-article">
+                                <div class="article-info-container">
+                                    <div class="article-title"><%= posts[i].title %></div>
+                                    <div class="article-image">
+                                        <img src="/images/avatar.jpg" alt="">
+                                    </div>
+                                    <div class="article-blurb">
+                                        <%= posts[i].desc %>
+                                    </div>
+                                    <div class="article-poster"></div>
+                                </div>
                             </div>
-                            <div class="article-blurb">
-                                Amharas are a Semitic-speaking ethnic group which is indigenous to Ethiopia.
-                            </div>
-                            <div class="article-poster">James Moses</div>
-                        </div>
+                        </a>
                     </div>
-                </a>
-            </div>
-            <div>
-                <a href="/blog" style="text-decoration: none;cursor: pointer;">
-                    <div class="guest-article">
-                        <div class="article-info-container">
-                            <div class="article-title">History of the Amhara People</div>
-                            <div class="article-image">
-                                <img src="/images/avatar.jpg" alt="">
-                            </div>
-                            <div class="article-blurb">
-                                Amharas are a Semitic-speaking ethnic group which is indigenous to Ethiopia.
-                            </div>
-                            <div class="article-poster">James Moses</div>
+                    
+                  <% } %>
+              
+            <% } else { %>
+                <div class="no-posts-container">
+                    <a href="" style="text-decoration: none;cursor: pointer;">
+                        <div class="no-posts">
+                                NO NEW ARTICLES
+
                         </div>
-                    </div>
-                </a>
-            </div>
+                    </a>
+                </div>
+                
+            <% } %>
+        
+
             
-            <div>
-                <a href="/blog" style="text-decoration: none;cursor: pointer;">
-                    <div class="guest-article">
-                        <div class="article-info-container">
-                            <div class="article-title">History of the Amhara People</div>
-                            <div class="article-image">
-                                <img src="/images/avatar.jpg" alt="">
-                            </div>
-                            <div class="article-blurb">
-                                Amharas are a Semitic-speaking ethnic group which is indigenous to Ethiopia.
-                            </div>
-                            <div class="article-poster">James Moses</div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            
-            <div>
-                <a href="/blog" style="text-decoration: none;cursor: pointer;">
-                    <div class="guest-article">
-                        <div class="article-info-container">
-                            <div class="article-title">History of the Amhara People</div>
-                            <div class="article-image">
-                                <img src="/images/avatar.jpg" alt="">
-                            </div>
-                            <div class="article-blurb">
-                                Amharas are a Semitic-speaking ethnic group which is indigenous to Ethiopia.
-                            </div>
-                            <div class="article-poster">James Moses</div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            
-            <div>
-                <a href="/blog" style="text-decoration: none;cursor: pointer;">
-                    <div class="guest-article">
-                        <div class="article-info-container">
-                            <div class="article-title">History of the Amhara People</div>
-                            <div class="article-image">
-                                <img src="/images/avatar.jpg" alt="">
-                            </div>
-                            <div class="article-blurb">
-                                Amharas are a Semitic-speaking ethnic group which is indigenous to Ethiopia.
-                            </div>
-                            <div class="article-poster">James Moses</div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            
-            <div>
-                <a href="/blog" style="text-decoration: none;cursor: pointer;">
-                    <div class="guest-article">
-                        <div class="article-info-container">
-                            <div class="article-title">History of the Amhara People</div>
-                            <div class="article-image">
-                                <img src="/images/avatar.jpg" alt="">
-                            </div>
-                            <div class="article-blurb">
-                                Amharas are a Semitic-speaking ethnic group which is indigenous to Ethiopia.
-                            </div>
-                            <div class="article-poster">James Moses</div>
-                        </div>
-                    </div>
-                </a>
-            </div>
             
         </div>
         <!--contact section-->

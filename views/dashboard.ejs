@@ -114,10 +114,11 @@
 
                     
                     <div class="tabs-buttons">
-                        <a href="/blogs" style="text-decoration: none;">
-                            <button style="background-color: #5AB2FF;color: white;height: 5vh;width: 10vw;border: 1px solid #5AB2FF;border-radius: 5px;cursor: pointer;">View blogs</button>
+                        <a href="/submit-a-blog/<%= data._id %>" onclick="getBlogSubmit(`${data}`)" style="text-decoration: none;">
+                            <button id="blogs-button"  style="background-color: #5AB2FF;color: white;height: 5vh;width: 10vw;border: 1px solid #5AB2FF;border-radius: 5px;cursor: pointer;">View blogs</button>
 
                         </a>
+
                         <button style="background-color: #C40C0C;color: white;height: 5vh;width: 10vw;border: 1px solid #C40C0C;border-radius: 5px;cursor: pointer;">Log Out</button>
                     </div>
                     
@@ -211,6 +212,11 @@
           
           <script>
 
+
+            function getBlogSubmit(id) {
+                console.log(id)
+
+            }
             function newMessage() {
                 var sendButton = document.getElementById('send-button');
 

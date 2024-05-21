@@ -27,10 +27,10 @@
         </div>
 
         <section class="form-section">
-          <form action="/submit-a-blog" method="POST" class="blog-form" id="blog-form">
+          <form action="/submit-a-blog/<%= data %>" method="POST" class="blog-form" id="blog-form">
             <input type="text" placeholder="Blog title" id="title" name="title" style="width: 100%;height: 4vh;border: 1px solid #ddd; margin-bottom: 0.5vh;"><br>
             <input type="text" placeholder="Your description goes here..." id="desc" name="desc" style="width: 100%;height: 7vh;border: 1px solid #ddd;margin-bottom: 0.5vh;"><br>
-            <input type="file"  accept="image/*" id="main-image" name="main-image" required style="width: 100%;height: 7vh;border: 1px solid #ddd;margin-bottom: 0.5vh;"><br>
+            <input type="file"  accept="image/*" id="mainImage" name="mainImage" required style="width: 100%;height: 7vh;border: 1px solid #ddd;margin-bottom: 0.5vh;"><br>
             <input type="text" placeholder="Short image description" id="altText" name="altText" style="width: 100%;height: 4vh;border: 1px solid #ddd; margin-bottom: 0.5vh;"><br>
             <textarea name="content" id="" cols="47" rows="15" style="border: 1px solid #ddd;">Your text here...</textarea><br>
             <section class="new-form-section" id="new-form-section"></section>
