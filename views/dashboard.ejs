@@ -9,6 +9,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
 
+
+
+
     </head>
     <body>
         <div id="loading-wrapper">
@@ -24,11 +27,11 @@
 
             <div class="panels-container" id="panels-container">
                 <div class="tabs-group">
-                    <div   id="branch-tab" class="branch-tab" onclick="highlightTab()">
+                    <div   id="branch-tab" class="branch-tab">
                         <p style="margin-left: 1vw; margin-top: 1vh;">Arizona & New Mexico</p>
                         <i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;margin-left: 1vw; margin-top: 1vh;"></i>
                     </div>
-                    <div   id="branch-tab" class="branch-tab" onclick="highlightTab()">
+                    <div   id="branch-tab" class="branch-tab">
                         <p style="margin-left: 1vw; margin-top: 1vh;">California</p>
                         <i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;margin-left: 1vw; margin-top: 1vh;"></i>
                     </div>
@@ -105,7 +108,7 @@
                         <p style="margin-left: 1vw; margin-top: 1vh;">Upper Midwest</p>
                         <i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;margin-left: 1vw; margin-top: 1vh;"></i>
                     </div>
-                    <div  id="branch-tab" class="branch-tab" onclick="highlightTab()">
+                    <div  id="branch-tab" class="branch-tab"">
                         <p style="margin-left: 1vw; margin-top: 1vh;">Washington</p>
                         <i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;margin-left: 1vw; margin-top: 1vh;"></i>
                     </div>
@@ -127,72 +130,21 @@
                     <div class="text-area">
                         <div class="message-group">
                             <div class="messages-sent" id="messages-sent">
-                                <div class="sent-bubble">
-                                    <div class="message-content">
-                                        <span style="color: green; font-size: 10px; font-weight: bold;">ME</span><br>
-                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit commodi quo enim natus rerum nam sed facilis a totam voluptas, ea labore voluptatum explicabo? Voluptate earum aperiam rem expedita corrupti?
-                                    </div>
-                                    <div class="message-content">
-                                        <span style="color: green; font-size: 10px; font-weight: bold;">ME</span><br>
-                                        hello
-                                    </div>
-                                    <div class="message-content">
-                                        <span style="color: green; font-size: 10px; font-weight: bold;">ME</span><br>
-                                        did you hear the news?
-                                    </div>
-                                    <div class="message-content">
-                                        <span style="color: green; font-size: 10px; font-weight: bold;">ME</span><br>
-                                        it's the news pertaining to a creature of a certain ornithological persuasion😂
-                                    </div>
-
-                                    <div class="message-content">
-                                        <span style="color: green; font-size: 10px; font-weight: bold;">ME</span><br>
-                                        you got the joke? 🤣
-                                    </div>
-                                    
-                                    
-
-                                    
-                                    
-                                    
+                                <div class="sent-bubble" id="sent-bubble">
+                                
                                 </div>
 
                             </div>
-                        <div class="messages-received">
-                            <div class="received-bubble">
-                                <div class="message-content-received">
-                                    <span style="color: red; font-size: 10px; font-weight: bold;">YOU</span><br>
-                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit commodi quo enim natus rerum nam sed facilis a totam voluptas, ea labore voluptatum explicabo? Voluptate earum aperiam rem expedita corrupti?
-                                </div>
-
-                                <div class="message-content-received">
-                                    <span style="color: red; font-size: 10px; font-weight: bold;">YOU</span><br>
-                                    what news?
-                                </div>
-
-                                <div class="message-content-received">
-                                    <span style="color: red; font-size: 10px; font-weight: bold;">YOU</span><br>
-                                    is it from family guy? 🤣
-                                </div>
-
-                                <div class="message-content-received">
-                                    <span style="color: red; font-size: 10px; font-weight: bold;">YOU</span><br>
-                                    🤣🤣🤣
-                                </div>
-                                
-                                
-                                
-                                
-                            </div>
-
-                        </div>
-
+                           
+                        
                         </div>
                         
                     </div>
                     <div class="messaging-panel">
-                        <input type="text" value="" placeholder="say something..." id="sent-text" style="width: 71vw;border-radius: 10px;border: 1px solid #ddd">
-                        <input type="button" value="Send" id="send-button" onclick="newMessage()" style="margin-right: 0.5vw;background-color: #007F73;color: white;width: 8vw;border: 1px solid #007F73;margin-left: 0.2vw;border-radius: 5px; cursor: pointer;">
+                        <form action="/send/<%= data._id %>" method="POST" id="form">
+                            <input type="text" value="" name="textMessage" placeholder="Say something..." id="sent-text" style="width: 50vw;height:5vh; border-radius: 10px;border: 1px solid #ddd">
+                      
+                        </form>
                     </div>
                 </div>
             </div>
@@ -206,8 +158,48 @@
           
           
           
-          
-          
+    
+          <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+
+            <script>
+            
+                const pusher = new Pusher('be75e3dbef6dc92be9b4', {
+                    cluster: 'us2'
+                });
+
+                const channel = pusher.subscribe('chat');
+                channel.bind('message', (data) => {
+                    const item = document.createElement('p');
+                    const userID = data.userID;
+                    const colors = ['red', 'green', '#850F8D', '#FFA62F', '#240750', '#6DC5D1', '#C3FF93', '#A91D3A', '#AD88C6', '#FF204E']
+                    const col = colors[Math.floor(Math.random() * colors.length)]
+                    item.innerHTML = `
+                            <div class="message-content" style="  border-left: 2px solid ${col};">
+                            <span style="color: ${col}; font-size: 10px; font-weight: bold;">${data.user.firstName} ${data.user.lastName}</span><br>
+                            ${data.message}
+                            </div>
+                                    
+                    `;
+                    document.getElementById('sent-bubble').appendChild(item)
+                    //console.log(data);
+                });
+
+                document.getElementById('form').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const message = document.getElementById('sent-text').value;
+                    //console.log("message: ", message)
+                    fetch('/send/<%= data._id%>', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({message})
+                    })
+                    document.getElementById('sent-text').value = ''
+
+                });
+
+            </script>
+        
+
           
           
           <script>

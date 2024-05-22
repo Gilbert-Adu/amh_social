@@ -5,12 +5,23 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const jwt = require('jsonwebtoken');
-
+const Pusher = require('pusher');
 const app = express();
+
 const port = process.env.PORT || 3000;
 
 
+const pusher = new Pusher({
+    appId: "1806480",
+    key:"be75e3dbef6dc92be9b4",
+    secret: "2cd188cc98efd7046b8d",
+    cluster:"us2",
+    useTLS: true
+
+});
 require('dotenv').config();
+
+
 
 const User = require("./db/models/user");
 const {sendConfirmationEmail} = require("./functions/emailer");
@@ -84,6 +95,7 @@ app.post("/r/messaging", async (req, res) => {
         "__v": newUser.__v
     }
     
+    
     const token = generateToken(theUser);
     newUser.token = token;
 
@@ -95,6 +107,27 @@ app.post("/r/messaging", async (req, res) => {
 
         
 });
+
+
+//send message
+app.post("/send/:userID", async(req, res) => {
+
+    const userID = req.params.userID;
+    const user = await User.findById(userID);
+    const message = req.body.message;
+
+    let payload = {
+        "user": user,
+        "message": message,
+        "userID": userID
+    }
+
+    //console.log(payload)
+    pusher.trigger('chat', 'message', payload);
+    res.sendStatus(200);
+    
+});
+
 
 //login
 app.post("/messaging", async (req, res) => {
