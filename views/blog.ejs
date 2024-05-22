@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Amhara Unity | Blog</title>
+            <% if (Array.isArray(message.title)) { %>
+                <title>Amhara Unity | <%= message.title[0] %></title>
+              <% } else { %>
+                <title>Amhara Unity | <%= message.title %></title>
+              <% } %>
+            
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
@@ -14,7 +19,7 @@
     <body>
         <div class="navbar-container">
             <div class="app-name">Amhara Unity</div>
-            <a href="/submit-a-blog" style="text-decoration: none;"><button class="write-btn">Write</button></a>
+            <a href="/submit-a-blog/<%= message.userId%>" style="text-decoration: none;"><button class="write-btn">Write</button></a>
         </div>
 
         <div class="content-container">

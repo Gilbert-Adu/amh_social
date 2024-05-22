@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Amhara Unity | Blog</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+        <link rel="stylesheet" type="text/css" href="/allblogs.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    </head>
+
+    <body>
+        <div class="navbar-container">
+            <div class="app-name">Amhara Unity</div>
+            <a href="/submit-a-blog" style="text-decoration: none;"><button class="write-btn">Write</button></a>
+        </div>
+
+        <div class="blogs-container">
+            <div class="main-blogs">
+                <% for (let i = 0; i < blogs.length; i++) { %>
+                    <a href="/blog/<%= blogs[i]._id%>" style="text-decoration: none;">
+                        <div class="a-blog-container">
+                            <div class="blog-content">
+                                <div class="poster-info">
+                                    <span class="postedBy"><%= blogs[i].postedBy %></span> |
+                                    <span class="postedOn"><%= blogs[i].postedOn %></span><br><br>
+                                </div>
+                                <div class="blog-text">
+
+                                    <% if (Array.isArray(blogs[i].title)) { %>
+                                        <h2 class="blog-title"><%= blogs[i].title[0] %></h2>
+
+                                      <% } else { %>
+                                        <h2 class="blog-title"><%= blogs[i].title %></h2>
+                                      <% } %>
+                                    
+                                    <p class="blog-desc"><%= blogs[i].desc %> </p>
+                                </div>
+                            </div>
+                            <div class="blog-image">
+                                <img src="/images/avatar.jpg" alt="">
+                            </div>
+                        </div>
+                        
+                    </a>
+                    
+                <% } %>
+    
+                
+            </div>
+            <div class="ad-blogs">2</div>
+        </div>
+
+    </body>
+    
+</html>

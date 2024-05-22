@@ -12,7 +12,11 @@ const userSchema = new mongoose.Schema({
     city: String,
     state: String,
     age: String,
-    token: String
+    token: String,
+    role: {
+        type: String,
+        default: () => "visitor"
+    }
 
 });
 

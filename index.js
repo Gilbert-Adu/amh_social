@@ -99,14 +99,22 @@ app.post("/r/messaging", async (req, res) => {
     const token = generateToken(theUser);
     newUser.token = token;
 
-
-
-
     await newUser.save();
+    const temp = await User.updateOne({ email: email }, { $set: { token: token } });
+    console.log(temp);
+
     res.render('dashboard', {data: theUser});
 
         
 });
+
+app.get("/finduser/:email", async(req, res) => {
+    const email = req.params.email;
+    const theUser = await User.findOne({email:email});
+    console.log(theUser)
+});
+
+app.get("/")
 
 
 //send message
@@ -161,8 +169,11 @@ app.post("/messaging", async (req, res) => {
             //res.json({"token" : token});
             //res.locals.token = token;
             req.user = user;
+            theUser.token = token;
             user.token = token;
             //res.send({token: token})
+            await User.updateOne({ email: email }, { $set: { token: token } });
+
             res.render('dashboard', {data: theUser});
         }else {
             //return res.send('an error occurred, Gilbert')
@@ -204,7 +215,10 @@ app.get('/submit-a-blog/:userId', async(req, res) => {
     const ID = req.params.userId;
     const user = await User.findById(ID);
 
+
+
     if (verifyToken(user)) {
+
         res.render('submitBlog', {data: ID});
 
     }else {
@@ -257,11 +271,13 @@ app.post('/submit-a-blog/:userId', async(req, res) => {
 });
 
 
-app.get("/allblogs", async (req, res) => {
+app.get("/allblogs/:userID", async (req, res) => {
     const posts = await Post.find();
-    console.log(posts.length);
-    console.log(posts);
-    res.send("all blogs")
+    const theUser = req.params.userID;
+    //console.log(posts.length);
+    //console.log(posts);
+
+    res.render("allblogs", {blogs: posts, userID: theUser});
 });
 
 app.get("/deletePosts", async(req, res) => {
