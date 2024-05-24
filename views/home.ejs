@@ -101,100 +101,19 @@
             <div class="show-texts">
                 <p>Regional branches</p>
                 <div class="branches-container">
-                    <div class="branch-info">
-                        <span>Arizona & New Mexico</span>
-                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
-                    </div>
-                    <div class="branch-info">
-                        <span>California</span>
-                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
-                    </div>
-                    <div class="branch-info">
-                        <span>The Carolinas</span>
-                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
-                    </div>
-    
-                    <div class="branch-info">
-                        <span>Colorado</span>
-                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
-                    </div>
-    
-                    <div class="branch-info">
-                        <span>DC, Maryland, & Virginia</span>
-                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
-                    </div>
-    
-                    <div class="branch-info">
-                        <span>Florida</span>
-                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
-                    </div>
-    
-                    <div class="branch-info">
-                        <span>Georgia</span>
-                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
-                    </div>
-    
-                    <div class="branch-info">
-                        <span>Illinois</span>
-                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
-                    </div>
-                    <div class="branch-info">
-                        <span>Kansas</span>
-                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
-                    </div>
-    
-                    <div class="branch-info">
-                        <span>Louisiana</span>
-                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
-                    </div>
-                    <div class="branch-info">
-                        <span>Michigan</span>
-                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
-                    </div>
-                    <div class="branch-info">
-                        <span>Minnesota</span>
-                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
-                    </div>
-                    <div class="branch-info">
-                        <span>Nevada</span>
-                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
-                    </div>
-                    <div class="branch-info">
-                        <span>New England</span>
-                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
-                    </div>
-                    <div class="branch-info">
-                        <span>New York</span>
-                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
-                    </div>
-                    <div class="branch-info">
-                        <span>Ohio</span>
-                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
-                    </div>
-                    <div class="branch-info">
-                        <span>Oregon</span>
-                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
-                    </div>
-                    <div class="branch-info">
-                        <span>Pennsylvania</span>
-                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
-                    </div>
-                    <div class="branch-info">
-                        <span>Tennessee</span>
-                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
-                    </div>
-                    <div class="branch-info">
-                        <span>Texas</span>
-                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
-                    </div>
-                    <div class="branch-info">
-                        <span>Upper Midwest (ID, MT, WY, UT, ND, SD, & NE)</span>
-                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
-                    </div>
-                    <div class="branch-info">
-                        <span>Washington</span>
-                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
-                    </div>
+
+                    <% for(let i = 0; i < branches.length; i++) { %>
+
+                        <a href="/branch/<%= branches[i]._id%>" style="text-decoration: none;">
+                            <div class="branch-info">
+                                <span><%= branches[i].name %></span>
+                                <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
+                            </div>
+                        </a>
+                        
+                      <% } %>
+                  
+                    
                 </div>
     
             </div>

@@ -27,6 +27,7 @@ require('dotenv').config();
 
 const User = require("./db/models/user");
 const {sendConfirmationEmail} = require("./functions/emailer");
+const Branch = require("./db/models/branch");
 const Post = require("./db/models/post");
 
 mongoose.connect(process.env.MONGO_URI);
@@ -50,10 +51,11 @@ app.set('view engine', 'ejs');
 app.get("/", async (req, res) =>{
     try {
         let posts = await Post.find();
+        let branches = await Branch.find()
 
 
         
-        res.render('home', {posts: posts});
+        res.render('home', {posts: posts, branches: branches});
 
 
 
@@ -73,6 +75,14 @@ app.post("/r/messaging", async (req, res) => {
 
     let hashedPassword = await bcrypt.hash(password, 10);
 
+    const colors = ['#FF0000', 'green', '#003285', '#850F8D', '#006769', '#8E3E63', '#344C64',
+            '#9B3922', '#0C0C0C', '#430A5D', '#092635', '#940B92', '#005B41', '#116D6E', '#ED2B2A', 
+            '#1A120B', '#C147E9', '#FB2576', '#B25068', '#F10086', '#B85C38', '#082032', '#6C0345', 
+            '#CD5C08', '#606C5D', '#32012F', '#FA7070'
+        ]
+    const col = colors[Math.floor(Math.random() * colors.length)]
+      
+
     const newUser = await new User({
         "firstName": firstName,
         "lastName": lastName,
@@ -81,7 +91,8 @@ app.post("/r/messaging", async (req, res) => {
         "password": hashedPassword,
         "city": city,
         "state": state,
-        "age": age
+        "age": age,
+        "userColor": col
 
     });
     const theUser = {
@@ -94,6 +105,7 @@ app.post("/r/messaging", async (req, res) => {
         "city": city,
         "state": state,
         "age": age,
+        "userColor": col,
         "__v": newUser.__v
     }
     
@@ -161,6 +173,8 @@ app.post("/messaging", async (req, res) => {
         let { email, password} = req.body;
 
         const user = await User.findOne({email}).exec();
+
+        
         if (!user) {
             return res.render('error', {message: "Email or Password is incorrect!", desc: "", solution: "Try another email or password", code: ""});
 
@@ -169,6 +183,19 @@ app.post("/messaging", async (req, res) => {
         const passwordMatch = bcrypt.compare(password, user.password);
         if (passwordMatch) {
             const {_id, firstName, lastName, email, password, phone, city, state, age, __v} = user;
+
+            const colors = ['#FF0000', 'green', '#003285', '#850F8D', '#006769', '#8E3E63', '#344C64',
+            '#9B3922', '#0C0C0C', '#430A5D', '#092635', '#940B92', '#005B41', '#116D6E', '#ED2B2A', 
+            '#1A120B', '#C147E9', '#FB2576', '#B25068', '#F10086', '#B85C38', '#082032', '#6C0345', 
+            '#CD5C08', '#606C5D', '#32012F', '#FA7070'
+        ]
+            const col = colors[Math.floor(Math.random() * colors.length)]
+      
+            if (!user.userColor) {
+                await User.updateOne({ email: email }, { $set: { userColor: col } });
+
+            }
+
             const theUser = {
                 "_id": _id,
                 "firstName": firstName,
@@ -179,7 +206,8 @@ app.post("/messaging", async (req, res) => {
                 "city": city,
                 "state": state,
                 "age": age,
-                "__v": __v
+                "__v": __v,
+                "userColor": col
             }
             const token = generateToken(theUser);
             //res.json({"token" : token});
@@ -350,6 +378,54 @@ app.get("/allblogs/:userID", async (req, res) => {
 app.get("/deletePosts", async(req, res) => {
     await Post.deleteMany({})
     res.send("posts deleted")
+});
+
+app.post("/createBranch", async(req, res) => {
+
+    try {
+        const {name} = req.body;
+        const branch = await new Branch({
+        "name": name
+        });
+
+    await branch.save();
+    res.send(name + " added to branches")
+
+
+    }catch(err) {
+
+        res.send({"message":err.message})
+
+    }
+});
+
+app.get("/allbranches", async (req, res) => {
+    try {
+        const branches = await Branch.find();
+    res.send(branches);
+
+
+    }catch(err) {
+        res.send({"message": err.message})
+    }
+    
+});
+
+app.get("/branch/:branchID", async (req, res) => {
+
+    try {
+        const branchID = req.params.branchID;
+
+        const theBranch = await Branch.findById(branchID);
+
+        res.render('branch', {branch: theBranch});
+
+
+
+    }catch(err) {
+        res.send({"message": err.message})
+    }
+    
 });
 
 app.listen(port, () => {

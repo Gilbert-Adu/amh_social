@@ -12,6 +12,7 @@ const userSchema = new mongoose.Schema({
     city: String,
     state: String,
     age: String,
+    userColor: String,
     token: String,
     role: {
         type: String,

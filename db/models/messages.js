@@ -6,6 +6,6 @@ const messagesSchema = new mongoose.Schema({
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User'}
 });
 
-const Messages = mongoose.model('Messages', MessagesSchema);
+const Messages = mongoose.model('Messages', messagesSchema);
 module.exports = Messages;
 

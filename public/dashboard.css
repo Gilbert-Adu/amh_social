@@ -175,20 +175,21 @@
 
   .panels-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
   }
   .tabs-group {
-    border: 1px solid #ddd;
+    border-left: 2px solid #ddd;
     width: 50vw;
     height: 92vh;
     overflow-x: scroll;
     overscroll-behavior: contain;
+    display: none;
 
   }
   .messaging-area {
     border: 1px solid #ddd;
     border-radius: 5px;
-    width: 50vw;
+    width: 100vw;
     height: 92vh;
     display: flex;
     flex-direction: column;
@@ -212,7 +213,7 @@
 
   .text-area {
     border: 1px solid #ddd;
-    width: 80vw;
+    width: 100vw;
     height: 85vh;
     overflow-x: scroll;
     overscroll-behavior: contain;
@@ -252,9 +253,10 @@
 .sent-bubble {
   width: fit-content;
   height: fit-content;
-  margin-right: 0.2vw;
+  margin-left: 2vw;
   margin-top: 2vh;
   margin-bottom: 2vh;
+  
   
 }
 
@@ -272,6 +274,7 @@
   height: 100%;
   padding: 1vh 1vw;
   margin-top: 2vh;
+  width: fit-content;
 
 }
 
@@ -284,13 +287,41 @@
 }
 
 input[type=text] {
-  width: 50vw;
+  width: 60vw;
   height:5vh;
+  margin-left: 15vw;
   border-radius: 10px;
   border: 1px solid #ddd"
 
 
 }
+
+.upload-icon {
+  cursor: pointer;
+  font-size: 24px;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  display: inline-block;
+}
+#image {
+  display: none;
+}
+.custom-upload-button {
+  background-color: #007F73;
+  color: white;
+  padding: 0.8vh 1vw;
+  margin-left: 0.2vw;
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  display: inline-block;
+}
+.custom-upload-button:hover {
+  background-color: #45a049;
+}
+
 
 
 @media only screen and (max-width: 767px) {
@@ -335,7 +366,7 @@ input[type=text] {
 }
   .messaging-panel {
     width: 100vw;
-    height: 7vh;
+    height: 8vh;
     display: flex;
     flex-direction: row;
     margin-top: 1vh;
@@ -343,12 +374,40 @@ input[type=text] {
 
   input[type=text] {
 
-    width: 100vw;
-    height:8vh;
+    width: 80vw;
+    height:7vh;
     border-radius: 10px;
     border: 1px solid #ddd;
+    margin-left: 0vw;
 
   }
+
+
+.upload-icon {
+  cursor: pointer;
+  font-size: 54px;
+  padding: 1vh 3vw;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  display: inline-block;
+}
+#image {
+  display: none;
+}
+.custom-upload-button {
+  background-color: #007F73;
+  color: white;
+  padding: 1vh 3vw;
+  margin-left: 0.8vw;
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  display: inline-block;
+}
+.custom-upload-button:hover {
+  background-color: #45a049;
+}
   
 }
 
