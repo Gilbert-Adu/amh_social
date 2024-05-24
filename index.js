@@ -12,14 +12,16 @@ const port = process.env.PORT || 3000;
 
 
 const pusher = new Pusher({
-    appId: process.env.PUSHER_APPID,
-    key:process.env.PUSHER_KEY,
-    secret: process.env.PUSHER_SECRET,
-    cluster:process.env.PUSHER_CLUSTER,
+    appId: "1806480",
+    key:"be75e3dbef6dc92be9b4",
+    secret: "2cd188cc98efd7046b8d",
+    cluster:"us2",
     useTLS: true
 
 });
 require('dotenv').config();
+
+
 
 
 
@@ -100,10 +102,13 @@ app.post("/r/messaging", async (req, res) => {
     newUser.token = token;
 
     await newUser.save();
-    const temp = await User.updateOne({ email: email }, { $set: { token: token } });
-    console.log(temp);
+    await User.updateOne({ email: email }, { $set: { token: token } });
 
-    res.render('dashboard', {data: theUser});
+    sendConfirmationEmail(theUser);
+
+    res.render('confirmationPage');
+
+    //res.render('dashboard', {data: theUser});
 
         
 });
@@ -111,7 +116,7 @@ app.post("/r/messaging", async (req, res) => {
 app.get("/finduser/:email", async(req, res) => {
     const email = req.params.email;
     const theUser = await User.findOne({email:email});
-    console.log(theUser)
+    //console.log(theUser)
 });
 
 app.get("/")
@@ -120,19 +125,30 @@ app.get("/")
 //send message
 app.post("/send/:userID", async(req, res) => {
 
-    const userID = req.params.userID;
-    const user = await User.findById(userID);
-    const message = req.body.message;
+    try {
+        const userID = req.params.userID;
+        const user = await User.findById(userID);
+        const message = req.body.message;
 
-    let payload = {
+        let payload = {
         "user": user,
         "message": message,
         "userID": userID
+        }
+
+        //console.log(payload)
+        pusher.trigger('chat', 'message', payload);
+        res.sendStatus(200);
+    
+
+
+
+    }catch(err) {
+
+        console.error({"message":err.message})
+
     }
 
-    //console.log(payload)
-    pusher.trigger('chat', 'message', payload);
-    res.sendStatus(200);
     
 });
 
@@ -193,10 +209,61 @@ app.post("/messaging", async (req, res) => {
     
 });
 
-app.get('/try', verifyToken, (req, res) => {
-    res.send("worked")
+//after email verification
+app.get("/messaging/:userID", async (req, res) => {
+    
 
-    });
+    try {
+        let userID = req.params.userID;
+
+        const user = await User.findById(userID);
+
+        const {firstName, lastName, email, password, phone, city, state, age, __v} = user;
+        const theUser = {
+                "_id": userID,
+                "firstName": firstName,
+                "lastName": lastName,
+                "email": email,
+                "password": password,
+                "phone": phone,
+                "city": city,
+                "state": state,
+                "age": age,
+                "__v": __v
+            }
+
+
+
+            const token = generateToken(theUser);
+            //res.json({"token" : token});
+            //res.locals.token = token;
+            req.user = user;
+            theUser.token = token;
+            user.token = token;
+            //res.send({token: token})
+            await User.updateOne({ email: email }, { $set: { token: token } });
+
+            res.render('dashboard', {data: theUser});
+        
+
+        
+
+
+    }catch(err) {
+        return res.json({message: err.message})
+        //res.render('error');
+
+
+    }
+
+    
+});
+
+app.get("/trial", (req, res) => {
+
+    res.render("confirmationPage");
+
+});
 
 //change to view all blogs
 app.get('/blog/:blogID', async (req, res) => {

@@ -1,30 +1,50 @@
 const nodemailer = require("nodemailer");
 
-function sendConfirmationEmail(recipient) {
+const fs = require('fs');
+const path = require('path');
+const ejs = require('ejs');
 
-    const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: 'kobbyenos.770@gmail.com',
-            pass: 'thermodynamics'
-        }
-    });
-    const mailOptions = {
-        from: 'kobbyenos.770@gmail.com',
-        to: recipient,
-        subject: 'Confirm email',
-        text: 'Email confirmed'
-        
-    };
-    transporter.sendMail(mailOptions, (err, info) => {
-        if (err) {
-            console.log()
-        }else {
-            console.log('Email sent: ' + info.response);
-        }
-    });
+require('dotenv').config();
 
+function sendConfirmationEmail(user) {
+
+    const emailTemplatePath = path.join(__dirname, '..', 'views', 'confirmEmail.ejs');
+const emailTemplate = fs.readFileSync(emailTemplatePath, 'utf8');
+
+
+const htmlContent = ejs.render(emailTemplate, {user: user})
+
+
+var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    host: 'smtp.gmail.com',
+    port: 3000,
+    auth: {
+      user: 'kobbyenos.770@gmail.com',
+      pass: process.env.EMAIL_PASSWORD
+    }
+  });
+  
+
+var mailOptions = {
+  from: 'kobbyenos.770@gmail.com',
+  to: user.email,
+  subject: 'VERIFY EMAIL',
+  text: '',
+  html: htmlContent
+};
+
+transporter.sendMail(mailOptions, function(error, info){
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('Email sent: ' + info.response);
+  }
+});  
+
+
+    
 }
 
-sendConfirmationEmail('gilbertenos770@yahoo.com');
-//module.exports.sendConfirmationEmail = sendConfirmationEmail;
+//sendConfirmationEmail('gilbertenos770@yahoo.com');
+module.exports.sendConfirmationEmail = sendConfirmationEmail;
