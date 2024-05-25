@@ -29,6 +29,10 @@ const User = require("./db/models/user");
 const {sendConfirmationEmail} = require("./functions/emailer");
 const Branch = require("./db/models/branch");
 const Post = require("./db/models/post");
+const Announcement = require("./db/models/announcement");
+const Message = require("./db/models/messages");
+
+
 
 mongoose.connect(process.env.MONGO_URI);
 const db = mongoose.connection;
@@ -51,11 +55,12 @@ app.set('view engine', 'ejs');
 app.get("/", async (req, res) =>{
     try {
         let posts = await Post.find();
-        let branches = await Branch.find()
+        let branches = await Branch.find();
+        let announs = await Announcement.find();
 
 
         
-        res.render('home', {posts: posts, branches: branches});
+        res.render('home', {posts: posts, branches: branches, announs: announs});
 
 
 
@@ -65,6 +70,8 @@ app.get("/", async (req, res) =>{
 
     }
 });
+
+
 app.get("/register", (req, res) => {
     res.render('register')
 });
@@ -142,13 +149,25 @@ app.post("/send/:userID", async(req, res) => {
         const user = await User.findById(userID);
         const message = req.body.message;
 
-        let payload = {
-        "user": user,
-        "message": message,
-        "userID": userID
-        }
 
-        //console.log(payload)
+
+        let newMessage = await new Message({
+            "user": user,
+            "message": message,
+            "userID": userID
+        });
+
+        await newMessage.save();
+
+        let payload = {
+            "user": user,
+            "message": message,
+            "userID": userID
+        };
+
+
+
+        //console.log(newMessage);
         pusher.trigger('chat', 'message', payload);
         res.sendStatus(200);
     
@@ -217,8 +236,11 @@ app.post("/messaging", async (req, res) => {
             user.token = token;
             //res.send({token: token})
             await User.updateOne({ email: email }, { $set: { token: token } });
+            let messages = await Message.find();
+            messages = messages.slice(Math.floor(messages.length / 2), messages.length)
 
-            res.render('dashboard', {data: theUser});
+
+            res.render('dashboard', {data: theUser, messages: messages});
         }else {
             //return res.send('an error occurred, Gilbert')
             res.send('email or password is incorrect');
@@ -237,6 +259,13 @@ app.post("/messaging", async (req, res) => {
     
 });
 
+app.get("/allmessages", async(req, res) => {
+
+    const mess = await Message.find();
+
+    console.log(mess);
+});
+
 //after email verification
 app.get("/messaging/:userID", async (req, res) => {
     
@@ -247,6 +276,13 @@ app.get("/messaging/:userID", async (req, res) => {
         const user = await User.findById(userID);
 
         const {firstName, lastName, email, password, phone, city, state, age, __v} = user;
+        const colors = ['#FF0000', 'green', '#003285', '#850F8D', '#006769', '#8E3E63', '#344C64',
+            '#9B3922', '#0C0C0C', '#430A5D', '#092635', '#940B92', '#005B41', '#116D6E', '#ED2B2A', 
+            '#1A120B', '#C147E9', '#FB2576', '#B25068', '#F10086', '#B85C38', '#082032', '#6C0345', 
+            '#CD5C08', '#606C5D', '#32012F', '#FA7070'
+        ]
+            const col = colors[Math.floor(Math.random() * colors.length)]
+      
         const theUser = {
                 "_id": userID,
                 "firstName": firstName,
@@ -257,8 +293,10 @@ app.get("/messaging/:userID", async (req, res) => {
                 "city": city,
                 "state": state,
                 "age": age,
-                "__v": __v
+                "__v": __v,
+                "userColor": col
             }
+            
 
 
 
@@ -270,6 +308,8 @@ app.get("/messaging/:userID", async (req, res) => {
             user.token = token;
             //res.send({token: token})
             await User.updateOne({ email: email }, { $set: { token: token } });
+            await User.updateOne({ email: email }, { $set: { userColor: col } });
+
 
             res.render('dashboard', {data: theUser});
         
@@ -371,9 +411,47 @@ app.get("/allblogs/:userID", async (req, res) => {
     const theUser = req.params.userID;
     //console.log(posts.length);
     //console.log(posts);
+    const ads = []
 
-    res.render("allblogs", {blogs: posts, userID: theUser});
+    res.render("allblogs", {blogs: posts, userID: theUser, ads: ads});
 });
+
+
+app.get("/admin/announcement", (req, res) => {
+    res.render("announcement");
+});
+
+app.get("/getannouncements", async(req, res) => {
+
+    const announs = await Announcement.find();
+    console.log(announs);
+});
+
+app.post("/admin/announcement", async (req, res) => {
+
+    try {
+        let {title, branchOption} = req.body;
+        //const userID = req.params.userID;
+        let payload = {
+            "title": title,
+            "branch": branchOption
+        };
+    
+        const announ = await new Announcement(payload);
+        announ.save();
+    
+    
+        res.send("announcement made")
+
+    }catch(err) {
+
+        console.log({"message": err.message});
+
+    }
+
+    //res.render("announcement");
+});
+
 
 app.get("/deletePosts", async(req, res) => {
     await Post.deleteMany({})

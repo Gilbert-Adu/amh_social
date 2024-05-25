@@ -3,6 +3,14 @@
     margin: 0;
   }
 
+  #loading-wrapper {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+  }
+
   .navbar-container {
     border: 1px solid #ddd;
     height: 10vh;
@@ -42,7 +50,7 @@
     border: 1px solid #ddd;
     padding: 2vh 2vw;
     height: fit-content;
-    width: fit-content;
+    width: 50vw;
     }
 
  

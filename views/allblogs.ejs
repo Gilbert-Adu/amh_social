@@ -13,45 +13,69 @@
     </head>
 
     <body>
+       
+
+
         <div class="navbar-container">
             <a href="/" style="text-decoration: none; cursor: pointer;"><div class="app-name">Amhara Unity</div></a>
             <a href="/submit-a-blog/<%= userID%>" style="text-decoration: none;"><button class="write-btn">Write</button></a>
         </div>
 
         <div class="blogs-container">
-            <div class="main-blogs">
-                <% for (let i = 0; i < blogs.length; i++) { %>
-                    <a href="/blog/<%= blogs[i]._id%>" style="text-decoration: none;">
-                        <div class="a-blog-container">
-                            <div class="blog-content">
-                                <div class="poster-info">
-                                    <span class="postedBy"><%= blogs[i].postedBy %></span> |
-                                    <span class="postedOn"><%= blogs[i].postedOn %></span><br><br>
-                                </div>
-                                <div class="blog-text">
+            <% if (blogs.length == 0) { %>
+                <div class="no-blogs">
+                    <div class="no-blog-button"><a href="/submit-a-blog/<%= userID%>" style="text-decoration: none;"><button>Write</button></a></div>
+                </div>
 
-                                    <% if (Array.isArray(blogs[i].title)) { %>
-                                        <h2 class="blog-title"><%= blogs[i].title[0] %></h2>
-
-                                      <% } else { %>
-                                        <h2 class="blog-title"><%= blogs[i].title %></h2>
-                                      <% } %>
-                                    
-                                    <p class="blog-desc"><%= blogs[i].desc %> </p>
-                                </div>
-                            </div>
-                            <div class="blog-image">
-                                <img src="/images/avatar.jpg" alt="">
-                            </div>
-                        </div>
-                        
-                    </a>
-                    
-                <% } %>
+            <% } else { %>
+                <div class="main-blogs">
+                    <% for (let i = 0; i < blogs.length; i++) { %>
+                        <a href="/blog/<%= blogs[i]._id%>" style="text-decoration: none;">
+                            <div class="a-blog-container">
+                                <div class="blog-content">
+                                    <div class="poster-info">
+                                        <span class="postedBy"><%= blogs[i].postedBy %></span> |
+                                        <span class="postedOn"><%= blogs[i].postedOn %></span><br><br>
+                                    </div>
+                                    <div class="blog-text">
     
+                                        <% if (Array.isArray(blogs[i].title)) { %>
+                                            <h2 class="blog-title"><%= blogs[i].title[0] %></h2>
+    
+                                          <% } else { %>
+                                            <h2 class="blog-title"><%= blogs[i].title %></h2>
+                                          <% } %>
+                                        
+                                        <p class="blog-desc"><%= blogs[i].desc %> </p>
+                                    </div>
+                                </div>
+                                <div class="blog-image">
+                                    <img src="/images/avatar.jpg" alt="">
+                                </div>
+                            </div>
+                            
+                        </a>
+                        
+                    <% } %>
+        
+                    
+                </div>
                 
-            </div>
-            <div class="ad-blogs">2</div>
+                
+            <% } %>
+        
+
+            <!--
+                
+            -->
+            <% if (ads.length == 0) { %>
+                <div class="ad-blogs" style="display: none;">2</div>
+
+            <% } else { %>
+                <div class="ad-blogs">2</div>
+
+            <% } %>
+        
         </div>
 
     </body>

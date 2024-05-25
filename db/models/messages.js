@@ -1,11 +1,15 @@
 const mongoose = require("mongoose");
 
 const messagesSchema = new mongoose.Schema({
-    content: String,
-    time: Date.now,
-    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User'}
+    message: String,
+    postedOn: {type: Date,
+        default: () => new Date().toLocaleString('en-US', { timeZone: 'UTC'})
+    },
+    user: { type: Object,
+    default: () => {}},
+    userID: String
 });
 
-const Messages = mongoose.model('Messages', messagesSchema);
-module.exports = Messages;
+const Message = mongoose.model('Message', messagesSchema);
+module.exports = Message;
 

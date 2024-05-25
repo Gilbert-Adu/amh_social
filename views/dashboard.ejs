@@ -20,12 +20,19 @@
             <div id="loading-text">LOADING</div>
             <div id="loading-content"></div>
           </div>
+          
 
           <div class="dashboard" id="dashboard" style="visibility: hidden;">
             <div class="nav-container">
                 <a href="/" style="text-decoration: none; cursor: pointer;"><div class="app-name">Amhara Unity</div></a>
 
                 <div class="username"> Hi there <%= data.firstName %>! </div>
+
+                <a href="/allblogs/<%= data._id %>" onclick="getBlogSubmit(`${data}`)" style="text-decoration: none;">
+                    <button id="blogs-button"  style="background-color: #007F73;margin-top: 0.5vh; margin-right: 0.5vw;color: white;height: 5vh;width: 5vw;border: 1px solid #007F73;border-radius: 5px;cursor: pointer;">Blogs</button>
+
+                </a>
+
             </div>
 
             <div class="panels-container" id="panels-container">
@@ -45,6 +52,25 @@
                         <div class="message-group">
                             <div class="messages-sent" id="messages-sent">
                                 <div class="sent-bubble" id="sent-bubble">
+
+                                    <% if (messages.length > 0) { %>
+
+                                        <% for(let i = 0; i < messages.length; i++) { %>
+
+                                            <div class="message-content" style="border-left: 2px solid <%= messages[i].user.userColor%>">
+                                                <span style="color: <%= messages[i].user.userColor%>; font-size: 10px; font-weight: bold;"><%=messages[i].user.firstName%> <%=messages[i].user.lastName%></span><br>
+                                                <%= messages[i].message %>
+                                            </div>
+                                            
+                                            
+                                        <% } %>
+                                
+
+                                            
+                                    <% } else { %>
+
+                                    <% } %>
+                                
                                 
                                 </div>
 

@@ -16,6 +16,7 @@
 
 </head>
 
+
 <body>
     <div id="loading-wrapper">
         <div id="loading-text"></div>
@@ -126,66 +127,27 @@
             <div class="all-messages">
                 <!--a message start-->
                 
-                <div class="message-container">
-                    
-                    <div class="message-image">
-                        <img src="/images/avatar.jpg" alt="">
-                        <div class="sender-info">
-                            <div class="sender-name">Felix Jones</div>
-                            <div class="sender-time" style="color: #DDDDDD;font-style: italic;">Friday, Oct. 18 2023, 6:12 am</div>
+                <% if (announs.length > 0) { %>
+                    <% for(let i = announs.length-1; i >= 0; i--) { %>
+
+                        <div class="message-container">
+                            <span style="font-size: 16px;color: #1A4D2E;font-weight: bold;"><%= announs[i].title %></span> <br>
+                            <span style="font-size: 10px;font-style: italic;color: #ddd;font-weight: bold;"><%= announs[i].postedOn %></span>
                         </div>
-                    </div>
-                    <div class="message">
-                        <div class="message-title" style="color: #12372A;font-weight: bold;">Title</div>
-                        <div class="message-blurb">Blurb</div>
-                    </div>
-                    <div class="cta">
-                        <span>Read More</span>
-                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
-                    </div>
+                        
+                        
+                    <% } %>
+            
                     
-                </div>
+                <% } else { %>
+                    <div class="no-announs">NO ANNOUNCEMENTS</div>
+                <% } %>
+            
+                
                 
                 <!--a message end-->
-                <div class="message-container">
                     
-                    <div class="message-image">
-                        <img src="/images/avatar.jpg" alt="">
-                        <div class="sender-info">
-                            <div class="sender-name">Laurence Brown</div>
-                            <div class="sender-time" style="color: #DDDDDD;font-style: italic;">Friday, Oct. 18 2023, 6:12 am</div>
-                        </div>
-                    </div>
-                    <div class="message">
-                        <div class="message-title" style="color: #12372A;font-weight: bold;">Title</div>
-                        <div class="message-blurb">Blurb</div>
-                    </div>
-                    <div class="cta">
-                        <span>Read More</span>
-                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
-                    </div>
-                    
-                </div>
-    
-                <div class="message-container">
-                    
-                    <div class="message-image">
-                        <img src="/images/avatar.jpg" alt="">
-                        <div class="sender-info">
-                            <div class="sender-name">Mary Smith</div>
-                            <div class="sender-time" style="color: #DDDDDD;font-style: italic;">Friday, Oct. 18 2023, 6:12 am</div>
-                        </div>
-                    </div>
-                    <div class="message">
-                        <div class="message-title" style="color: #12372A;font-weight: bold;">Title</div>
-                        <div class="message-blurb">Blurb</div>
-                    </div>
-                    <div class="cta">
-                        <span>Read More</span>
-                        <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
-                    </div>
-                    
-                </div>
+                
                 
                 
             </div>
@@ -234,29 +196,36 @@
         </div>
         <!--contact section-->
         <footer>
-            <div class="contact-container">
-                <div class="contacts">
-                    <div class="contact-title">Contact</div>
-                    <div class="contact-email" style="font-size: 12px;">info@amharaunity.com</div>
-                    <div class="tele" style="font-size: 12px;">+1-555-555-5555</div>
-                </div>
-                <div class="find-us">
-                    <div class="find-us-title">Find Us</div>
-                    <div style="font-size: 12px;">Framer Street 22</div>
-                    <div style="font-size: 12px;">Rochester, 14604</div>
-                    <div style="font-size: 12px;">USA</div>
-                </div>
-                <div class="legals">
-                    <div class="legals-title">Legals</div>
-                    <div style="font-size: 12px;">Privacy Policy</div>
-                    <div style="font-size: 12px;">Terms and Conditions of Use</div>
-                </div>
-        
+            <div class="footer">
+                <section class="contacts">
+                    <h3>Contact</h3><br><br>
+                    <span>info@amharaunity.com</span><br>
+                    <span>+1-555-555-5555</span>
+
+                </section>
+                <section class="location">
+                    <h3>Find Us</h3><br><br>
+                    <span>Framer Street 22</span><br>
+                    <span>Amsterdam, 06355</span><br>
+                    <span>Netherlands</span><br>
+
+
+                </section>
+                <section class="legals">
+                    <h3>Legals</h3><br><br>
+                    <span>Privacy Policy</span><br>
+                    <span>Terms and Conditions of Use</span>
+
+                </section>
+
             </div>
-            <span style="background-color:#114232;font-size: 8px;color: #ddd;display: flex;flex-direction: row;justify-content: flex-end;margin-right: 1vw;cursor: pointer;">© 2024 GENOS DIGITAL</span>
         </footer>
-    
+            
     </div>
+
+    <script>
+
+    </script>
     <script>
         function toggleRegister(){
             var overlay = document.getElementById('overlay');
