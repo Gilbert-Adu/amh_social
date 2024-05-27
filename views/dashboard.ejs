@@ -28,10 +28,31 @@
 
                 <div class="username"> Hi there <%= data.firstName %>! </div>
 
-                <a href="/allblogs/<%= data._id %>" onclick="getBlogSubmit(`${data}`)" style="text-decoration: none;">
-                    <button id="blogs-button"  style="background-color: #007F73;margin-top: 0.5vh; margin-right: 0.5vw;color: white;height: 5vh;width: 5vw;border: 1px solid #007F73;border-radius: 5px;cursor: pointer;">Blogs</button>
+                <% if (data.role == 'admin') { %>
+                    <a href="/allblogs/<%= data._id %>" onclick="getBlogSubmit(`${data}`)" style="text-decoration: none;">
+                        <button id="blogs-button"  style="background-color: #007F73;margin-top: 0.5vh; margin-left: 60vw;color: white;height: 5vh;width: 5vw;border: 1px solid #007F73;border-radius: 5px;cursor: pointer;">Blogs</button>
+                        
+                        
+                    </a>
+                    <a href="/allblogs/<%= data._id %>" onclick="getBlogSubmit(`${data}`)" style="text-decoration: none;">
+                        <button id="blogs-button"  style="background-color: #007F73;margin-top: 0.5vh; margin-right: 0.5vw;color: white;height: 5vh;width: 8vw;border: 1px solid #007F73;border-radius: 5px;cursor: pointer;">Announce</button>
+                        
+                    </a>
+    
+                  <% } else { %>
 
-                </a>
+
+                    <a href="/allblogs/<%= data._id %>" onclick="getBlogSubmit(`${data}`)" style="text-decoration: none;">
+                        <button id="blogs-button"  style="background-color: #007F73;margin-top: 0.5vh; margin-left: 60vw;color: white;height: 5vh;width: 5vw;border: 1px solid #007F73;border-radius: 5px;cursor: pointer;">Blogs</button>
+                        
+                        
+                    </a>
+                    
+                  <% } %>
+                  
+                
+                
+                
 
             </div>
 
@@ -92,10 +113,12 @@
                                     <i class="fas fa-upload"></i>
                                 </label>
                                 <input type="file" id="image" name="image" accept="image/*">
+                                
                     
                                     
                             </form>
-                             </span>
+                            
+                        </span>
 
                     </div>
                 </div>

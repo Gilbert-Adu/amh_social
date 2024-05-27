@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">      
+        <link rel="stylesheet" type="text/css" href="/styles.css">
+
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+
+
+    </head>
+    <body>
+        
+      <div class="hero-container">
+        <span class="hero-image">
+            <div class="hero-image-container-signup">
+                <div class="image-wrapper-signup">
+                    <img src="/images/avatar.jpg" alt="">
+                </div>
+            </div>
+        </span>
+        <span class="register-form">
+            <div class="hero-form-container-signup">
+                <div class="welcome-text" style="font-family: 'Sofia', sans-serif">Amhara Unity (admin)</div>
+                <form action="/admin/r/messaging" method="POST" style="margin-top: 2vh;">
+                  <input type="text" id="firstName" name="firstName" placeholder="First name" required><br><br>
+                  <input type="text" id="lastName" name="lastName" placeholder="Last name (optional)"><br><br>
+
+                    <input type="email" id="email" name="email" placeholder="Email" required><br><br>
+                    <input type="text" id="phone" name="phone" placeholder="Phone number (optional)"><br><br>
+
+                    <input type="password" id="password" name="password"  placeholder="Password" required><br><br>
+
+                    <input type="text" id="city" name="city" placeholder="Your City" required><br><br>
+                    <input type="text" id="state" name="state" placeholder="Your State" required><br><br>
+
+                    <label for="age" id="age-label">I am 18+</label>
+                    <input type="checkbox" name="age"><br><br>
+
+                    <input type="submit" id="log-in" value="Create account" onclick="logIn()">
+                </form>
+            </div>
+            
+        </span>
+
+    </div>                 
+    </body>
+</html>

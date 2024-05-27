@@ -75,7 +75,10 @@ app.get("/", async (req, res) =>{
 app.get("/register", (req, res) => {
     res.render('register')
 });
-
+//get admin register page
+app.get("/admin/register", (req, res) => {
+    res.render('adminRegister');
+});
 //sign up
 app.post("/r/messaging", async (req, res) => {
     let { firstName, lastName, email, phone, password, city, state, age} = req.body;
@@ -132,13 +135,74 @@ app.post("/r/messaging", async (req, res) => {
         
 });
 
+//post admin register
+app.post("/admin/r/messaging", async (req, res) => {
+    let { firstName, lastName, email, phone, password, city, state, age} = req.body;
+
+    let hashedPassword = await bcrypt.hash(password, 10);
+
+    const colors = ['#FF0000', 'green', '#003285', '#850F8D', '#006769', '#8E3E63', '#344C64',
+            '#9B3922', '#0C0C0C', '#430A5D', '#092635', '#940B92', '#005B41', '#116D6E', '#ED2B2A', 
+            '#1A120B', '#C147E9', '#FB2576', '#B25068', '#F10086', '#B85C38', '#082032', '#6C0345', 
+            '#CD5C08', '#606C5D', '#32012F', '#FA7070'
+        ]
+    const col = colors[Math.floor(Math.random() * colors.length)]
+      
+
+    const newUser = await new User({
+        "firstName": firstName,
+        "lastName": lastName,
+        "email": email,
+        "phone": phone,
+        "password": hashedPassword,
+        "city": city,
+        "state": state,
+        "age": age,
+        "userColor": col,
+        "role": "admin"
+
+    });
+    const theUser = {
+        "_id": newUser._id,
+        "firstName": firstName,
+        "lastName": lastName,
+        "email": email,
+        "password": password,
+        "phone": phone,
+        "city": city,
+        "state": state,
+        "age": age,
+        "userColor": col,
+        "role": "admin",
+        "__v": newUser.__v
+    }
+    
+    
+    const token = generateToken(theUser);
+    newUser.token = token;
+
+    await newUser.save();
+    await User.updateOne({ email: email }, { $set: { token: token } });
+
+
+    sendConfirmationEmail(theUser);
+
+    console.log(newUser);
+    res.render('confirmationPage');
+
+    //res.render('dashboard', {data: theUser});
+
+        
+});
+
+
 app.get("/finduser/:email", async(req, res) => {
     const email = req.params.email;
     const theUser = await User.findOne({email:email});
     //console.log(theUser)
 });
 
-app.get("/")
+
 
 
 //send message
@@ -274,6 +338,7 @@ app.get("/messaging/:userID", async (req, res) => {
         let userID = req.params.userID;
 
         const user = await User.findById(userID);
+        const messages = [];
 
         const {firstName, lastName, email, password, phone, city, state, age, __v} = user;
         const colors = ['#FF0000', 'green', '#003285', '#850F8D', '#006769', '#8E3E63', '#344C64',
@@ -311,10 +376,11 @@ app.get("/messaging/:userID", async (req, res) => {
             await User.updateOne({ email: email }, { $set: { userColor: col } });
 
 
-            res.render('dashboard', {data: theUser});
+            res.render('dashboard', {data: theUser, messages: messages});
         
 
         
+            
 
 
     }catch(err) {
