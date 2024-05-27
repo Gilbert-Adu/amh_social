@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   <title>Amhara Unity</title>
-    <link rel="stylesheet" type="text/css" href="/styles.css">
-    <link rel="stylesheet" type="text/css" href="/dashboard.css">
+
+  <link rel="stylesheet" type="text/css" href="/home.css">
+
+
 
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -18,28 +20,22 @@
 
 
 <body>
-    <div id="loading-wrapper">
-        <div id="loading-text"></div>
-        <div id="loading-content"></div>
-      </div>
-
-    <div class="home" id="home" style="visibility: hidden;">
-        <div class="hero-container">
-            <div class="hero-image-container">
-                <div class="image-wrapper">
-                    <img src="/images/avatar.jpg" alt="">
-                </div>
-            </div>
-            <div class="hero-form-container">
-                <div class="welcome-text" style="font-family: 'Sofia', sans-serif">Amhara Unity</div>
-                <div class="form-wrappper" style="margin-left: 2vw;margin-right: 2vw;height: fit-content;width: fit-content;margin-top: 10vh;">
-                    <form action="/messaging" method="POST">
-                        <input type="email" id="email" name="email" placeholder="Email" required> <br><br>
-                        <input type="password" id="password" name="password" placeholder="Password" required> <br><br>
-                        <input type="submit" id="log-in" value="Log in" onclick="logIn()"> <br><br>
-
-                    </form>
-                </div>
+       <section class="hero-container">
+        <div class="hero-img">
+            <img src="/images/menelik.webp" alt="">
+        </div>
+        <div class="hero-form">
+            <form action="/messaging" method="POST">
+                <h1 class="welcome-text" style="font-family: 'Sofia', sans-serif">Amhara Unity</h1>
+            
+                <label for="email"><b>Email</b></label>
+                <input type="text" placeholder="Enter Email" name="email" id="email" required>
+            
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="password" id="password" required>
+            
+                <button type="submit" class="btn">Login</button>
+                <!--signup container-->
                 <div class="signup-container">
                     <div class="sign-up">
                         Don't have an account? <a href="/register" style="text-decoration: none;color: #5AB2FF; font-weight: bold;cursor: pointer;">Sign Up</a>
@@ -50,152 +46,212 @@
                     </div>
 
                 </div>
-            </div>  
+              </form>
+            
         </div>
-        <!--mission container-->
-        <div class="mission-container">
-            <div class="mission-header">
-                Our Mission
-                <hr class="mission-bar">
+    </section>
+    <section class="mission-container">
+        <div class="mission-left">
+            <span>Our</span><br>
+            <span>Mission</span> 
+            <span><i class="fa fa-arrow-circle-right show-right" style="font-size: 30px;"></i></span> <span><i class="fa fa-arrow-circle-down show-down" style="font-size: 30px;"></i></span>
+        </div>
+        <div class="mission-right">
+            <div class="mission-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam quisquam expedita accusantium ut dicta repellendus quod amet iusto. Labore et officia iure in omnis quam nemo officiis vel culpa? Quis.</div>
+        </div>
+    </section>
+    <section class="gallery-container">
+        <div class="scroll-container">
+            <img src="/images/haile.jpg" alt="Haile Selassie">
+            <img src="/images/fasilides.jpg" alt="fasilides">
+            <img src="/images/BelayZeleke.webp" alt="Belay Zeleke">
+            <img src="/images/TaytuBetul.webp" alt="TaytuBetul">
+            <img src="/images/Tewodros.jpg" alt="Tewodros II">
+
+          </div>
+    </section>
+    <h2 class="section-name">Our Team</h2>
+
+    <section class="team-container">
+        <div class="team-member">
+            <div class="member-img">
+                <img src="/images/avatar.jpg" alt="">
             </div>
-            <div class="mission-body">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, maxime qui voluptas ratione hic delectus voluptatibus illo perferendis error temporibus animi amet, vero sunt quasi aut eos veritatis atque eveniet!
+            <div class="member-info">
+                <span class="member-name">James Colley</span> <br>
+                <span style="font-size: 10px;">Creative Director</span>
+                
+            </div>
+        </div>
+        <div class="team-member">
+            <div class="member-img">
+                <img src="/images/avatar.jpg" alt="">
+            </div>
+            <div class="member-info">
+                <span class="member-name">James Colley</span> <br>
+                <span style="font-size: 10px;">Creative Director</span>
+                
+            </div>
+        </div>
+        <div class="team-member">
+            <div class="member-img">
+                <img src="/images/avatar.jpg" alt="">
+            </div>
+            <div class="member-info">
+                <span class="member-name">James Colley</span> <br>
+                <span style="font-size: 10px;">Creative Director</span>
+                
+            </div>
+        </div>
+        <div class="team-member">
+            <div class="member-img">
+                <img src="/images/avatar.jpg" alt="">
+            </div>
+            <div class="member-info">
+                <span class="member-name">James Colley</span> <br>
+                <span style="font-size: 10px;">Creative Director</span>
+                
+            </div>
+        </div>
+        <div class="team-member">
+            <div class="member-img">
+                <img src="/images/avatar.jpg" alt="">
+            </div>
+            <div class="member-info">
+                <span class="member-name">James Colley</span> <br>
+                <span style="font-size: 10px;">Creative Director</span>
+                
+            </div>
+        </div>
+        <div class="team-member">
+            <div class="member-img">
+                <img src="/images/avatar.jpg" alt="">
+            </div>
+            <div class="member-info">
+                <span class="member-name">James Colley</span> <br>
+                <span style="font-size: 10px;">Creative Director</span>
+                
+            </div>
+        </div>
+        <div class="team-member">
+            <div class="member-img">
+                <img src="/images/avatar.jpg" alt="">
+            </div>
+            <div class="member-info">
+                <span class="member-name">James Colley</span> <br>
+                <span style="font-size: 10px;">Creative Director</span>
+                
             </div>
         </div>
         
-    
-        <!--national leadership-->
-        <div class="team-text">National Leadership</div>
-        <hr id="team-bar">
-        <div class="team-container">
-            <div>
-                <div class="team-member">
-                    <img src="/images/avatar.jpg" alt="">
-                </div>
-                <p>John Doe</p>
-                <p>CEO</p>
-            </div>
-            <div>
-                <div class="team-member">
-                    <img src="/images/avatar.jpg" alt="">
-                </div>
-                <p>Jiminy Cricket</p>
-                <p>Finance Officer</p>
-    
-            </div>
-            <div>
-                <div class="team-member">
-                    <img src="/images/avatar.jpg" alt="">
-                </div>
-                <p>Steve Powell</p>
-                <p>Marketing Manager</p>
-            </div>
-            
-        </div>
-        <!-- a message section -->
-        <div class="show-container">
-            <div class="show-image">
-                <!--use menelik.jpg-->
-                <img src="/images/menelik.webp" alt="">
-                
-            </div>
-            <div class="show-texts">
-                <p>Regional branches</p>
-                <div class="branches-container">
 
-                    <% for(let i = 0; i < branches.length; i++) { %>
+    </section>
+    <h2 class="section-name">Our Branches</h2>
+    <section class="branches-container">
+        <ul>
 
-                        <a href="/branch/<%= branches[i]._id%>" style="text-decoration: none;">
-                            <div class="branch-info">
-                                <span><%= branches[i].name %></span>
-                                <span><i class="fa fa-arrow-circle-right" style="font-size: 20px;color: #007F73;"></i></span>
-                            </div>
-                        </a>
-                        
-                      <% } %>
-                  
-                    
-                </div>
-    
-            </div>
-        </div>
-    
-        
-        <!--message board -->
-        <div class="message-board-container">
-            <div class="board-title">Announcements</div>
-            <div class="all-messages">
-                <!--a message start-->
-                
-                <% if (announs.length > 0) { %>
-                    <% for(let i = announs.length-1; i >= 0; i--) { %>
+            <% for(let i = 0; i < branches.length; i++) { %>
 
-                        <div class="message-container">
-                            <span style="font-size: 16px;color: #1A4D2E;font-weight: bold;"><%= announs[i].title %></span> <br>
-                            <span style="font-size: 10px;font-style: italic;color: #ddd;font-weight: bold;"><%= announs[i].postedOn %></span>
-                        </div>
-                        
-                        
-                    <% } %>
-            
+                <a href="/branch/<%= branches[i]._id%>" style="text-decoration: none;">
+                   
+                    <li>
+                        <span class="branch-name"><%= branches[i].name %></span>
+                        <div class="branch-button"><a href="/branch/<%=branches[i]._id%>" style="text-decoration: none;"><button class="branch-btn">View</button></a></div><br>
+                    </li>
                     
-                <% } else { %>
-                    <div class="no-announs">NO ANNOUNCEMENTS</div>
-                <% } %>
+                </a>
+                
+              <% } %>
+          
             
-                
-                
-                <!--a message end-->
-                    
-                
-                
-                
-            </div>
-        </div>
-        <!--guest articles -->
+        </ul>
+
+
+    </section>
+
+
+
+        <!--
+            
+        -->
+
+
         <div class="guest-section-title">Guest Articles</div>
-        <div class="guest-articles-container">
 
-            <% if (posts.length > 0) { %>
-                <% for(let i = 0; i < posts.length; i++) { %>
-                
-                    <div>
-                        <a href="/blog/<%= posts[i]._id %>" style="text-decoration: none;cursor: pointer;">
-                            <div class="guest-article">
-                                <div class="article-info-container">
-                                    <div class="article-title"><%= posts[i].title %></div>
-                                    <div class="article-image">
-                                        <img src="/images/avatar.jpg" alt="">
-                                    </div>
-                                    <div class="article-blurb">
-                                        <%= posts[i].desc %>
-                                    </div>
-                                    <div class="article-poster"></div>
+    <section class="guest-articles-container">
+        <% if (posts.length > 0) { %>
+            <% for(let i = 0; i < posts.length; i++) { %>
+            
+                <div>
+                    <a href="/blog/<%= posts[i]._id %>" style="text-decoration: none;cursor: pointer;">
+                        <div class="guest-article">
+                            <div class="article-info-container">
+                                <div class="article-title"><%= posts[i].title %></div>
+                                <div class="article-image">
+                                    <img src="/images/avatar.jpg" alt="">
                                 </div>
+                                <div class="article-blurb">
+                                    <%= posts[i].desc %>
+                                </div>
+                                <div class="article-poster"></div>
                             </div>
-                        </a>
-                    </div>
-                    
-                  <% } %>
-              
-            <% } else { %>
-                <div class="no-posts-container">
-                    <a href="" style="text-decoration: none;cursor: pointer;">
-                        <div class="no-posts">
-                                NO NEW ARTICLES
-
                         </div>
                     </a>
                 </div>
                 
+              <% } %>
+          
+        <% } else { %>
+            <div class="no-posts-container">
+                <a href="" style="text-decoration: none;cursor: pointer;">
+                    <div class="no-posts">
+                            NO NEW ARTICLES
+
+                    </div>
+                </a>
+            </div>
+            
+        <% } %>
+    
+
+        
+ 
+
+
+    </section>
+    <div class="message-board-container">
+        <div class="board-title">Announcements</div>
+        <div class="all-messages">
+            <!--a message start-->
+            
+            <% if (announs.length > 0) { %>
+                <% for(let i = announs.length-1; i >= 0; i--) { %>
+
+                    <div class="message-container">
+                        <span style="font-size: 16px;color: #1A4D2E;font-weight: bold;"><%= announs[i].title %></span> <br>
+                        <span style="font-size: 10px;font-style: italic;color: #ddd;font-weight: bold;"><%= announs[i].postedOn %></span>
+                    </div>
+                    
+                    
+                <% } %>
+        
+                
+            <% } else { %>
+                <div class="no-announs">NO ANNOUNCEMENTS</div>
             <% } %>
         
-
+            
+            
+            <!--a message end-->
+                
+            
             
             
         </div>
-        <!--contact section-->
-        <footer>
+    </div>
+    
+    <footer>
+        
             <div class="footer">
                 <section class="contacts">
                     <h3>Contact</h3><br><br>
@@ -219,114 +275,11 @@
                 </section>
 
             </div>
-        </footer>
-            
-    </div>
+        
+        
 
-    <script>
+    </footer>
 
-    </script>
-    <script>
-        function toggleRegister(){
-            var overlay = document.getElementById('overlay');
-            var registerInfo = document.getElementById('toggle-register');
-            registerInfo.style.visibility = 'visible';
-            overlay.style.visibility = 'visible';
-        }
-        function loadHandler(delay) {
-                const el = document.getElementById('loading-wrapper');
-                if (el) {
-                    setTimeout(() => {
-                        el.style.display = "none";
-                    }, delay);
-                }
-            }
-            function homeViewHandler(delay) {
-                const el = document.getElementById('home');
-                if (el) {
-                    setTimeout(() => {
-                        el.style.visibility = "visible";
-                    }, delay);
-                }
-
-            }
-            loadHandler(2000);
-            homeViewHandler(2500)
-    </script>
-    <script>
-        function logIn(e) {
-            e.preventDefault();
-            var loading = document.getElementById("loading");
-            loading.style.visibility = 'visible';
-
-        }
-
-    </script>
-
-    <script>
-
-var colors = new Array(
-  [26,77,46],
-  [10,104,71],
-  [122,186,120],
-  [141,236,180],
-  [217,237,191],
-  [232,239,207]);
-
-var step = 0;
-//color table indices for: 
-// current color left
-// next color left
-// current color right
-// next color right
-var colorIndices = [0,1,2,3];
-
-//transition speed
-var gradientSpeed = 0.002;
-
-function updateGradient()
-{
-  
-  if ( $===undefined ) return;
-  
-var c0_0 = colors[colorIndices[0]];
-var c0_1 = colors[colorIndices[1]];
-var c1_0 = colors[colorIndices[2]];
-var c1_1 = colors[colorIndices[3]];
-
-var istep = 1 - step;
-var r1 = Math.round(istep * c0_0[0] + step * c0_1[0]);
-var g1 = Math.round(istep * c0_0[1] + step * c0_1[1]);
-var b1 = Math.round(istep * c0_0[2] + step * c0_1[2]);
-var color1 = "rgb("+r1+","+g1+","+b1+")";
-
-var r2 = Math.round(istep * c1_0[0] + step * c1_1[0]);
-var g2 = Math.round(istep * c1_0[1] + step * c1_1[1]);
-var b2 = Math.round(istep * c1_0[2] + step * c1_1[2]);
-var color2 = "rgb("+r2+","+g2+","+b2+")";
-
- $('#gradient').css({
-   background: "-webkit-gradient(linear, left top, right top, from("+color1+"), to("+color2+"))"}).css({
-    background: "-moz-linear-gradient(left, "+color1+" 0%, "+color2+" 100%)"});
-  
-  step += gradientSpeed;
-  if ( step >= 1 )
-  {
-    step %= 1;
-    colorIndices[0] = colorIndices[1];
-    colorIndices[2] = colorIndices[3];
-    
-    //pick two new target color indices
-    //do not pick the same as the current one
-    colorIndices[1] = ( colorIndices[1] + Math.floor( 1 + Math.random() * (colors.length - 1))) % colors.length;
-    colorIndices[3] = ( colorIndices[3] + Math.floor( 1 + Math.random() * (colors.length - 1))) % colors.length;
-    
-  }
-  
-}
-
-setInterval(updateGradient,10);
-    </script>
     
 </body>
 

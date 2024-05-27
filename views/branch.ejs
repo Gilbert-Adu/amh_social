@@ -15,16 +15,124 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
     </head>
     <body>
+        <!--navbar container-->
         <div class="navbar-container">
             <a href="/" style="text-decoration: none; cursor: pointer;"><div class="app-name">Amhara Unity</div></a>
 
-            <a href="" style="text-decoration: none;"><button class="write-btn">Join</button></a>
+            <a href="/register" style="text-decoration: none;"><button class="write-btn">Join</button></a>
         </div>
 
-        <%= branch.name %>
-
-
+        <!--branch header-->
+        <div class="branch-header">
+            <!--branch name-->
+            <h2 class="branch-name"><span style="color: #007F73; font-family: Clash Display;text-decoration: underline;"> <%= branch.name %></span> <span style="font-size: 14px;">(0 members)</span> </h2>
         </div>
+
+        
+        <!--important branch info-->
+        <div class="branch-imp">
+            <div class="leaders">
+                <article class="flow">
+                    <h1>Our Team</h1>
+                    <p>Meet the brilliant people behind our <%=branch.name %> branch.</p>
+                    <div class="team">
+                      <ul class="auto-grid" role="list">
+                        <li>
+                          <a href="https://swop.link/cool" target=_blank" class="profile">
+                            <h2 class="profile__name">Anita Simmons</h2>
+                            <p>Founder</p>
+                            <img alt="Anita Simmons" src="/images/avatar.jpg" />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="https://swop.link/cool" target=_blank" class="profile">
+                            <h2 class="profile__name">Celina Harris</h2>
+                            <p>Creative Director</p>
+                            <img alt="Profile shot for Celina Harris" src="/images/avatar.jpg" />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="https://swop.link/cool" target=_blank" class="profile">
+                            <h2 class="profile__name">Ruby Morris</h2>
+                            <p>Technical Lead</p>
+                            <img alt="Profile shot for Ruby Morris" src="/images/avatar.jpg" />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="https://swop.link/cool" target=_blank" class="profile">
+                            <h2 class="profile__name">Nicholas Castro</h2>
+                            <p>Designer</p>
+                            <img alt="Profile shot for Nicholas Castro" src="/images/avatar.jpg" />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="https://swop.link/cool" target=_blank" class="profile">
+                            <h2 class="profile__name">Marc Dixon</h2>
+                            <p>Developer</p>
+                            <img alt="Profile shot for Marc Dixon" src="/images/avatar.jpg" />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="https://swop.link/cool" target=_blank" class="profile">
+                            <h2 class="profile__name">Chad Chadson</h2>
+                            <p>Intern</p>
+                            <img alt="Profile shot for Chad" src="/images/avatar.jpg" />
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </article>
+                  
+            </div>
+
+            <!--announs start-->
+            <div class="announs">
+                <span style="font-weight: bold;font-size: 20px; text-align: center; padding: 2vh 2vw;margin-top: 2vh;margin-bottom: 2vh;color: #007F73;">Branch Announcements</span>
+                <div class="announs-detail">
+                    <div class="announs-header">header</div><br>
+                    <div class="announs-date">date</div>
+                </div>
+                <div class="announs-detail">
+                    <div class="announs-header">header</div><br>
+                    <div class="announs-date">date</div>
+                </div>
+               
+            </div>
+            <!--announs end-->
+        </div>
+
+        <!--footer-->
+        <footer>
+            <div class="footer">
+                <section class="contacts">
+                    <h3>Contact</h3><br><br>
+                    <span>info@amharaunity.com</span><br>
+                    <span>+1-555-555-5555</span>
+
+                </section>
+                <section class="location">
+                    <h3>Find Us</h3><br><br>
+                    <span>Framer Street 22</span><br>
+                    <span>Amsterdam, 06355</span><br>
+                    <span>Netherlands</span><br>
+
+
+                </section>
+                <section class="legals">
+                    <h3>Legals</h3><br><br>
+                    <span>Privacy Policy</span><br>
+                    <span>Terms and Conditions of Use</span>
+
+                </section>
+
+            </div>
+        </footer>
+        
+
+        
+
+
+    
 
         
     </body>
