@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">      
+        <link rel="stylesheet" type="text/css" href="/styles.css">
+
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+
+
+    </head>
+    <body>
+       
+
+        <% if (message!="") { %>
+            <div class="if-message">
+                <%= message %>. Register <a href="/register">here</a>
+            </div>
+          <% } %>
+        
+        
+      <div class="hero-container">
+        <span class="hero-image">
+            <div class="hero-image-container-signup">
+                <div class="image-wrapper-signup">
+                    <img src="/images/avatar.jpg" alt="">
+                </div>
+            </div>
+        </span>
+        <span class="register-form">
+            <div class="hero-form-container-signup">
+                <div class="welcome-text" style="font-family: 'Sofia', sans-serif">Amhara Unity</div>
+                <form action="/join-branch/<%=theBranch._id%>" method="POST" style="margin-top: 2vh;">
+                    <input type="email" id="email" name="email" placeholder="Your email" style="width: 30vw;margin-top: 5vh;margin-left: 10vw;" required><br><br>
+
+                    <label for="options"></label>
+                    <select id="options" name="branchOption" style="width: 30vw;height: 7vh;border: 1px solid #ddd;margin-bottom: 5vh;margin-left: 10vw;">
+                        <option value="<%= theBranch.name %>"><%= theBranch.name %></option>
+                    </select>
+            
+
+                    
+                    <input type="submit" id="log-in" value="Join <%= theBranch.name %>" style="height: 7vh;width: 30vw;" onclick="logIn()">
+                </form>
+            </div>
+            
+        </span>
+
+    </div>                 
+    </body>
+</html>

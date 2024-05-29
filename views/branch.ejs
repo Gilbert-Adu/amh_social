@@ -19,13 +19,15 @@
         <div class="navbar-container">
             <a href="/" style="text-decoration: none; cursor: pointer;"><div class="app-name">Amhara Unity</div></a>
 
-            <a href="/register" style="text-decoration: none;"><button class="write-btn">Join</button></a>
+            <!--
+             <a href="/join-branch" style="text-decoration: none;"><button class="write-btn" id="join-btn">Join</button></a>
+            -->
         </div>
 
         <!--branch header-->
         <div class="branch-header">
             <!--branch name-->
-            <h2 class="branch-name"><span style="color: #007F73; font-family: Clash Display;text-decoration: underline;"> <%= branch.name %></span> <span style="font-size: 14px;">(0 members)</span> </h2>
+            <h2 class="branch-name"><span style="color: #007F73; font-family: Clash Display;text-decoration: underline;"> <%= branch.name %></span> <span style="font-size: 14px;">(<%= branch.numMembers %> members)</span> </h2>
         </div>
 
         

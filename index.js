@@ -199,6 +199,7 @@ app.post("/admin/r/messaging", async (req, res) => {
 app.get("/finduser/:email", async(req, res) => {
     const email = req.params.email;
     const theUser = await User.findOne({email:email});
+    res.send(theUser)
     //console.log(theUser)
 });
 
@@ -380,7 +381,7 @@ app.get("/messaging/:userID", async (req, res) => {
         
 
         
-            
+
 
 
     }catch(err) {
@@ -393,11 +394,14 @@ app.get("/messaging/:userID", async (req, res) => {
     
 });
 
-app.get("/trial", (req, res) => {
+app.get("/allusers", async(req, res) => {
 
-    res.render("confirmationPage");
+    const users = await User.find();
+    res.send(users);
+
 
 });
+
 
 //change to view all blogs
 app.get('/blog/:blogID', async (req, res) => {
@@ -532,6 +536,7 @@ app.get("/deleteMessages", async(req, res) => {
 app.post("/createBranch", async(req, res) => {
 
     try {
+        //check if admin
         const {name} = req.body;
         const branch = await new Branch({
         "name": name
@@ -558,6 +563,46 @@ app.get("/allbranches", async (req, res) => {
         res.send({"message": err.message})
     }
     
+});
+
+app.get("/deletebranches", async(req, res) => {
+    await Branch.deleteMany({});
+    res.send("branches deleted")
+});
+
+app.get("/delete-a-branch/:name", async(req, res) => {
+    const branchName = req.params.name;
+    await Branch.deleteOne({name:branchName});
+    res.send(branchName + " deleted");
+});
+
+app.get("/join-branch/:branchID", async(req,res) => {
+
+    const branchID = req.params.branchID;
+    const theBranch = await Branch.findById(branchID);
+
+
+    res.render("joinBranch", {theBranch: theBranch, message:""});
+});
+
+app.post("/join-branch/:branchID", async(req,res) => {
+
+    const branchID = req.params.branchID;
+    const userEmail = req.body.email;
+    const theBranch = await Branch.findById(branchID);
+    const branchCount = theBranch.numMembers;
+
+    const user = await User.findOne({userEmail});
+    console.log(user);
+    if (!user) {
+        res.render("joinBranch", {theBranch: theBranch, message: "Please create an account"});
+    }else {
+        await Branch.updateOne({ _id: branchID }, { $set: { numMembers: branchCount + 1 } });
+        res.render("joinBranch", {theBranch: theBranch, message:`You just joined ${theBranch.name}`});
+
+    }
+
+
 });
 
 app.get("/branch/:branchID", async (req, res) => {

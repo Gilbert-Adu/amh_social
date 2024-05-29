@@ -708,7 +708,16 @@ footer {
   text-align: left;
 
 }
-
+.if-message {
+  text-align: center;
+  border: 1px solid #41B06E;
+  padding: 2vh 0;
+  margin: 0 5vw;
+  margin-top: 1vh;
+  border-radius: 20px;
+  background-color: #41B06E;
+  color: white;
+}
 
 
 

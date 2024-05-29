@@ -7,17 +7,16 @@
 
 
 .welcome-text {
-    margin-left: 5vw;
-    margin-right: 5vw;
+    margin-left: 0vw;
+    margin-right: 8vw;
     margin-top: 2vh;
-    margin-bottom: 2vh;
+    margin-bottom: 5vh;
+    width: 50vw;
     height: fit-content;
-    text-align: center;
-    font-size: 25px;
-    background: linear-gradient(to right, #f32170, #ff6b08,#cf23cf, #eedd44);
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-  
+    text-align: left;
+    font-size: 18px;
+    color: #007F73;
+    
 }
 
 .hero-container {
@@ -39,11 +38,11 @@
 
 .hero-form {
     position: absolute;
-    top: 25%;
+    top: 15%;
     left: 30%;
     border: 1px solid #ddd;
     width: 40vw;
-    height: 50vh;
+    height: 60vh;
     background-color: white;
     padding: 2vh 5vw;
     border-radius: 20px;
@@ -215,10 +214,20 @@ input[type=text], input[type=password] {
 
 .branch-name {
     float: left;
+    font-size: 20px;
     margin-top: 3vh;
     margin-left: 3vw;
 }
 .branch-button {
+    float: right;
+    margin-top: 2vh;
+    margin-right: 3vw;
+    width: 20vw;
+    display: flex;
+    flex-direction: row;
+
+}
+.join-button {
     float: right;
     margin-top: 2vh;
     margin-right: 3vw;
