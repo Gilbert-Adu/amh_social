@@ -430,17 +430,31 @@ app.get("/allusers", async(req, res) => {
 });
 
 
+
 //change to view all blogs
 app.get('/blog/:blogID', async (req, res) => {
     //const blogContent = await req.body.data;
     //console.log('submitted not showing')
-    const ID = req.params.blogID;
+    try {
+        const ID = req.params.blogID;
     const message = await Post.findById(ID);
     let rawHeaders = req.rawHeaders;
-    const commenter = await User.findById(userIdCleaner(rawHeaders));
-    const comments = await Comment.find({blogID: ID});
-    res.render('blog', {message:message, commenter: commenter, comments: comments});
+    let commenter = [];
+    let signedIn = false;
 
+    if (userIdCleaner(rawHeaders) != "") {
+        commenter = await User.findById(userIdCleaner(rawHeaders));
+        signedIn = true;
+    }
+
+    const comments = await Comment.find({blogID: ID});
+    res.render('blog', {message:message, commenter: commenter, comments: comments, signedIn: signedIn});
+
+
+    }catch(err) {
+        console.log({"error": err})
+
+    }
 });
 
 app.post('/comment/:blogID/:commenterID', async (req, res) => {
@@ -546,9 +560,8 @@ app.post('/submit-a-blog/:userId', async(req, res) => {
 
 app.get("/allblogs/:userID", async (req, res) => {
     const posts = await Post.find();
+
     const theUser = req.params.userID;
-    //console.log(posts.length);
-    //console.log(posts);
     const ads = []
 
     res.render("allblogs", {blogs: posts, userID: theUser, ads: ads});
@@ -600,6 +613,8 @@ app.get("/deleteMessages", async(req, res) => {
     await Message.deleteMany({})
     res.send("messages deleted")
 });
+
+
 
 app.post("/createBranch", async(req, res) => {
 

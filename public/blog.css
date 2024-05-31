@@ -166,6 +166,23 @@
     justify-content: space-around;
     padding-top: 5vh;
   }
+  .no-comments-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+
+  }
+
+  .no-comments-form button {
+    padding: 2vh 2vw;
+    color: white;
+    background-color: #007F73;
+    border: 1px solid #007F73;
+    border-radius: 10px;
+    cursor: pointer;
+  }
 
   .comments-wrapper {
   }

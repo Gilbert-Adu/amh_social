@@ -249,11 +249,17 @@ input[type=text], input[type=password] {
   .branch-btn:hover {
     opacity: 1;
   }
+  .guest-section-title strong {
+    font-size: 25px;
+
+  }
   .guest-section-title {
     text-align: center;
     margin-bottom: 2vh;
-    font-size: 25px;
     margin-top: 10vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   
   }
 

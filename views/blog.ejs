@@ -114,13 +114,24 @@
                     <h2>Leave a Comment</h2>
                 </div>
                 <!--comments form-->
-                <div class="comments-form">
-                    <form action="/comment/<%= message._id %>/<%= commenter._id %>" method="POST" class="comment-form" id="comment-form">
-                        <textarea name="comment" id="comment-text" cols="70" rows="5" style="border: 1px solid #ddd;">Your comment here...</textarea><br>
-                        <input type="submit" style="background-color: #007F73;border: 1px solid #007F73;color: white;border-radius: 5px;cursor: pointer;">
-                    </form>
-                
-                </div>
+              
+
+                <% if (signedIn) { %>
+                    <div class="comments-form">
+                        <form action="/comment/<%= message._id %>/<%= commenter._id %>" method="POST" class="comment-form" id="comment-form">
+                            <textarea name="comment" id="comment-text" cols="70" rows="5" style="border: 1px solid #ddd;">Your comment here...</textarea><br>
+                            <input type="submit" style="background-color: #007F73;border: 1px solid #007F73;color: white;border-radius: 5px;cursor: pointer;">
+                        </form>
+                    </div>
+                    
+                <% } else { %>
+                    <div class="no-comments-form">
+                        <a href="/" style="text-decoration: none;"><button>Sign In</button></a>
+                    </div>
+                    
+                <% } %>
+            
+
                 <!--
                     <form action="" method="POST" class="comment-form" id="comment-form">
                         <textarea name="content" id="" cols="70" rows="5" style="border: 1px solid #ddd;">Your comment here...</textarea><br>
@@ -170,7 +181,7 @@
                     fetch('/comment/<%= message._id%>/<%= commenter._id%>', {
                         method: 'POST',
                         headers: {'Content-Type': 'application/json'},
-                        body: JSON.stringify({"comment":message})
+                        body: JSON.stringify({message})
 
                     })
                     document.getElementById('comment-text').value = ''

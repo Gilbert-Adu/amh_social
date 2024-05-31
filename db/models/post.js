@@ -6,7 +6,7 @@ const postSchema = new mongoose.Schema({
     mainImage: {type: mongoose.Schema.Types.Mixed, required: true},
     altText: {type: mongoose.Schema.Types.Mixed, required: true},
     content: {type: mongoose.Schema.Types.Mixed, required: true},
-    comments: {type: Array, default: () => [{}]},
+    comments: {type: Array, default: () => []},
     userId: String,
     postedOn: {type: Date,
         default: () => new Date().toLocaleString('en-US', { timeZone: 'UTC'})
