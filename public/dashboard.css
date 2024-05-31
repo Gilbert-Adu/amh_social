@@ -322,6 +322,26 @@ input[type=text] {
   background-color: #45a049;
 }
 
+.user-announcements {
+  height: 5vh;
+  padding-top: 1vh;
+  overflow: hidden;
+  text-align: right;
+  background-color: #007F73;
+  color: white;
+}
+.moving-text {
+  display: inline-block;
+
+  animation: annonTab 30s ease-in-out infinite;
+}
+@keyframes annonTab {
+  0%,
+  25% {transform: translateX(0%); right: 100%;}
+  75%,
+  100% {transform:translateX(-1000%); left: 0%;}
+
+}
 
 
 @media only screen and (max-width: 767px) {

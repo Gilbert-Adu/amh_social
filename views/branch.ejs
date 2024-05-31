@@ -90,15 +90,22 @@
             <!--announs start-->
             <div class="announs">
                 <span style="font-weight: bold;font-size: 20px; text-align: center; padding: 2vh 2vw;margin-top: 2vh;margin-bottom: 2vh;color: #007F73;">Branch Announcements</span>
-                <div class="announs-detail">
-                    <div class="announs-header">header</div><br>
-                    <div class="announs-date">date</div>
-                </div>
-                <div class="announs-detail">
-                    <div class="announs-header">header</div><br>
-                    <div class="announs-date">date</div>
-                </div>
-               
+                
+                
+                  <% if (anons.length != 0) { %>
+                    <% anons.forEach((item, index) => { %>
+                      <div class="announs-detail">
+                        <div class="announs-header"><%= item.title %></div><br>
+                        <div class="announs-date"><%= item.postedOn %></div>
+                    </div>
+                      <% }); %>
+    
+                <% } else { %>
+                    <br><br><strong>No specific announcements for <%= branch.name %> yet</strong>
+                <% } %>
+            
+      
+                
             </div>
             <!--announs end-->
         </div>

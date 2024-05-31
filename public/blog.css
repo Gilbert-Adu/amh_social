@@ -146,6 +146,54 @@
 
   }
 
+  .comments-section {
+    margin-left: 10vw;
+    margin-right: 10vw;
+    margin-top: 5vh;
+  }
+
+  .comments-heading, .replies-heading {
+    text-align: center;
+    border-bottom: 2px dotted #ddd;
+    color: #007F73;
+    font-size: 12px;
+
+  }
+
+  .comments-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-top: 5vh;
+  }
+
+  .comments-wrapper {
+  }
+
+  .a-comment {
+    height: fit-content;
+    width: 50vw;
+    margin-top: 2vh;
+  }
+
+  .the-comment, .comment-time {
+    margin-top: 1vh;
+    margin-left: 1vw;
+
+  }
+  .comment-time {
+    font-size: 10px;
+    font-style: italic;
+    color: #ddd;
+  }
+
+  .commenter {
+    font-weight: bold;
+    margin-left: 1vw;
+
+  }
+
+
   /* Mobile Phone Viewpoint */
 @media only screen and (max-width: 767px) {
   .write-btn {

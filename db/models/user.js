@@ -12,6 +12,10 @@ const userSchema = new mongoose.Schema({
     city: String,
     state: String,
     age: String,
+    branches: {
+        type: Array,
+        default: () => []
+    },
     userColor: String,
     token: String,
     role: {

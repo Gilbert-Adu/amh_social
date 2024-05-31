@@ -50,12 +50,26 @@
                     
                   <% } %>
                   
-                
-                
-                
-
             </div>
 
+            <% if (annons.length != 0) { %>
+               
+                
+                    <div class="user-announcements">
+                        <% annons.forEach((text, index) => { %>
+                            <div class="moving-text"><%= text %></div>
+                        <% }); %>
+                
+
+                    </div>
+                    
+
+        
+    
+             
+              <% }  %>
+          
+            
             <div class="panels-container" id="panels-container">
                 <div class="tabs-group">
                     <div class="tabs-buttons">

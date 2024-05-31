@@ -13,13 +13,23 @@
 
     </head>
     <body>
-       
 
-        <% if (message!="") { %>
-            <div class="if-message">
-                <%= message %>. Register <a href="/register">here</a>
-            </div>
+          <% if (message != "") { %>
+
+            <% if (theUser == "Yes") { %>
+                <div class="if-message">
+                    <%= message %> 
+                </div>
+             
+              <% } else { %>
+                <div class="if-message">
+                    <%= message %>. Register <a href="/register">here</a>
+                </div>
+              <% } %>
+          
           <% } %>
+      
+      
         
         
       <div class="hero-container">

@@ -63,31 +63,8 @@
                     <p><%= message.content %></p>
                   <% } %>
                 
-                
-                <p>
-                    <!--
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio similique, nostrum explicabo dignissimos aspernatur quod veritatis, corrupti culpa voluptatum ipsa in sapiente voluptatibus quia facere ad, quas placeat. Eligendi, doloremque.
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos quia ratione eligendi pariatur iste sunt molestias eum consequatur! Alias eveniet totam hic fugiat similique officia expedita dolor iure sit cupiditate.
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus obcaecati minima vel facere, odit quis fugit, qui illum culpa distinctio voluptates harum fugiat quos provident praesentium repellendus. Dolorem, beatae error.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti facere voluptate labore quae dolores, voluptates nostrum atque doloremque quibusdam. Sint reprehenderit esse, repellendus numquam facilis cumque placeat labore voluptatem sequi.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque consectetur ad iusto cum minus sunt ea animi distinctio sit quis, recusandae earum exercitationem consequuntur incidunt. Id, facere. Voluptate, perspiciatis soluta.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos saepe animi dignissimos reprehenderit laborum adipisci reiciendis architecto aliquid impedit quasi at accusantium amet commodi corporis laboriosam culpa, explicabo, sunt soluta.
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officia ullam minus aliquam porro beatae? Molestiae iure repellat laudantium sunt recusandae quaerat sequi explicabo similique repudiandae placeat, voluptas ullam sit. Ducimus.
-                
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni quas dolores quasi exercitationem esse eaque possimus quod incidunt, aliquid quam, a eum natus dolore necessitatibus quo harum nulla illo blanditiis.
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur laudantium consequatur ea illum expedita tempora odio accusantium. Deserunt, dolores expedita, ullam quas culpa est quam, rem odio molestiae dolore sapiente!
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit sed omnis illo obcaecati, placeat vero, non, dicta esse ducimus temporibus dolore doloremque beatae exercitationem autem atque ex eaque soluta at?
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium, et libero cum ipsum porro quis iure eum sequi! Qui aliquam fuga eum sit veniam deleniti velit enim natus beatae saepe.
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis atque rerum cupiditate ipsam veritatis laboriosam laborum aperiam molestiae id, voluptas soluta iusto illum eveniet excepturi magni distinctio labore voluptatum. Repudiandae?
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime alias nam sunt provident, earum voluptas dolorum commodi laborum cupiditate, ipsam est quis? Non, dicta ratione? Delectus at sapiente deleniti voluptate.
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ea expedita sunt illum obcaecati eos saepe sequi quam autem repudiandae optio neque maxime soluta laudantium, quasi labore vero architecto et pariatur!
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perspiciatis laboriosam, ad, assumenda, iusto totam voluptatum rerum enim perferendis ipsum architecto odio voluptatem in beatae eveniet rem dignissimos nostrum inventore obcaecati?
             
-
-                    -->
-                    
-                
-            </p>
+            
             <section class="added-section">
                 
 
@@ -110,7 +87,97 @@
                 
             </section>
             </div>
+            <section class="comments-section">
+                <!--replies -->
+                <div class="replies-heading">
+                    <h2>Comments (<%= comments.length %>)</h2>
+                </div>
+                <div class="comments-wrapper" id="comments-wrapper">
+
+                    <% if (comments.length != 0) { %>
+                        <% for (let i = 0; i < comments.length; i++) { %>
+                            <div class="a-comment" style="border-left: 3px solid <%= comments[i].commenter.userColor%>;">
+                                <div class="commenter" style="color: <%= comments[i].commenter.userColor%>;"><%= comments[i].commenter.firstName %> <%= comments[i].commenter.lastName %></div>
+                                <div class="the-comment"><%= comments[i].comment %></div>
+                                <div class="comment-time"><%= comments[i].postedOn %></div>
+                            
+                            </div>
+
+                        <% } %>
+                
+                    <% } %>
+    
+                    
+                </div>
+                
+                <div class="comments-heading">
+                    <h2>Leave a Comment</h2>
+                </div>
+                <!--comments form-->
+                <div class="comments-form">
+                    <form action="/comment/<%= message._id %>/<%= commenter._id %>" method="POST" class="comment-form" id="comment-form">
+                        <textarea name="comment" id="comment-text" cols="70" rows="5" style="border: 1px solid #ddd;">Your comment here...</textarea><br>
+                        <input type="submit" style="background-color: #007F73;border: 1px solid #007F73;color: white;border-radius: 5px;cursor: pointer;">
+                    </form>
+                
+                </div>
+                <!--
+                    <form action="" method="POST" class="comment-form" id="comment-form">
+                        <textarea name="content" id="" cols="70" rows="5" style="border: 1px solid #ddd;">Your comment here...</textarea><br>
+                        <input type="submit" style="background-color: #007F73;border: 1px solid #007F73;color: white;border-radius: 5px;cursor: pointer;">
+                    </form>
+                
+                -->
+
+                
+            </section>
+
         </div>
+
+        <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+
+        <script>
+            const date = new Date();
+                const pusher = new Pusher('be75e3dbef6dc92be9b4', {
+                    cluster: 'us2'
+                });
+
+                const channel = pusher.subscribe('comment-channel');
+                channel.bind('comment', (data) => {
+                    const item = document.createElement('p');
+                    const comment = data.comment;
+                    const commenterfirstName = data.commenter.firstName;
+                    const commenterlastName = data.commenter.lastName;
+                    const col = data.commenter.userColor;
+
+
+                    item.innerHTML = `
+                    <div class="a-comment" style="border-left: 3px solid ${col};">
+                        <div class="commenter" style="color: ${col}">${commenterfirstName} ${commenterlastName}</div>
+                        <div class="the-comment">${comment}</div>
+                        <div class="comment-time">${date.toLocaleDateString()} at ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}</div>
+                    
+                    </div>
+                    `
+
+
+                    document.getElementById('comments-wrapper').appendChild(item);
+                });
+
+                document.getElementById('comment-form').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const message = document.getElementById('comment-text').value;
+                    fetch('/comment/<%= message._id%>/<%= commenter._id%>', {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({"comment":message})
+
+                    })
+                    document.getElementById('comment-text').value = ''
+
+                });
+
+        </script>
 
         
     </body>

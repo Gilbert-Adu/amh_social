@@ -26,9 +26,12 @@ require('dotenv').config();
 
 
 const User = require("./db/models/user");
-const {sendConfirmationEmail} = require("./functions/emailer");
+const { sendConfirmationEmail } = require("./functions/emailer");
+const { userIdCleaner } = require("./functions/userIdCleaner");
+
 const Branch = require("./db/models/branch");
 const Post = require("./db/models/post");
+const Comment = require("./db/models/comment");
 const Announcement = require("./db/models/announcement");
 const Message = require("./db/models/messages");
 
@@ -72,8 +75,9 @@ app.get("/", async (req, res) =>{
 });
 
 
-app.get("/register", (req, res) => {
-    res.render('register')
+app.get("/register", async (req, res) => {
+    const branches = await Branch.find();
+    res.render('register', {branches: branches});
 });
 //get admin register page
 app.get("/admin/register", (req, res) => {
@@ -81,7 +85,7 @@ app.get("/admin/register", (req, res) => {
 });
 //sign up
 app.post("/r/messaging", async (req, res) => {
-    let { firstName, lastName, email, phone, password, city, state, age} = req.body;
+    let { firstName, lastName, email, phone, password, city, state, age, branchOption} = req.body;
 
     let hashedPassword = await bcrypt.hash(password, 10);
 
@@ -102,6 +106,7 @@ app.post("/r/messaging", async (req, res) => {
         "city": city,
         "state": state,
         "age": age,
+        "branches": [].push(branchOption),
         "userColor": col
 
     });
@@ -115,16 +120,24 @@ app.post("/r/messaging", async (req, res) => {
         "city": city,
         "state": state,
         "age": age,
+        "branches": [branchOption],
         "userColor": col,
         "__v": newUser.__v
     }
-    
     
     const token = generateToken(theUser);
     newUser.token = token;
 
     await newUser.save();
     await User.updateOne({ email: email }, { $set: { token: token } });
+    const userBranch = await Branch.findOne({ name: branchOption });
+
+    await Branch.updateOne({ name: branchOption }, { $set: { numMembers: userBranch.numMembers + 1 } });
+    await Branch.updateOne({ name: branchOption }, { $set: { members: userBranch.members.push(email) } });
+    await User.updateOne({ email: email }, { $set: { branches: [branchOption] } });
+
+
+    
 
     sendConfirmationEmail(theUser);
 
@@ -302,10 +315,24 @@ app.post("/messaging", async (req, res) => {
             //res.send({token: token})
             await User.updateOne({ email: email }, { $set: { token: token } });
             let messages = await Message.find();
-            messages = messages.slice(Math.floor(messages.length / 2), messages.length)
+            messages = messages.slice(Math.floor(messages.length / 2), messages.length);
+
+            const userBranches = user.branches;
+
+            allAnons = await Announcement.find();
+
+            
+            let annons = [];
+            for (let i = 0; i < allAnons.length; i++) {
+
+                if (userBranches.includes(allAnons[i].branch)){
+                    annons.push(allAnons[i].title)
+                }
+            };
 
 
-            res.render('dashboard', {data: theUser, messages: messages});
+
+            res.render('dashboard', {data: theUser, messages: messages, annons: annons});
         }else {
             //return res.send('an error occurred, Gilbert')
             res.send('email or password is incorrect');
@@ -377,7 +404,7 @@ app.get("/messaging/:userID", async (req, res) => {
             await User.updateOne({ email: email }, { $set: { userColor: col } });
 
 
-            res.render('dashboard', {data: theUser, messages: messages});
+            res.render('dashboard', {data: theUser, messages: messages, annons: []});
         
 
         
@@ -408,11 +435,52 @@ app.get('/blog/:blogID', async (req, res) => {
     //const blogContent = await req.body.data;
     //console.log('submitted not showing')
     const ID = req.params.blogID;
-    const message = await Post.findById(ID)
-    res.render('blog', {message:message});
+    const message = await Post.findById(ID);
+    let rawHeaders = req.rawHeaders;
+    const commenter = await User.findById(userIdCleaner(rawHeaders));
+    const comments = await Comment.find({blogID: ID});
+    res.render('blog', {message:message, commenter: commenter, comments: comments});
 
 });
 
+app.post('/comment/:blogID/:commenterID', async (req, res) => {
+    
+    try {
+        const ID = req.params.blogID;
+        const comment = req.body.comment;
+        const commenterID = req.params.commenterID;
+        const commenter = await User.findById(commenterID);
+        let payload = {
+            "comment": comment,
+            "commenter": commenter,
+            "blogID": ID
+        }
+
+        const newComment = await new Comment({
+            "comment": comment,
+            "commenter": commenter,
+            "blogID": ID,
+            
+        });
+        await newComment.save();
+
+        //const message = await Post.findById(ID);
+        //let initialComments = message.comments;
+        //await Post.updateOne({ _id: ID }, { $set: { comments: initialComments.push(payload) } });
+        //console.log(await Comment.find())
+        pusher.trigger('comment-channel', 'comment', payload);
+        res.sendStatus(200);
+
+    
+
+    }catch(err) {
+        console.log({"error":err.message})
+    }
+    
+    
+
+
+});
 
 
 app.get('/submit-a-blog/:userId', async(req, res) => {
@@ -582,7 +650,7 @@ app.get("/join-branch/:branchID", async(req,res) => {
     const theBranch = await Branch.findById(branchID);
 
 
-    res.render("joinBranch", {theBranch: theBranch, message:""});
+    res.render("joinBranch", {theBranch: theBranch, message:"", theUser: "No"});
 });
 
 app.post("/join-branch/:branchID", async(req,res) => {
@@ -592,13 +660,18 @@ app.post("/join-branch/:branchID", async(req,res) => {
     const theBranch = await Branch.findById(branchID);
     const branchCount = theBranch.numMembers;
 
-    const user = await User.findOne({userEmail});
-    console.log(user);
+    const user = await User.findOne({email:userEmail});
+
     if (!user) {
-        res.render("joinBranch", {theBranch: theBranch, message: "Please create an account"});
+        res.render("joinBranch", {theBranch: theBranch, message: 'Please create an account first', theUser: "No"});
+
+
     }else {
         await Branch.updateOne({ _id: branchID }, { $set: { numMembers: branchCount + 1 } });
-        res.render("joinBranch", {theBranch: theBranch, message:`You just joined ${theBranch.name}`});
+        //update members
+        await Branch.updateOne({ _id: branchID }, { $set: { members: theBranch.members.push(userEmail) } });
+        await User.updateOne({ email: userEmail }, { $set: { branches: user.branches.push(theBranch.name) } });
+        res.render("joinBranch", {theBranch: theBranch, message:`You just joined ${theBranch.name}`, theUser: "Yes"});
 
     }
 
@@ -611,8 +684,17 @@ app.get("/branch/:branchID", async (req, res) => {
         const branchID = req.params.branchID;
 
         const theBranch = await Branch.findById(branchID);
+        let allAnons = await Announcement.find();
+        let anons = [];
 
-        res.render('branch', {branch: theBranch});
+        for (let i = allAnons.length-1; i >= 0; i --) {
+            if (allAnons[i].branch == theBranch.name) {
+                anons.push(allAnons[i])
+
+            }
+        }
+
+        res.render('branch', {branch: theBranch, anons: anons});
 
 
 
