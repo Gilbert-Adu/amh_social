@@ -46,8 +46,11 @@
                     <input type="text" id="city" name="city" placeholder="Your City" required><br><br>
                     <input type="text" id="state" name="state" placeholder="Your State" required><br><br>
 
-                    <label for="age" id="age-label">I am 18+</label>
-                    <input type="checkbox" name="age"><br><br>
+                    <input type="checkbox" name="age" style="margin-bottom: 3vh; margin-left: 5vw;">
+                    <label for="age" id="age-label">I am 18+</label><br>
+                    <input type="checkbox" id="notRobot" name="notRobot" required style="margin-bottom: 3vh; margin-left: 5vw;">
+                <label for="notRobot">I am not a robot</label>
+        
 
                     <input type="submit" id="log-in" value="Create account" onclick="logIn()">
                 </form>

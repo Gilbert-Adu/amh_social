@@ -184,8 +184,7 @@
     cursor: pointer;
   }
 
-  .comments-wrapper {
-  }
+  
 
   .a-comment {
     height: fit-content;
@@ -208,6 +207,98 @@
     font-weight: bold;
     margin-left: 1vw;
 
+  }
+
+  footer {
+    border-top: 1px solid #0A6847;
+    margin-top: 20vh;
+    
+  }
+  
+  .footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5vh 0vw;
+  
+  }
+  
+  .contacts {
+    margin: 0vh 5vw;
+    height: fit-content;
+    width: fit-content;
+  }
+  .contacts h3 {
+    color: #0A6847;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: left;
+    font-family: Clash Display;
+  }
+  
+  .contacts span {
+    color: #0C0C0C;
+    font-size: 10px;
+    text-align: left;
+  
+  }
+  .location {
+    margin: 0vh 5vw;
+    height: fit-content;
+    width: fit-content;
+  
+  }
+  .location h3 {
+    color: #0A6847;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: left;
+    font-family: Clash Display;
+  
+  
+  }
+  .location span {
+    color: #0C0C0C;
+    font-size: 10px;
+    text-align: left;
+  
+  }
+  .legals, .share {
+    margin: 0vh 5vw;
+    height: fit-content;
+    width: fit-content;
+    
+  
+  }
+  .legals h3 {
+    color: #0A6847;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: left;
+    font-family: Clash Display;
+  
+  
+  }
+  .share h3 {
+    color: #0A6847;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: left;
+    font-family: Clash Display;
+  
+  
+  }
+  .legals span {
+    color: #0C0C0C;
+    font-size: 10px;
+    text-align: left;
+  
+  }
+  .share span {
+    color: #0C0C0C;
+    font-size: 10px;
+    text-align: left;
+  
   }
 
 

@@ -45,6 +45,7 @@ db.once('open', () => console.log('connected to MongoDB'));
 
 //middlewares
 const {generateToken, verifyToken} = require("./middlewares/tokens");
+const { rmSync } = require("fs");
 
 
 app.use(bodyParser.json());
@@ -85,9 +86,12 @@ app.get("/admin/register", (req, res) => {
 });
 //sign up
 app.post("/r/messaging", async (req, res) => {
-    let { firstName, lastName, email, phone, password, city, state, age, branchOption} = req.body;
+    
+    try {
+        let { firstName, lastName, email, phone, password, city, state, age, branchOption, notRobot} = req.body;
 
-    let hashedPassword = await bcrypt.hash(password, 10);
+        if (notRobot == 'on') {
+            let hashedPassword = await bcrypt.hash(password, 10);
 
     const colors = ['#FF0000', 'green', '#003285', '#850F8D', '#006769', '#8E3E63', '#344C64',
             '#9B3922', '#0C0C0C', '#430A5D', '#092635', '#940B92', '#005B41', '#116D6E', '#ED2B2A', 
@@ -142,6 +146,16 @@ app.post("/r/messaging", async (req, res) => {
     sendConfirmationEmail(theUser);
 
     res.render('confirmationPage');
+
+
+        }else {
+            res.send("No Robots allowed. Please confirm you're a real person")
+        }
+
+    }catch(err) {
+        res.send({"error": err.message})
+    }
+
 
     //res.render('dashboard', {data: theUser});
 

@@ -477,7 +477,7 @@ input[type=text], input[type=password] {
     text-align: left;
   
   }
-  .legals {
+  .legals, .share {
     margin: 0vh 5vw;
     height: fit-content;
     width: fit-content;
@@ -493,7 +493,22 @@ input[type=text], input[type=password] {
   
   
   }
+  .share h3 {
+    color: #0A6847;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: left;
+    font-family: Clash Display;
+  
+  
+  }
   .legals span {
+    color: #0C0C0C;
+    font-size: 10px;
+    text-align: left;
+  
+  }
+  .share span {
     color: #0C0C0C;
     font-size: 10px;
     text-align: left;
