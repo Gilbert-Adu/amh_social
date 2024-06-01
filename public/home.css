@@ -754,6 +754,15 @@ input[type=text], input[type=password] {
       
       
       }
+
+      .share-buttons {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .share-buttons span {
+        margin-top: 1vh;
+      }
     
     
 
@@ -1081,6 +1090,11 @@ input[type=text], input[type=password] {
         background-color: #FFF7F1;
       
       
+      }
+
+      .share-buttons {
+        display: flex;
+        flex-direction: column;
       }
     
     
