@@ -8,13 +8,13 @@
 
 .welcome-text {
     margin-left: 0vw;
-    margin-right: 8vw;
+    margin-right: 10vw;
     margin-top: 2vh;
     margin-bottom: 5vh;
     width: 50vw;
     height: fit-content;
     text-align: left;
-    font-size: 18px;
+    font-size: 25px;
     color: #007F73;
     
 }
@@ -38,14 +38,15 @@
 
 .hero-form {
     position: absolute;
-    top: 15%;
-    left: 30%;
+    top: 95%;
+    left: 25%;
     border: 1px solid #ddd;
-    width: 40vw;
+    width: 50vw;
     height: 60vh;
     background-color: white;
     padding: 2vh 5vw;
     border-radius: 20px;
+
 }
 
 /* Full-width input fields */
@@ -90,10 +91,10 @@ input[type=text], input[type=password] {
 
   .mission-left {
     width: 50vw;
-    height: 50vh;
+    height: 80vh;
     font-family: Clash Display;
     text-align: center;
-    padding: 15vh 0;
+    padding: 30vh 0;
     background-color: #007F73;
     color: white;
     font-size: 30px;
@@ -101,13 +102,13 @@ input[type=text], input[type=password] {
 
  .mission-text {
     text-align: center;
-    margin: 15vh 5vw;
+    margin: 30vh 5vw;
     height: fit-content;
  }
   .mission-right {
     border: 1px solid #ddd;
     width: 50vw;
-    height: 50vh;
+    height: 80vh;
 
 
   }
@@ -249,18 +250,12 @@ input[type=text], input[type=password] {
   .branch-btn:hover {
     opacity: 1;
   }
-  .guest-section-title strong {
-    font-size: 25px;
-
-  }
+  
   .guest-section-title {
     text-align: center;
     margin-bottom: 2vh;
     margin-top: 10vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  
+    
   }
 
 
@@ -487,11 +482,11 @@ input[type=text], input[type=password] {
 
     .hero-form {
         position: absolute;
-        top: 15%;
+        top: 85%;
         left: 15%;
         border: 1px solid #ddd;
         width: 70vw;
-        height: 70vh;
+        height: 50vh;
         background-color: white;
         padding: 2vh 5vw;
         border-radius: 20px;
@@ -539,10 +534,10 @@ input[type=text], input[type=password] {
     
       .mission-left {
         width: 50vw;
-        height: 50vh;
+        height: 70vh;
         font-family: Clash Display;
         text-align: center;
-        padding: 20vh 0;
+        padding: 30vh 0;
         background-color: #007F73;
         color: white;
         font-size: 30px;
@@ -556,7 +551,9 @@ input[type=text], input[type=password] {
       .mission-right {
         border: 1px solid #ddd;
         width: 50vw;
-        height: 50vh;
+        height: 70vh;
+        padding: 10vh 0;
+
     
     
       }
@@ -756,11 +753,11 @@ input[type=text], input[type=password] {
 
     .hero-form {
         position: absolute;
-        top: 15%;
+        top: 105%;
         left: 15%;
         border: 1px solid #ddd;
         width: 70vw;
-        height: 60vh;
+        height: 85vh;
         background-color: white;
         padding: 2vh 5vw;
         border-radius: 20px;
@@ -940,7 +937,7 @@ input[type=text], input[type=password] {
         float: right;
         margin-top: 3vh;
         margin-right: 3vw;
-        width: 25vw;
+        width: 40vw;
     
     }
     
@@ -952,7 +949,7 @@ input[type=text], input[type=password] {
         cursor: pointer;
         width: 100%;
         opacity: 0.9;
-        border-radius: 20px;
+        border-radius: 10px;
     
       }
       

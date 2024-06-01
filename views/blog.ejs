@@ -181,7 +181,7 @@
                     fetch('/comment/<%= message._id%>/<%= commenter._id%>', {
                         method: 'POST',
                         headers: {'Content-Type': 'application/json'},
-                        body: JSON.stringify({message})
+                        body: JSON.stringify({"comment":message})
 
                     })
                     document.getElementById('comment-text').value = ''
