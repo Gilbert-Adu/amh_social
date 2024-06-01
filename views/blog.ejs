@@ -179,6 +179,7 @@
                         <span><a href="#" class="share-button whatsapp" id="share-whatsapp"><i class="fab fa-whatsapp" style="font-size: 20px; margin: 0 0.2vw;"></i></a></span>
                         <span><a href="#" class="share-button email" id="share-email"><i class="fas fa-envelope" style="font-size: 20px; margin: 0 0.2vw;"></i></a></span>
                         <span><a href="#" class="share-button linkedin" id="share-linkedin"><i class="fab fa-linkedin-in" style="font-size: 20px; margin: 0 0.2vw;"></i></a></span>
+                        <span><a href="#" class="share-button sms" id="share-sms"><i class="fas fa-sms" style="font-size: 20px; margin: 0 0.2vw;"></i></a></span>
                 
                     </div>
                 
@@ -223,6 +224,13 @@
             const summary = encodeURIComponent('Check out this page:');
             window.open(`https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${title}&summary=${summary}`, 'sharer', 'width=626,height=436');
         });
+
+        document.getElementById('share-sms').addEventListener('click', function() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`sms:?&body=${text}%20${url}`);
+        });
+
 
 
     </script>
