@@ -4,8 +4,28 @@
     margin: 0 auto;
 }
 
+.en-text {
+  text-align: center;
+  margin: 5vh 10vw;
+  margin-top: 10vh;
+  height: fit-content;
+  font-size: 30px;
+  font-weight: bold;
+  color: #007F73;
 
 
+
+}
+.am-text {
+  text-align: center;
+  margin: 0 10vw;
+  margin-bottom: 10vw;
+  height: fit-content;
+  font-size: 30px;
+  color: #007F73;
+
+
+}
 .welcome-text {
     margin-left: 0vw;
     margin-right: 10vw;
@@ -38,7 +58,7 @@
 
 .hero-form {
     position: absolute;
-    top: 95%;
+    top: 145%;
     left: 25%;
     border: 1px solid #ddd;
     width: 50vw;
@@ -186,6 +206,9 @@ input[type=text], input[type=password] {
 .section-name {
     text-align: center;
     margin-top: 10vh;
+    color: #007F73;
+    font-weight: bold;
+    font-size: 30px;
 }
 
 .branches-container {
@@ -255,6 +278,9 @@ input[type=text], input[type=password] {
     text-align: center;
     margin-bottom: 2vh;
     margin-top: 10vh;
+    font-weight: bold;
+    font-size: 30px;
+    color: #007F73;
     
   }
 
@@ -482,7 +508,7 @@ input[type=text], input[type=password] {
 
     .hero-form {
         position: absolute;
-        top: 85%;
+        top: 115%;
         left: 15%;
         border: 1px solid #ddd;
         width: 70vw;
@@ -753,11 +779,11 @@ input[type=text], input[type=password] {
 
     .hero-form {
         position: absolute;
-        top: 105%;
+        top: 165%;
         left: 15%;
         border: 1px solid #ddd;
         width: 70vw;
-        height: 85vh;
+        height: 65vh;
         background-color: white;
         padding: 2vh 5vw;
         border-radius: 20px;
