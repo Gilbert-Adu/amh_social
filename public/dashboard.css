@@ -330,6 +330,18 @@ input[type=text] {
   background-color: #007F73;
   color: white;
 }
+#blogs-button {
+  background-color: #007F73;
+  margin-top: 0.5vh;
+  margin-left: 60vw;
+  color: white;
+  height: 5vh;
+  width: 5vw;
+  border: 1px solid #007F73;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 .moving-text {
   display: inline-block;
 
@@ -344,11 +356,39 @@ input[type=text] {
 }
 
 
+/*mobile */
 @media only screen and (max-width: 767px) {
 
   * {
     box-sizing: border-box;
     background-color: #F6F5F5;
+  }
+  .username {
+    margin-top: 2vh;
+    font-size: 10px;
+  }
+  #blogs-button {
+    background-color: #007F73;
+    margin-top: 0.5vh;
+    margin-left: 30vw;
+    color: white;
+    height: 5vh;
+    width: 20vw;
+    border: 1px solid #007F73;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .app-name {
+    margin-left: 2vw;
+
+    margin-top: 2vh;
+    font-size: 10px;
+
+    font-family: 'Sofia', sans-serif;
+    background: linear-gradient(to right, #f32170, #ff6b08,#cf23cf, #eedd44);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+
   }
 
   .panels-container {

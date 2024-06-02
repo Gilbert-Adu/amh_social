@@ -5,6 +5,9 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const jwt = require('jsonwebtoken');
+const geoip = require('geoip-lite');
+const multer = require("multer");
+const requestIp = require("request-ip");
 const Pusher = require('pusher');
 const app = express();
 
@@ -47,10 +50,56 @@ db.once('open', () => console.log('connected to MongoDB'));
 const {generateToken, verifyToken} = require("./middlewares/tokens");
 const { rmSync } = require("fs");
 
+//multer config for file uploads
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'uploads/');
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + path.extname(file.originalname));
+    }
+});
+
+
+const fileFilter = (req, file, cb) => {
+
+    //accept images and videos
+    if (file.mimetype.startsWith('image/') || file.mimetype.startsWith('video/')) {
+        cb(null, true)
+    }else {
+        cb(new Error('Invalid file type. Only Images and Videos accpeted!'), false)
+    }
+}
+
+const upload = multer({ storage: storage, fileFilter: fileFilter});
+
 
 app.use(bodyParser.json());
 app.use(express.json());
+app.use(requestIp.mw());
+//no problem rn but could be a concern later
+app.use('/uploads', express.static('uploads'));
 
+
+/*
+app.use((req, res, next) => {
+    const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    const ipAddress = req.clientIp;
+    console.log(ipAddress);
+    const geo = geoip.lookup(ip);
+    console.log(geo);
+
+  
+    if (geo && geo.country === 'US') {
+      next();
+    } else {
+      res.status(403).send('Access restricted.');
+    }
+  });
+  
+  
+
+*/
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(__dirname + '/public'));
@@ -274,6 +323,35 @@ app.post("/send/:userID", async(req, res) => {
 
     
 });
+
+//send image/vide in text
+app.post('/upload/:userID', upload.single('media'), async (req, res) => {
+
+    if (!req.file) {
+        return res.status(400).send('No file uploaded.');
+    }
+
+    // Send a real-time notification with Pusher
+    const userID = req.params.userID;
+    const user = await User.findById(userID);
+    const message = `/uploads/${req.file.filename}`;
+
+    let newMessage = new Message({
+        "user": user,
+        "message": message,
+        "userID": userID
+    });
+    await newMessage.save();
+
+    pusher.trigger('media-channel', 'new-media', {
+        url: `/uploads/${req.file.filename}`,
+        user: user
+    });
+
+
+    res.sendStatus(200);
+});
+
 
 
 //login

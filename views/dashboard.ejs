@@ -30,12 +30,12 @@
 
                 <% if (data.role == 'admin') { %>
                     <a href="/allblogs/<%= data._id %>" onclick="getBlogSubmit(`${data}`)" style="text-decoration: none;">
-                        <button id="blogs-button"  style="background-color: #007F73;margin-top: 0.5vh; margin-left: 60vw;color: white;height: 5vh;width: 5vw;border: 1px solid #007F73;border-radius: 5px;cursor: pointer;">Blogs</button>
+                        <button id="blogs-button">Blogs</button>
                         
                         
                     </a>
                     <a href="/allblogs/<%= data._id %>" onclick="getBlogSubmit(`${data}`)" style="text-decoration: none;">
-                        <button id="blogs-button"  style="background-color: #007F73;margin-top: 0.5vh; margin-right: 0.5vw;color: white;height: 5vh;width: 8vw;border: 1px solid #007F73;border-radius: 5px;cursor: pointer;">Announce</button>
+                        <button id="blogs-button">Announce</button>
                         
                     </a>
     
@@ -43,7 +43,7 @@
 
 
                     <a href="/allblogs/<%= data._id %>" onclick="getBlogSubmit(`${data}`)" style="text-decoration: none;">
-                        <button id="blogs-button"  style="background-color: #007F73;margin-top: 0.5vh; margin-left: 60vw;color: white;height: 5vh;width: 5vw;border: 1px solid #007F73;border-radius: 5px;cursor: pointer;">Blogs</button>
+                        <button id="blogs-button">Blogs</button>
                         
                         
                     </a>
@@ -57,7 +57,7 @@
                 
                     <div class="user-announcements">
                         <% annons.forEach((text, index) => { %>
-                            <div class="moving-text"><%= text %></div>
+                            <div class="moving-text" style="animation-delay: <%= index * 2 %>"><%= text %></div>
                         <% }); %>
                 
 
@@ -92,10 +92,38 @@
 
                                         <% for(let i = 0; i < messages.length; i++) { %>
 
-                                            <div class="message-content" style="border-left: 2px solid <%= messages[i].user.userColor%>">
-                                                <span style="color: <%= messages[i].user.userColor%>; font-size: 10px; font-weight: bold;"><%=messages[i].user.firstName%> <%=messages[i].user.lastName%></span><br>
-                                                <%= messages[i].message %>
-                                            </div>
+                                            <!-- check if message is image or video -->
+                                            
+
+                                            <% if (['mp4', 'webm', 'ogg', 'mov'].includes(messages[i].message.split(".")[1])) { %>
+                                                <div class="message-content" style="border-left: 2px solid <%= messages[i].user.userColor%>">
+                                                    <span style="color: <%= messages[i].user.userColor%>; font-size: 10px; font-weight: bold;"><%=messages[i].user.firstName%> <%=messages[i].user.lastName%></span><br>
+                                                    <video style="width: 100%;" controls=true>
+                                                        <source src= "<%= messages[i].message %>">
+                                                    </video>
+                                                </div>
+                                            
+                                            <% } else if (['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(messages[i].message.split(".")[1])) {%> 
+                                                <div class="message-content" style="border-left: 2px solid <%= messages[i].user.userColor%>">
+                                                    <span style="color: <%= messages[i].user.userColor%>; font-size: 10px; font-weight: bold;"><%=messages[i].user.firstName%> <%=messages[i].user.lastName%></span><br>
+                                                    <img src="<%= messages[i].message %>" alt="uploaded image" style="width: 100%; height: 20vh; object-fit: cover; border-radius: 20px; cursor: pointer;">
+                                                </div>
+                                                
+                                                
+                                                <%}
+                                            else { %>
+                                                <div class="message-content" style="border-left: 2px solid <%= messages[i].user.userColor%>">
+                                                    <span style="color: <%= messages[i].user.userColor%>; font-size: 10px; font-weight: bold;"><%=messages[i].user.firstName%> <%=messages[i].user.lastName%></span><br>
+                                                    <%= messages[i].message %>
+                                                </div>
+                                                
+
+                                            <% } %>
+
+                                            <!-- end-->
+                                            
+                                            
+
                                             
                                             
                                         <% } %>
@@ -105,6 +133,8 @@
                                     <% } else { %>
 
                                     <% } %>
+
+                                    <!-- check if -->
                                 
                                 
                                 </div>
@@ -122,11 +152,19 @@
                             </form>
                         </span>
                         <span>
-                            <form action="">
-                                <label for="image" class="custom-upload-button">
+                            <form action="/upload/<%= data._id %>" method="POST" id="upload-form" enctype="multipart/form-data">
+                                
+                                <!--
+                                    <button type="submit">
                                     <i class="fas fa-upload"></i>
-                                </label>
-                                <input type="file" id="image" name="image" accept="image/*">
+                                </button>
+                                
+                                <input type="file" id="media" name="media" accept="image/*,video/*">
+
+
+                                -->
+                                <span><input type="file" name="media" id="media" accept="image/*,video/*" required></span>  
+                                <span><button type="submit">Upload</button></span>                      
                                 
                     
                                     
@@ -151,10 +189,14 @@
           <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
 
             <script>
-                        document.querySelector('.custom-upload-button').addEventListener('click', function() {
+                
+                /*
+                document.querySelector('.custom-upload-button').addEventListener('click', function() {
                             document.querySelector('#image').click();
                         });
 
+                */
+                        
             
                 const pusher = new Pusher('be75e3dbef6dc92be9b4', {
                     cluster: 'us2'
@@ -188,6 +230,95 @@
                     document.getElementById('sent-text').value = ''
 
                 });
+
+                //ability to send images and videos as text
+
+                const form = document.getElementById('upload-form');
+            form.addEventListener('submit', async(e) => {
+                e.preventDefault();
+
+                const formData = new FormData(form);
+                const response = await fetch('/upload/<%= data._id%>', {
+                    method: 'POST',
+                    body: formData
+                });
+                console.log(response)
+
+
+                if (response.ok) {
+                    alert("Media uploaded successfully");
+                } else {
+
+                    alert("Failed to upload")
+
+                }
+            });
+
+            const mediaChannel = pusher.subscribe('media-channel');
+            mediaChannel.bind('new-media', function(data) {
+            const fileExtension = data.url.split('.').pop();
+            
+            if (['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(fileExtension)) {
+                    //const mediaElement = document.createElement('img');
+                    const mediaElement = document.createElement('p');
+                    const col = data.user.userColor;
+
+                    mediaElement.innerHTML = `
+                            <div class="message-content" style="  border-left: 2px solid ${col};">
+                            <span style="color: ${col}; font-size: 10px; font-weight: bold;">${data.user.firstName} ${data.user.lastName}</span><br>
+                            <img src= ${data.url}  alt="uploaded image" style="width: 100%; height: 20vh; object-fit: cover; border-radius: 20px; cursor: pointer;">
+                        
+                            </div>`
+
+                    //mediaElement.src = data.url;
+                    //mediaElement.alt = 'uploaded image';
+                    //mediaElement.style.width = '100%';
+                    //mediaElement.style.height = '20vh';
+                    //mediaElement.style.objectFit = 'cover';
+                    //mediaElement.style.borderRadius = '20px';
+                    //mediaElement.style.cursor = 'pointer';
+
+                    //const item = document.createElement('p');
+            //const userID = data.userID;
+            
+
+
+
+
+                    document.getElementById('sent-bubble').appendChild(mediaElement);
+
+
+                    
+            }else if (['mp4', 'webm', 'ogg', 'mov'].includes(fileExtension)) {
+
+                const mediaElement = document.createElement('p');
+                    const col = data.user.userColor;
+
+                    mediaElement.innerHTML = `
+                            <div class="message-content" style="  border-left: 2px solid ${col};">
+                            <span style="color: ${col}; font-size: 10px; font-weight: bold;">${data.user.firstName} ${data.user.lastName}</span><br>
+                            <video style="width: 100%;" controls=true>
+                                <source src= ${data.url}>
+                            </video>
+                        
+                            </div>`
+
+                    //const mediaElement = document.createElement('video');
+                    //mediaElement.src = data.url;
+                    //mediaElement.controls = true;
+                    //mediaElement.style.width = '100%';
+                    
+
+
+                    document.getElementById('sent-bubble').appendChild(mediaElement);
+                    console.log('image attached')
+
+                }
+
+            });
+
+            
+            
 
             </script>
         

@@ -58,7 +58,7 @@
 
 .hero-form {
     position: absolute;
-    top: 145%;
+    top: 155%;
     left: 25%;
     border: 1px solid #ddd;
     width: 50vw;
@@ -111,10 +111,10 @@ input[type=text], input[type=password] {
 
   .mission-left {
     width: 50vw;
-    height: 80vh;
+    height: 100vh;
     font-family: Clash Display;
     text-align: center;
-    padding: 30vh 0;
+    padding: 40vh 0;
     background-color: #007F73;
     color: white;
     font-size: 30px;
@@ -122,13 +122,15 @@ input[type=text], input[type=password] {
 
  .mission-text {
     text-align: center;
-    margin: 30vh 5vw;
+    margin: 5vh 5vw;
     height: fit-content;
+    font-size: 12px;
+    line-height: 2;
  }
   .mission-right {
     border: 1px solid #ddd;
     width: 50vw;
-    height: 80vh;
+    height: 100vh;
 
 
   }
@@ -525,7 +527,7 @@ input[type=text], input[type=password] {
 
     .hero-form {
         position: absolute;
-        top: 115%;
+        top: 205%;
         left: 15%;
         border: 1px solid #ddd;
         width: 70vw;
@@ -572,30 +574,30 @@ input[type=text], input[type=password] {
 
       .mission-container {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
       }
     
       .mission-left {
-        width: 50vw;
-        height: 70vh;
+        width: 100vw;
+        height: 50vh;
         font-family: Clash Display;
         text-align: center;
-        padding: 30vh 0;
+        padding: 15vh 0;
         background-color: #007F73;
         color: white;
-        font-size: 30px;
+        font-size: 50px;
      }
     
      .mission-text {
         text-align: center;
-        margin: 18vh 5vw;
+        margin: 5vh 5vw;
         height: fit-content;
      }
       .mission-right {
         border: 1px solid #ddd;
-        width: 50vw;
-        height: 70vh;
-        padding: 10vh 0;
+        width: 100vw;
+        height: 90vh;
+        padding: 5vh 0;
 
     
     
@@ -763,6 +765,13 @@ input[type=text], input[type=password] {
       .share-buttons span {
         margin-top: 1vh;
       }
+
+      .show-right {
+        visibility: hidden;
+      }
+      .show-down {
+        visibility: visible;
+      }
     
     
 
@@ -805,7 +814,7 @@ input[type=text], input[type=password] {
 
     .hero-form {
         position: absolute;
-        top: 165%;
+        top: 215%;
         left: 15%;
         border: 1px solid #ddd;
         width: 70vw;
@@ -870,11 +879,12 @@ input[type=text], input[type=password] {
         text-align: center;
         margin: 15vh 5vw;
         height: fit-content;
+        font-size: 10px;
      }
       .mission-right {
         border: 1px solid #ddd;
         width: 100vw;
-        height: 50vh;
+        height: 105vh;
     
     
       }
