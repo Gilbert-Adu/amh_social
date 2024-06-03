@@ -115,6 +115,7 @@ app.get("/", async (req, res) =>{
         res.render('home', {posts: posts, branches: branches, announs: announs});
 
 
+        
 
     }catch(err) {
         res.render('error');
