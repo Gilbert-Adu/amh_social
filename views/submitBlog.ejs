@@ -29,7 +29,7 @@
         </div>
 
         <section class="form-section">
-          <form action="/submit-a-blog/<%= data %>" method="POST" class="blog-form" id="blog-form">
+          <form action="/submit-a-blog/<%= data %>" method="POST" class="blog-form" id="blog-form" enctype="multipart/form-data">
             <input type="text" placeholder="Blog title" id="title" name="title" style="width: 100%;height: 4vh;border: 1px solid #ddd; margin-bottom: 0.5vh;"><br>
             <input type="text" placeholder="Your description goes here..." id="desc" name="desc" style="width: 100%;height: 7vh;border: 1px solid #ddd;margin-bottom: 0.5vh;"><br>
             <input type="file"  accept="image/*" id="mainImage" name="mainImage" required style="width: 100%;height: 7vh;border: 1px solid #ddd;margin-bottom: 0.5vh;"><br>
@@ -51,7 +51,7 @@
               <strong>Section ${timesClicked}</strong>
     
               <input type="text" placeholder="Your section ${timesClicked} title goes here..." id="title" name="title" style="width: 100%;height: 4vh;border: 1px solid #ddd; margin-top: 3vh;margin-bottom: 2vh" required><br>
-              <input type="file"  accept="image/*" id="main-image" name="main-image" style="width: 100%;height: 7vh;border: 1px solid #ddd;margin-bottom: 0.5vh;margin-bottom: 2vh"><br>
+              <input type="file"  accept="image/*" id="mainImage" name="mainImage" style="width: 100%;height: 7vh;border: 1px solid #ddd;margin-bottom: 0.5vh;margin-bottom: 2vh"><br>
             <input type="text" placeholder="Short image description" id="altText" name="altText" style="width: 100%;height: 4vh;border: 1px solid #ddd; margin-bottom: 0.5vh;margin-bottom: 2vh"><br>
               <textarea name="content" id="" cols="70" rows="15" style="border: 1px solid #ddd;margin-bottom: 2vh">Your section ${timesClicked} text goes here...</textarea><br>
               `;

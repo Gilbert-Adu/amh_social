@@ -104,9 +104,9 @@ Voice your opinion (in writing and/or with video) using the Blogs from our membe
                 <a href="/blog/<%= posts[i]._id %>" style="text-decoration: none;cursor: pointer;">
                     <div class="guest-article">
                         <div class="article-info-container">
-                            <div class="article-title"><%= posts[i].title %></div>
+                            <div class="article-title"><%= posts[i].title[0] %></div>
                             <div class="article-image">
-                                <img src="/images/avatar.jpg" alt="">
+                                <img src="/<%= posts[i].mainImage[0].path%>" alt="">
                             </div>
                             <div class="article-blurb">
                                 <%= posts[i].desc %>
@@ -265,9 +265,9 @@ Voice your opinion (in writing and/or with video) using the Blogs from our membe
                     <a href="/blog/<%= posts[i]._id %>" style="text-decoration: none;cursor: pointer;">
                         <div class="guest-article">
                             <div class="article-info-container">
-                                <div class="article-title"><%= posts[i].title %></div>
+                                <div class="article-title"><%= posts[i].title[0] %></div>
                                 <div class="article-image">
-                                    <img src="/images/avatar.jpg" alt="">
+                                    <img src="/<%= posts[i].mainImage[0].path%>" alt="">
                                 </div>
                                 <div class="article-blurb">
                                     <%= posts[i].desc %>

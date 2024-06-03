@@ -43,7 +43,7 @@
             </div>
             <div class="hero-image-wrapper">
                 <div class="image">
-                    <img src="/images/avatar.jpg" alt="">
+                    <img src="/<%= message.mainImage[0].path %>" alt="">
                 </div>
                 <div class="alt-text">
                     <% if (Array.isArray(message.altText)) { %>
@@ -72,9 +72,9 @@
 
                 <% if (Array.isArray(message.title)) { %>
                     <% for (let i = 1; i < message.title.length; i++) { %>
-                        <h2><%= message.title[i] %></h2>
+                        <h2 class="added-section-heading"><%= message.title[i] %></h2>
                         <div class="image">
-                            <img src="/images/avatar.jpg" alt="">
+                            <img src="/<%= message.mainImage[i].path %>" alt="">
                         </div>
                         <div class="alt-text"><%= message.altText[i] %></div>
                         <p style="margin-top: 3vh;"><%= message.content[i] %></p>

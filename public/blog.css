@@ -301,6 +301,11 @@
   
   }
 
+  .added-section-heading {
+    margin-top: 10vh;
+    margin-bottom: 5vh;
+  }
+
 
   /* Mobile Phone Viewpoint */
 @media only screen and (max-width: 767px) {

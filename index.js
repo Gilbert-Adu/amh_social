@@ -112,7 +112,6 @@ app.get("/", async (req, res) =>{
         let announs = await Announcement.find();
 
 
-        
         res.render('home', {posts: posts, branches: branches, announs: announs});
 
 
@@ -610,12 +609,13 @@ app.get('/submit-a-blog/:userId', async(req, res) => {
 });
 
 //get the blog content
-app.post('/submit-a-blog/:userId', async(req, res) => {
+app.post('/submit-a-blog/:userId', upload.array('mainImage', 10), async(req, res) => {
 
     const numSections = req.body.title.length;
     req.body.userId = req.params.userId;
 
-    const { title, desc, mainImage, altText, content} = req.body;
+    const { title, desc, altText, content} = req.body;
+    const blogImages = req.files;
 
     try {
         const user = await User.findById(req.body.userId);
@@ -624,7 +624,7 @@ app.post('/submit-a-blog/:userId', async(req, res) => {
             const newPost = new Post({
                 "title": title,
                 "desc": desc,
-                "mainImage": mainImage,
+                "mainImage": blogImages,
                 "altText": altText,
                 "content": content,
                 "userId": req.params.userId,
@@ -634,10 +634,22 @@ app.post('/submit-a-blog/:userId', async(req, res) => {
         
     
             await newPost.save();
+
+            console.log(blogImages.path)
+            const payload = { 
+                "title":title, 
+                "desc":desc, 
+                "altText":altText, 
+                "content":content,
+                "mainImage": blogImages,
+                "postedOn": newPost.postedOn,
+                "postedBy": user.firstName + ' ' + user.lastName
+            };
+        
+
+
     
-            req.body.postedBy = user.firstName + ' ' + user.lastName;
-            req.body.postedOn = newPost.postedOn;
-            res.render('blog', {message: req.body, numSections: numSections});
+            res.render('blog', {message: payload, numSections: numSections, comments: [], commenter: user, signedIn: true});
     
         }else {
             res.send("you are not logged in")
