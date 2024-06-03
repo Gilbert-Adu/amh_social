@@ -119,7 +119,7 @@
                 <!--comments form-->
               
 
-                <% if (commenter != []) { %>
+                <% if (signedIn) { %>
                     <div class="comments-form">
                         <form action="/comment/<%= message._id %>/<%= commenter._id %>" method="POST" class="comment-form" id="comment-form">
                             <textarea name="comment" id="comment-text" cols="70" rows="5" style="border: 1px solid #ddd;">Your comment here...</textarea><br>
