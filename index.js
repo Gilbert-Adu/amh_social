@@ -115,7 +115,7 @@ app.get("/", async (req, res) =>{
         res.render('home', {posts: posts, branches: branches, announs: announs});
 
 
-        
+
 
     }catch(err) {
         res.render('error');
@@ -544,7 +544,7 @@ app.get('/blog/:blogID', async (req, res) => {
 
 
     }catch(err) {
-        console.log({"error": err})
+        res.send({"error": err})
 
     }
 });
