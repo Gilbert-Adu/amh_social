@@ -531,9 +531,9 @@ app.get('/blog/:blogID', async (req, res) => {
         const ID = req.params.blogID;
     const message = await Post.findById(ID);
     let rawHeaders = req.rawHeaders;
-    let commenter = {  _id: '66462b6058281e33f6c169d8',};
+    let commenter = {  _id: '66462b6058281e33f6c169d8'};
     let signedIn = false;
-
+    console.log("raw headers: ", userIdCleaner(rawHeaders))
     if (userIdCleaner(rawHeaders) != "") {
         commenter = await User.findById(userIdCleaner(rawHeaders));
         signedIn = true;
