@@ -533,7 +533,10 @@ app.get('/blog/:blogID', async (req, res) => {
     let rawHeaders = req.rawHeaders;
     let commenter = {  _id: '66462b6058281e33f6c169d8'};
     let signedIn = false;
-    console.log("raw headers: ", userIdCleaner(rawHeaders))
+    //console.log("raw headers: ", userIdCleaner(rawHeaders));
+    console.log(req.headers)
+    console.log(req.rawHeaders)
+
     if (userIdCleaner(rawHeaders) != "") {
         commenter = await User.findById(userIdCleaner(rawHeaders));
         signedIn = true;
