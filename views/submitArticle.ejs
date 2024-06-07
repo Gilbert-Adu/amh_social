@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" type="text/css" href="/submitBlog.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+
+  <title>Amhara Unity | Submit an Article </title>
+  
+        <!-- Include Quill.js CSS -->
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+
+<!-- Include Quill.js JavaScript -->
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
+    </head>
+    <body>
+
+      
+
+        <div class="navbar-container">
+          <a href="/" style="text-decoration: none; cursor: pointer;"><div class="app-name">Amhara Unity</div></a>
+            <button class="add-section" id="add-section" style="height: 5vh; margin-top: 2vh;margin-right: 2vw;background-color: #007F73;border: 1px solid #007F73;color: white;border-radius: 10px;cursor: pointer;">Add Section</button>
+        </div>
+
+        <section class="form-section">
+          <form action="/submit-an-article/<%= data %>" method="POST" class="blog-form" id="blog-form" enctype="multipart/form-data">
+            <input type="text" placeholder="Article title" id="title" name="title" style="width: 100%;height: 4vh;border: 1px solid #ddd; margin-bottom: 0.5vh;"><br>
+            <input type="text" placeholder="A short blurb..." id="desc" name="desc" style="width: 100%;height: 7vh;border: 1px solid #ddd;margin-bottom: 0.5vh;"><br>
+            <input type="file"  accept="image/*" id="mainImage" name="mainImage" required style="width: 100%;height: 7vh;border: 1px solid #ddd;margin-bottom: 0.5vh;"><br>
+            <input type="text" placeholder="Describe the image" id="altText" name="altText" style="width: 100%;height: 4vh;border: 1px solid #ddd; margin-bottom: 0.5vh;"><br>
+            <textarea name="content" id="" cols="70" rows="15" style="border: 1px solid #ddd;">Your text here...</textarea><br>
+            <section class="new-form-section" id="new-form-section"></section>
+            <input type="submit" value="Submit" style="background-color: #007F73;border: 1px solid #007F73;color: white;border-radius: 5px;cursor: pointer;">
+
+          </form>
+        </section>
+
+        
+        <script>
+          var timesClicked = 1;
+            document.getElementById('add-section').addEventListener('click', function() {
+              var newSection = document.createElement('section');
+              timesClicked++;
+              newSection.innerHTML = `
+              <strong>Section ${timesClicked}</strong>
+    
+              <input type="text" placeholder="Your section ${timesClicked} title goes here..." id="title" name="title" style="width: 100%;height: 4vh;border: 1px solid #ddd; margin-top: 3vh;margin-bottom: 2vh" required><br>
+              <input type="file"  accept="image/*" id="mainImage" name="mainImage" style="width: 100%;height: 7vh;border: 1px solid #ddd;margin-bottom: 0.5vh;margin-bottom: 2vh"><br>
+            <input type="text" placeholder="Short image description" id="altText" name="altText" style="width: 100%;height: 4vh;border: 1px solid #ddd; margin-bottom: 0.5vh;margin-bottom: 2vh"><br>
+              <textarea name="content" id="" cols="70" rows="15" style="border: 1px solid #ddd;margin-bottom: 2vh">Your section ${timesClicked} text goes here...</textarea><br>
+              `;
+
+              document.getElementById('new-form-section').appendChild(newSection);
+
+            });
+
+          
+        </script>
+
+
+        
+
+
+        
+          
+        
+        
+    </body>
+</html>

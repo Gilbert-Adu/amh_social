@@ -31,7 +31,7 @@
             <span>Our</span><br>
 
             <span>Mission</span> 
-            <span><i class="fa fa-arrow-circle-right show-right" style="font-size: 30px;"></i></span> <span><i class="fa fa-arrow-circle-down show-down" style="font-size: 30px;"></i></span>
+            <span><i class="fa fa-arrow-circle-right show-right" style="font-size: 30px; margin-right: 0.5vw;"></i></span> <span><i class="fa fa-arrow-circle-down show-down" style="font-size: 30px;"></i></span>
         </div>
         <div class="mission-right">
             <div class="mission-text">
@@ -97,19 +97,19 @@ Voice your opinion (in writing and/or with video) using the Blogs from our membe
     </div>
 
 <section class="guest-articles-container">
-    <% if (posts.length > 0) { %>
+    <% if (articles.length > 0) { %>
         <% for(let i = 0; i < posts.length; i++) { %>
         
             <div>
-                <a href="/blog/<%= posts[i]._id %>" style="text-decoration: none;cursor: pointer;">
+                <a href="/article/<%= articles[i]._id %>" style="text-decoration: none;cursor: pointer;">
                     <div class="guest-article">
                         <div class="article-info-container">
-                            <div class="article-title"><%= posts[i].title[0] %></div>
+                            <div class="article-title"><%= articles[i].title[0] %></div>
                             <div class="article-image">
-                                <img src="/<%= posts[i].mainImage[0].path%>" alt="">
+                                <img src="/<%= articles[i].mainImage[0].path%>" alt="">
                             </div>
                             <div class="article-blurb">
-                                <%= posts[i].desc %>
+                                <%= articles[i].desc %>
                             </div>
                             <div class="article-poster"></div>
                         </div>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+    <head>
+            <% if (Array.isArray(message.title)) { %>
+                <title>Amhara Unity | <%= message.title[0] %></title>
+              <% } else { %>
+                <title>Amhara Unity | <%= message.title %></title>
+              <% } %>
+            
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+        <link rel="stylesheet" type="text/css" href="/blog.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    </head>
+    <body>
+
+
+
+        <div class="navbar-container">
+            <a href="/" style="text-decoration: none; cursor: pointer;"><div class="app-name">Amhara Unity</div></a>
+
+            <!--
+            <a href="/submit-an-article/<%= message.userId%>" style="text-decoration: none;"><button class="write-btn">Write</button></a>
+
+            -->
+        </div>
+
+        <div class="content-container">
+            <div class="blog-title">
+                <% if (Array.isArray(message.title)) { %>
+                    <h1><%= message.title[0] %></h1>
+                  <% } else { %>
+                    <h1><%= message.title %></h1>
+                  <% } %>
+                
+            </div>
+            <div class="blog-poster">
+                <span>Submitted by: <%= message.postedBy %></span><br>
+                <span><%= message.postedOn %></span>
+            </div>
+            <div class="hero-image-wrapper">
+                <div class="image">
+                    <img src="/<%= message.mainImage[0].path %>" alt="">
+                </div>
+                <div class="alt-text">
+                    <% if (Array.isArray(message.altText)) { %>
+                        <div><%= message.altText[0] %></div>
+                      <% } else { %>
+                        <div><%= message.altText %></div>
+                      <% } %>
+                    
+                </div>
+            </div>
+            <div class="blurb">
+                <p><%= message.desc %></p>
+            </div>
+
+            <div class="blog-content">
+                <% if (Array.isArray(message.content)) { %>
+                    <p><%= message.content[0] %></p>
+                  <% } else { %>
+                    <p><%= message.content %></p>
+                  <% } %>
+                
+            
+            
+            <section class="added-section">
+                
+
+                <% if (Array.isArray(message.title)) { %>
+                    <% for (let i = 1; i < message.title.length; i++) { %>
+                        <h2 class="added-section-heading"><%= message.title[i] %></h2>
+                        <div class="image">
+                            <img src="/<%= message.mainImage[i].path %>" alt="">
+                        </div>
+                        <div class="alt-text"><%= message.altText[i] %></div>
+                        <p style="margin-top: 3vh;"><%= message.content[i] %></p>
+        
+
+                      <% } %>
+    
+                  <% } 
+
+                 %>
+
+                
+            </section>
+            </div>
+            
+        </div>
+        <footer>
+        
+            <div class="footer">
+                <section class="contacts">
+                    <h3>Contact</h3><br><br>
+                    <span>info@amharaunity.com</span><br>
+                    <span>+1-555-555-5555</span>
+
+                </section>
+                <section class="location">
+                    <h3>Find Us</h3><br><br>
+                    <span>Framer Street 22</span><br>
+                    <span>Amsterdam, 06355</span><br>
+                    <span>Netherlands</span><br>
+
+
+                </section>
+                <section class="legals">
+                    <h3>Legals</h3><br><br>
+                    <span>Privacy Policy</span><br>
+                    <span>Terms and Conditions of Use</span>
+
+                </section>
+
+                <!--socials-->
+                <section class="legals">
+                    <h3>Share</h3><br><br>
+                    <div class="share-buttons">
+                        <span><a href="#" class="share-button facebook" id="share-facebook"><i class="fab fa-facebook-f" style="font-size: 20px; margin: 0 0.2vw;"></i></a></span>
+                        <span><a href="#" class="share-button twitter" id="share-twitter"><i class="fab fa-twitter" style="font-size: 20px; margin: 0 0.2vw;"></i></a></span>
+                        <span><a href="#" class="share-button whatsapp" id="share-whatsapp"><i class="fab fa-whatsapp" style="font-size: 20px; margin: 0 0.2vw;"></i></a></span>
+                        <span><a href="#" class="share-button email" id="share-email"><i class="fas fa-envelope" style="font-size: 20px; margin: 0 0.2vw;"></i></a></span>
+                        <span><a href="#" class="share-button linkedin" id="share-linkedin"><i class="fab fa-linkedin-in" style="font-size: 20px; margin: 0 0.2vw;"></i></a></span>
+                        <span><a href="#" class="share-button sms" id="share-sms"><i class="fas fa-sms" style="font-size: 20px; margin: 0 0.2vw;"></i></a></span>
+                
+                    </div>
+                
+                </section>
+
+
+            </div>
+        
+        
+
+    </footer>
+
+    <script>
+                document.getElementById('share-facebook').addEventListener('click', function() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${text}`, 'sharer', 'width=626,height=436');
+        });
+
+        document.getElementById('share-twitter').addEventListener('click', function() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, 'sharer', 'width=626,height=436');
+        });
+
+        document.getElementById('share-whatsapp').addEventListener('click', function() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://api.whatsapp.com/send?text=${text}%20${url}`, 'sharer', 'width=626,height=436');
+        });
+
+        document.getElementById('share-email').addEventListener('click', function() {
+            const url = encodeURIComponent(window.location.href);
+            const subject = encodeURIComponent(document.title);
+            const body = encodeURIComponent(`Check out this page: ${url}`);
+            window.location.href = `mailto:?subject=${subject}&body=${body}`;
+        });
+
+        document.getElementById('share-linkedin').addEventListener('click', function() {
+            const url = encodeURIComponent(window.location.href);
+            const title = encodeURIComponent(document.title);
+            const summary = encodeURIComponent('Check out this page:');
+            window.open(`https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${title}&summary=${summary}`, 'sharer', 'width=626,height=436');
+        });
+
+        document.getElementById('share-sms').addEventListener('click', function() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`sms:?&body=${text}%20${url}`);
+        });
+
+
+
+    </script>
+
+
+        <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+
+        <script>
+            
+            
+        </script>
+
+        
+    </body>
+</html>

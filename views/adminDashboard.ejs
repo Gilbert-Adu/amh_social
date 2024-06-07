@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+        <link rel="stylesheet" type="text/css" href="/adminDashboard.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+      
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+
+        <title>Amhara Unity | Admin Dashboard </title>
+    </head>
+
+    <body>
+        <div class="navbar-wrapper">
+            <a href="/" style="text-decoration: none;">
+                <div class="app-name">Amhara Unity</div>
+
+            </a>
+            <div class="username">Hi <%= data.firstName %>!</div>
+        </div>
+        <div class="dashboard-wrapper">
+            <div class="left-panel">
+                <div class="icons-wrapper">
+                    <div class="icons-item" onclick="selectTab(event, 'overview')"><i class="fa-regular fa-rectangle-list" style="font-size: 15px; margin-right: 1vw;"></i>Overview</div>
+                    <div class="icons-item" onclick="selectTab(event, 'branches')"><i class="fa-solid fa-code-branch" style="font-size: 15px; margin-right: 1vw;"></i>Branches</div>
+                    <div class="icons-item" onclick="selectTab(event, 'blogs')"><i class="fa-solid fa-blog" style="font-size: 15px; margin-right: 1vw;"></i>Blogs</div>
+                    <div class="icons-item" onclick="selectTab(event, 'articles')"><i class="fa-solid fa-newspaper" style="font-size: 15px; margin-right: 1vw;"></i>Guest Articles</div>
+                    <div class="icons-item" onclick="selectTab(event, 'annons')"><i class="fa-solid fa-bullhorn" style="font-size: 15px; margin-right: 1vw;"></i>Announcements</div>
+                </div>
+            </div>
+            <div class="right-panel">
+                <div id="overview" class="tab-content">
+                    <div class="overview-wrapper">
+                        
+                        <div class="panels-summary">
+                            <div class="summary" style="background-color: #8DECB4;">
+                                <div class="summary-icons">
+                                    <div class="icons-left">
+                                        <i class="fa-solid fa-user" style="color: white;"></i>
+                                    </div>
+                                    <div class="icons-right">
+                                        <i class="fa-solid fa-chart-line" style="color: white;"></i>
+                                    </div>
+                                </div>
+                                <div class="summary-name" style="color: white;">Total Users</div>
+                                <div class="summary-number" style="color: white;"><%= users.length%></div>
+                                <hr>
+                                <div class="summary-date" style="color: #007F73; font-weight: bold;"><a href="/" style="text-decoration: none;">Join the Chat</a></div>
+
+                            </div>
+                            <!--2-->
+                            <div class="summary">
+                                <div class="summary-icons">
+                                    <div class="icons-left">
+                                        <i class="fa-solid fa-user" style="color: white;"></i>
+                                    </div>
+                                    <div class="icons-right">
+                                        <i class="fa-solid fa-chart-line" style="color: white;"></i>
+                                    </div>
+                                </div>
+                                <div class="summary-name" style="color: #007F73;">Total Blogs</div>
+                                <div class="summary-number" style="color: #007F73;"><%= blogs.length%></div>
+                                <hr style="color: #007F73;">
+                                <div class="summary-date" style="color: #007F73;font-weight: bold;"><a href="/submit-a-blog/<%= data._id %>" style="text-decoration: none;">Submit a blog</a></div>
+
+                            </div>
+
+                            <!--3-->
+                            <div class="summary">
+                                <div class="summary-icons">
+                                    <div class="icons-left">
+                                        <i class="fa-solid fa-user" style="color: white;"></i>
+                                    </div>
+                                    <div class="icons-right">
+                                        <i class="fa-solid fa-chart-line" style="color: white;"></i>
+                                    </div>
+                                </div>
+                                <div class="summary-name" style="color: #007F73;">Total Articles</div>
+                                <div class="summary-number" style="color: #007F73;"><%= articles.length %></div>
+                                <hr style="color: #007F73;">
+                                <div class="summary-date" style="color: #007F73;font-weight: bold;"><a href="/submit-an-article/:userId" style="text-decoration: none;">Write an article</a></div>
+
+                            </div>
+
+                            <!--4-->
+                            <div class="summary">
+                                <div class="summary-icons">
+                                    <div class="icons-left">
+                                        <i class="fa-solid fa-user" style="color: white;"></i>
+                                    </div>
+                                    <div class="icons-right">
+                                        <i class="fa-solid fa-chart-line" style="color: white;"></i>
+                                    </div>
+                                </div>
+                                <div class="summary-name" style="color: #007F73;">Total Announcements</div>
+                                <div class="summary-number" style="color: #007F73;"><%= anons.length %></div>
+                                <hr style="color: #007F73;">
+                                <div class="summary-date" style="color: #007F73;font-weight: bold;"><a href="/admin/announcement" style="text-decoration: none;">Make an announcement</a></div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="sections-wrapper">
+                            <div class="blogs-wrapper">
+                                <div class="section-name">APPROVED BLOGS</div>
+                                <!--blogs start-->
+                                <% for (let i = blogs.length-1; i >= 0; i--) { %>
+                                    <a href="/blog/<%=blogs[i]._id%>" style="text-decoration: none;">
+                                        <div class="allblogs-wrapper">
+                                            <div class="blog-image">
+                                                <img src="/<%= blogs[i].mainImage[0].path %>" alt="">
+                                            </div>
+                                            <div class="blog-heading">
+                                                <div class="blog-title"><%= blogs[i].title %></div><br>
+                                                <div class="author-name"><%= blogs[i].postedBy %></div>
+                                            </div>
+                                        </div>
+                                        
+                                    </a>
+                                <% } %>
+                        
+                                <!--blog end-->
+                                <!--2-->
+                                
+                            </div>
+                            <div class="articles-wrapper">
+                                <div class="section-name">ARTICLES</div>
+                                <% for (let i = articles.length-1; i >= 0; i--) { %>
+                                    <a href="/article/<%=articles[i]._id%>" style="text-decoration: none;">
+                                        <div class="allblogs-wrapper">
+                                            <div class="blog-image">
+                                                <img src="/<%= articles[i].mainImage[0].path %>" alt="">
+                                            </div>
+                                            <div class="blog-heading">
+                                                <div class="blog-title"><%= articles[i].title %></div><br>
+                                                <div class="author-name"><%= articles[i].postedBy %></div>
+                                            </div>
+                                        </div>
+                                        
+                                    
+                                    </a>
+
+                                <% } %>
+                        
+                                
+                                
+                            </div>
+                            <div class="annons-wrapper">
+                                <div class="section-name">ANNOUNCEMENTS</div>
+
+                                <% for (let i = anons.length-1; i >= 0; i--) { %>
+                                    <div class="anons-wrapper">
+                                        <div class="annons-image">
+                                        </div>
+                                        <div class="blog-heading">
+                                            <div class="blog-title"><%= anons[i].title %></div><br>
+                                            <div class="anons-date"><%= anons[i].postedOn %></div>
+                                        </div>
+                                    </div>
+                                    
+                                <% } %>
+                        
+                                <!--1-->
+                                <!--2-->
+                                
+                            </div>
+                        </div>
+
+                    </div>
+                    <!---->
+                </div>
+                <div  id="branches" class="tab-content">
+                    <div class="branches-container">
+                        <div class="branch-header">BRANCHES</div>
+                        <div class="branches-wrapper">
+                            <% for (let i = 0; i < branches.length; i++) { %>
+                                <div class="a-branch">
+                                    <div class="branch-name"><%= branches[i].name %></div>
+                                    <div class="toggle-btn">
+                                        <label for="memberCount"> Show members count</label>
+                                        <input type="checkbox" id="memberCount" name="memberCount" value="Bike" checked>
+                                    </div>
+                                </div>
+                                
+
+                            <% } %>
+                    
+                            <!--1-->
+                            <!--2-->
+                            
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="actions-container">
+                        <div class="add-branch">
+                            <div class="branch-form">
+                                <form action="">
+                                    <div class="form-name">ADD BRANCH</div>
+                                    <input type="text" name="name" id="name" placeholder="Branch Name"><br>
+                                    <input type="text" name="description" id="desc" placeholder="Branch Description"><br>
+                                    <input type="submit" id="submit-btn" value="ADD BRANCH">
+                                </form>
+
+                                <form action="">
+                                    <div class="form-name">REMOVE BRANCH</div>
+                                    <input type="text" name="name" id="name" placeholder="Branch Name"><br>
+                                    <input type="submit" id="submit-btn" value="REMOVE BRANCH">
+                                </form>
+                            </div>
+                        </div>
+                        <div class="add-leader">
+                            <div class="branch-form">
+                                <form action="">
+                                    <div class="form-name">ADD LEADER</div>
+                                    <input type="text" name="email" id="name" placeholder="Leader Email"><br>
+                                    <select name="branchOption" id="branchOptions">
+                                        <option value="Select a branch">Select a branch</option>
+                                        <% for (let i = 0; i < branches.length; i++) { %>
+                                            <option value="<%= branches[i].name%>"><%= branches[i].name%></option>
+
+                                        <% } %>
+                                      </select>
+                                      
+                                    <input type="submit" id="submit-btn" value="ADD LEADER">
+                                </form>
+                                <form action="">
+                                    <div class="form-name">REMOVE LEADER</div>
+                                    <input type="text" name="name" id="name" placeholder="Leader Email"><br>
+                                    <select name="branchOption" id="branchOptions">
+                                        <option value="Select a branch">Select a branch</option>
+                                        <% for (let i = 0; i < branches.length; i++) { %>
+                                            <option value="<%= branches[i].name%>"><%= branches[i].name%></option>
+
+                                        <% } %>
+                                
+                                      </select>
+                                    
+                                      
+                                    <input type="submit" id="submit-btn" value="REMOVE LEADER">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div  id="blogs" class="tab-content">
+                    <div class="section-name">ALL BLOGS</div>
+                    <div class="blogs-container">
+                        <% for (let i = 0; i < blogs.length; i++) { %>
+                            <a href="/blog/<%=blogs[i]._id%>" style="text-decoration: none;">
+                                <div class="a-blog">
+                                    <div class="a-blog-image">
+                                        <img src="/<%= blogs[i].mainImage[0].path %>" alt="">
+                                    </div>
+                                    <div class="a-blog-title">
+                                        <div class="actual-title"><%= blogs[i].title %></div><br>
+                                        <div class="actual-date" style="font-size: 10px;color: #DDDDDD; font-weight: bold;">
+                                            <%= blogs[i].postedOn %>
+                                            <div class="a-blog-decision">
+                                                <label for="blogDecision"> Approve</label>
+                                                <input type="checkbox" id="blogDecision" name="blogDecision" checked>
+                
+                                            </div>
+                                        </div>
+    
+                                        
+                                    </div>
+                                    
+                                </div>
+                                
+                            </a>
+                        <% } %>
+                
+                    </div>
+                    
+                </div>
+                <div  id="articles" class="tab-content">
+                    <div class="section-name">ALL ARTICLES</div>
+                    <div class="blogs-container">
+                        <% for (let i = articles.length-1; i >= 0; i--) { %>
+                            <a href="/article/<%=articles[i]._id%>" style="text-decoration: none;">
+                                <div class="a-blog">
+                                    <div class="a-blog-image">
+                                        <img src="/<%= articles[i].mainImage[0].path %>" alt="">
+                                    </div>
+                                    <div class="a-blog-title">
+                                        <div class="article-title"><%= articles[i].title%></div><br>
+                                        <div class="article-date" style="font-size: 10px;color: #DDDDDD; font-weight: bold;"><%= articles[i].postedOn%></div>
+                                    </div>
+                                    <div class="a-blog-decision">
+                                        <label for="blogDecision"> Approve</label>
+                                        <input type="checkbox" id="blogDecision" name="blogDecision">
+        
+                                    </div>
+                                </div>
+                                
+                                
+                            
+                            </a>
+
+                        <% } %>
+                
+                        
+
+                </div>
+                <!--annons-->
+                
+            </div>
+        </div>
+
+        <script>
+            function selectTab(event, contentId) {
+                var tabs = document.querySelectorAll(".icons-item");
+                tabs.forEach(function(tab) {
+                    tab.classList.remove('active')
+                });
+
+                event.currentTarget.classList.add('active');
+
+                var contents = document.querySelectorAll('.tab-content');
+                contents.forEach(function(content) {
+                    content.classList.remove('active');
+                });
+
+                // Show the content section associated with the clicked tab
+                var content = document.getElementById(contentId);
+                content.classList.add('active');
+            }
+            
+        </script>
+    </body>
+    
+</html>

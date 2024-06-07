@@ -24,8 +24,13 @@
 
         <div class="navbar-container">
             <a href="/" style="text-decoration: none; cursor: pointer;"><div class="app-name">Amhara Unity</div></a>
+            <% if (signedIn) { %>
+                <a href="/submit-a-blog/<%= message.userId%>" style="text-decoration: none;"><button class="write-btn">Write</button></a>
 
-            <a href="/submit-a-blog/<%= message.userId%>" style="text-decoration: none;"><button class="write-btn">Write</button></a>
+              <% } else { %>
+              <% } %>
+            
+
         </div>
 
         <div class="content-container">

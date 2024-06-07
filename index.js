@@ -34,6 +34,7 @@ const { userIdCleaner } = require("./functions/userIdCleaner");
 
 const Branch = require("./db/models/branch");
 const Post = require("./db/models/post");
+const Article = require("./db/models/article");
 const Comment = require("./db/models/comment");
 const Announcement = require("./db/models/announcement");
 const Message = require("./db/models/messages");
@@ -110,9 +111,11 @@ app.get("/", async (req, res) =>{
         let posts = await Post.find();
         let branches = await Branch.find();
         let announs = await Announcement.find();
+        let articles = await Article.find();
 
 
-        res.render('home', {posts: posts, branches: branches, announs: announs});
+
+        res.render('home', {posts: posts, branches: branches, announs: announs, articles: articles});
 
 
 
@@ -133,6 +136,13 @@ app.get("/register", async (req, res) => {
 app.get("/admin/register", (req, res) => {
     res.render('adminRegister');
 });
+
+app.get("/admin/dashboard", (req, res) => {
+
+    res.render("adminDashboard");
+
+});
+
 //sign up
 app.post("/r/messaging", async (req, res) => {
     
@@ -213,7 +223,8 @@ app.post("/r/messaging", async (req, res) => {
 
 //post admin register
 app.post("/admin/r/messaging", async (req, res) => {
-    let { firstName, lastName, email, phone, password, city, state, age} = req.body;
+    try {
+        let { firstName, lastName, email, phone, password, city, state, age} = req.body;
 
     let hashedPassword = await bcrypt.hash(password, 10);
 
@@ -266,7 +277,12 @@ app.post("/admin/r/messaging", async (req, res) => {
     console.log(newUser);
     res.render('confirmationPage');
 
-    //res.render('dashboard', {data: theUser});
+
+    }catch(err) {
+        res.render('error', {message: err.message, desc: "You may have entered the wrong details", solution: "Try again"});
+
+
+    }
 
         
 });
@@ -317,7 +333,8 @@ app.post("/send/:userID", async(req, res) => {
 
     }catch(err) {
 
-        console.error({"message":err.message})
+        res.render('error', {message: err.message, desc: "Trouble sending message", solution: "Wait a while and try again"});
+
 
     }
 
@@ -327,30 +344,41 @@ app.post("/send/:userID", async(req, res) => {
 //send image/vide in text
 app.post('/upload/:userID', upload.single('media'), async (req, res) => {
 
-    if (!req.file) {
-        return res.status(400).send('No file uploaded.');
+    try {
+
+        if (!req.file) {
+            return res.status(400).send('No file uploaded.');
+        }
+    
+        // Send a real-time notification with Pusher
+        const userID = req.params.userID;
+        const user = await User.findById(userID);
+        const message = `/uploads/${req.file.filename}`;
+    
+        let newMessage = new Message({
+            "user": user,
+            "message": message,
+            "userID": userID
+        });
+        await newMessage.save();
+    
+        pusher.trigger('media-channel', 'new-media', {
+            url: `/uploads/${req.file.filename}`,
+            user: user
+        });
+    
+    
+        res.sendStatus(200);
+    }catch(err) {
+        res.render('error', {message: err.message, desc: "Cannot upload image now", solution: "Try again", code: err.statusCode});
+
+
     }
 
-    // Send a real-time notification with Pusher
-    const userID = req.params.userID;
-    const user = await User.findById(userID);
-    const message = `/uploads/${req.file.filename}`;
-
-    let newMessage = new Message({
-        "user": user,
-        "message": message,
-        "userID": userID
-    });
-    await newMessage.save();
-
-    pusher.trigger('media-channel', 'new-media', {
-        url: `/uploads/${req.file.filename}`,
-        user: user
-    });
 
 
-    res.sendStatus(200);
 });
+
 
 
 
@@ -369,8 +397,8 @@ app.post("/messaging", async (req, res) => {
 
             //res.send("user not found")
         }
-        const passwordMatch = bcrypt.compare(password, user.password);
-        if (passwordMatch) {
+        const passwordMatch = await bcrypt.compare(password, user.password);
+        if (user && passwordMatch) {
             const {_id, firstName, lastName, email, password, phone, city, state, age, __v} = user;
 
             const colors = ['#FF0000', 'green', '#003285', '#850F8D', '#006769', '#8E3E63', '#344C64',
@@ -423,11 +451,22 @@ app.post("/messaging", async (req, res) => {
             };
 
 
+            if (user.role === 'admin') {
+                const users = await User.find();
+                const blogs = await Post.find();
+                const articles = await Article.find();
+                const branches = await Branch.find();
 
-            res.render('dashboard', {data: theUser, messages: messages, annons: annons});
+
+                res.render('adminDashboard', {data: theUser, anons:allAnons, users:users, blogs:blogs, articles:articles, branches: branches});
+            }
+            else {
+                res.render('dashboard', {data: theUser, messages: messages, annons: annons});
+            }
         }else {
             //return res.send('an error occurred, Gilbert')
-            res.send('email or password is incorrect');
+            res.render('error', {message: "Email or Password is incorrect", desc: "Check what you entered", code: "", solution: "Try again"})
+            //res.send('email or password is incorrect');
         }
 
         
@@ -442,6 +481,8 @@ app.post("/messaging", async (req, res) => {
 
     
 });
+
+
 
 app.get("/allmessages", async(req, res) => {
 
@@ -520,7 +561,6 @@ app.get("/allusers", async(req, res) => {
 
 
 });
-
 
 
 //change to view all blogs
@@ -668,6 +708,101 @@ app.post('/submit-a-blog/:userId', upload.array('mainImage', 10), async(req, res
         res.status(500).json({message: "Internal server error"})
     }
 });
+
+
+//submit an article -- invitation only
+//get the blog content
+app.post('/submit-an-article/:userId', upload.array('mainImage', 10), async(req, res) => {
+
+    const numSections = req.body.title.length;
+    req.body.userId = req.params.userId;
+
+    const { title, desc, altText, content} = req.body;
+    const blogImages = req.files;
+
+    try {
+        const user = await User.findById(req.body.userId);
+
+        if (verifyToken(user)) {
+            const newArticle = new Article({
+                "title": title,
+                "desc": desc,
+                "mainImage": blogImages,
+                "altText": altText,
+                "content": content,
+                "userId": req.params.userId,
+                "postedBy": user.firstName + " " + user.lastName,
+                
+            });
+        
+    
+            await newArticle.save();
+
+            const payload = { 
+                "title":title, 
+                "desc":desc, 
+                "altText":altText, 
+                "content":content,
+                "mainImage": blogImages,
+                "postedOn": newArticle.postedOn,
+                "postedBy": user.firstName + ' ' + user.lastName
+            };
+        
+
+
+    
+            res.render('article', {message: payload, numSections: numSections});
+    
+        }else {
+            res.send("you are not logged in")
+        }
+
+    }catch(error) {
+        console.error(error);
+        res.status(500).json({message: "Internal server error"})
+    }
+});
+
+
+//get invitational article
+app.get('/submit-an-article/:userId', async(req, res) => {
+
+    const ID = req.params.userId;
+    const user = await User.findById(ID);
+
+
+
+    if (verifyToken(user)) {
+
+        res.render('submitArticle', {data: ID});
+
+    }else {
+        res.send("you are not logged in")
+    }
+
+
+
+    //use a new view ejs file
+});
+
+
+//article page
+app.get('/article/:blogID', async (req, res) => {
+    //const blogContent = await req.body.data;
+    //console.log('submitted not showing')
+    try {
+        const ID = req.params.blogID;
+        const message = await Article.findById(ID);
+        res.render('article', {message:message});
+
+
+    }catch(err) {
+        res.send({"error": err})
+
+    }
+});
+
+
 
 
 app.get("/allblogs/:userID", async (req, res) => {
