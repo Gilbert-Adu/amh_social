@@ -570,6 +570,7 @@ app.get('/blog/:blogID', async (req, res) => {
     try {
         const ID = req.params.blogID;
     const message = await Post.findById(ID);
+    console.log(message)
     let rawHeaders = req.rawHeaders;
     let commenter = {  _id: '66462b6058281e33f6c169d8'};
     let signedIn = false;

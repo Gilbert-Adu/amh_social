@@ -360,7 +360,7 @@ a {
 }
 
 footer {
-  border-top: 3px dotted #0A6847;
+  border-top: 1px solid #0A6847;
   margin-top: 20vh;
   
 }
@@ -430,6 +430,24 @@ footer {
 
 }
 .legals span {
+  color: #0C0C0C;
+  font-size: 10px;
+  text-align: left;
+
+}
+
+.share h3 {
+  color: #0A6847;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: left;
+  font-family: Clash Display;
+
+
+}
+
+
+.share span {
   color: #0C0C0C;
   font-size: 10px;
   text-align: left;

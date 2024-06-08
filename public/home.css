@@ -58,7 +58,7 @@
 
 .hero-form {
     position: absolute;
-    top: 155%;
+    top: 235%;
     left: 25%;
     border: 1px solid #ddd;
     width: 50vw;
@@ -107,14 +107,15 @@ input[type=text], input[type=password] {
   .mission-container {
     display: flex;
     flex-direction: row;
+    height: 170vh;
   }
 
   .mission-left {
     width: 50vw;
-    height: 100vh;
+    height: 170vh;
     font-family: Clash Display;
     text-align: center;
-    padding: 40vh 0;
+    padding: 60vh 0;
     background-color: #007F73;
     color: white;
     font-size: 30px;
@@ -124,13 +125,13 @@ input[type=text], input[type=password] {
     text-align: center;
     margin: 5vh 5vw;
     height: fit-content;
-    font-size: 12px;
+    font-size: 15px;
     line-height: 2;
  }
   .mission-right {
     border: 1px solid #ddd;
     width: 50vw;
-    height: 100vh;
+    height: 170vh;
 
 
   }
@@ -161,23 +162,24 @@ input[type=text], input[type=password] {
     grid-template-columns: auto auto auto auto;
     height: auto;
     display: grid;
-    padding: 3vh 0;
+    padding: 3vh 5vw;
   }
 
   .team-member {
     border: 1px solid #ddd;
-    width: 33vw;
-    margin: 5vh 0.5vw;
-    height: 50vh;
+    width: 20vw;
+    margin: 5vh 0.1vw;
+    height: 20vh;
     cursor: pointer;
   }
 
   .member-info {
-    width: 33vw;
+    width: 19.8vw;
     border: 2px solid #ddd;
     text-align: center;
     height: 18%;
     padding: 1vh 1vw;
+    height: 5vh;
   }
 
   .member-img {
@@ -516,7 +518,7 @@ input[type=text], input[type=password] {
     text-align: left;
   
   }
-  
+
 
 
 /* for tablets */

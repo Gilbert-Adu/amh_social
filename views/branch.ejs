@@ -13,6 +13,10 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+      
+      
     </head>
     <body>
         <!--navbar container-->
@@ -27,7 +31,7 @@
         <!--branch header-->
         <div class="branch-header">
             <!--branch name-->
-            <h2 class="branch-name"><span style="color: #007F73; font-family: Clash Display;text-decoration: underline;"> <%= branch.name %></span> <span style="font-size: 14px;">(<%= branch.numMembers %> members)</span> </h2>
+            <h2 class="branch-name"><span style="color: #007F73; font-family: Clash Display;text-decoration: underline;"> <%= branch.name %></span> <span style="font-size: 14px;display: none;">(<%= branch.numMembers %> members)</span> </h2>
         </div>
 
         
@@ -40,45 +44,45 @@
                     <div class="team">
                       <ul class="auto-grid" role="list">
                         <li>
-                          <a href="https://swop.link/cool" target=_blank" class="profile">
-                            <h2 class="profile__name">Anita Simmons</h2>
+                          <a href="" target=_blank" class="profile">
+                            <h2 class="profile__name">To be elected</h2>
                             <p>Founder</p>
-                            <img alt="Anita Simmons" src="/images/avatar.jpg" />
+                            <img alt="Anita Simmons" src="/images/ethiopia.png" />
                           </a>
                         </li>
                         <li>
-                          <a href="https://swop.link/cool" target=_blank" class="profile">
-                            <h2 class="profile__name">Celina Harris</h2>
-                            <p>Creative Director</p>
-                            <img alt="Profile shot for Celina Harris" src="/images/avatar.jpg" />
+                          <a href="" target=_blank" class="profile">
+                            <h2 class="profile__name">To be elected</h2>
+                            <p>Communications Director</p>
+                            <img alt="Profile shot for Celina Harris" src="/images/ethiopia.png" />
                           </a>
                         </li>
                         <li>
-                          <a href="https://swop.link/cool" target=_blank" class="profile">
-                            <h2 class="profile__name">Ruby Morris</h2>
-                            <p>Technical Lead</p>
-                            <img alt="Profile shot for Ruby Morris" src="/images/avatar.jpg" />
+                          <a href="" target=_blank" class="profile">
+                            <h2 class="profile__name">To be elected</h2>
+                            <p>Finance Lead</p>
+                            <img alt="Profile shot for Ruby Morris" src="/images/ethiopia.png" />
                           </a>
                         </li>
                         <li>
-                          <a href="https://swop.link/cool" target=_blank" class="profile">
-                            <h2 class="profile__name">Nicholas Castro</h2>
-                            <p>Designer</p>
-                            <img alt="Profile shot for Nicholas Castro" src="/images/avatar.jpg" />
+                          <a href="" target=_blank" class="profile">
+                            <h2 class="profile__name">To be elected</h2>
+                            <p>Secretary</p>
+                            <img alt="Profile shot for Nicholas Castro" src="/images/ethiopia.png" />
                           </a>
                         </li>
                         <li>
-                          <a href="https://swop.link/cool" target=_blank" class="profile">
-                            <h2 class="profile__name">Marc Dixon</h2>
-                            <p>Developer</p>
-                            <img alt="Profile shot for Marc Dixon" src="/images/avatar.jpg" />
+                          <a href="" target=_blank" class="profile">
+                            <h2 class="profile__name">To be elected</h2>
+                            <p>Associate Executive</p>
+                            <img alt="Profile shot for Marc Dixon" src="/images/ethiopia.png" />
                           </a>
                         </li>
                         <li>
-                          <a href="https://swop.link/cool" target=_blank" class="profile">
-                            <h2 class="profile__name">Chad Chadson</h2>
-                            <p>Intern</p>
-                            <img alt="Profile shot for Chad" src="/images/avatar.jpg" />
+                          <a href="" target=_blank" class="profile">
+                            <h2 class="profile__name">To be elected</h2>
+                            <p>Associate Executive</p>
+                            <img alt="Profile shot for Chad" src="/images/ethiopia.png" />
                           </a>
                         </li>
                       </ul>
@@ -116,15 +120,6 @@
                 <section class="contacts">
                     <h3>Contact</h3><br><br>
                     <span>info@amharaunity.com</span><br>
-                    <span>+1-555-555-5555</span>
-
-                </section>
-                <section class="location">
-                    <h3>Find Us</h3><br><br>
-                    <span>Framer Street 22</span><br>
-                    <span>Amsterdam, 06355</span><br>
-                    <span>Netherlands</span><br>
-
 
                 </section>
                 <section class="legals">
@@ -134,8 +129,67 @@
 
                 </section>
 
+                <!--socials-->
+                <section class="share">
+                  <h3>Share</h3><br><br>
+                  <div class="share-buttons">
+                      <span><a href="#" class="share-button facebook" id="share-facebook"><i class="fab fa-facebook-f" style="font-size: 20px; margin: 0 0.2vw;"></i></a></span>
+                      <span><a href="#" class="share-button twitter" id="share-twitter"><i class="fab fa-twitter" style="font-size: 20px; margin: 0 0.2vw;"></i></a></span>
+                      <span><a href="#" class="share-button whatsapp" id="share-whatsapp"><i class="fab fa-whatsapp" style="font-size: 20px; margin: 0 0.2vw;"></i></a></span>
+                      <span><a href="#" class="share-button email" id="share-email"><i class="fas fa-envelope" style="font-size: 20px; margin: 0 0.2vw;"></i></a></span>
+                      <span><a href="#" class="share-button linkedin" id="share-linkedin"><i class="fab fa-linkedin-in" style="font-size: 20px; margin: 0 0.2vw;"></i></a></span>
+                      <span><a href="#" class="share-button sms" id="share-sms"><i class="fas fa-sms" style="font-size: 20px; margin: 0 0.2vw;"></i></a></span>
+              
+                  </div>
+              
+              </section>
+
+
             </div>
         </footer>
+
+        <script>
+          document.getElementById('share-facebook').addEventListener('click', function() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${text}`, 'sharer', 'width=626,height=436');
+        });
+
+        document.getElementById('share-twitter').addEventListener('click', function() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, 'sharer', 'width=626,height=436');
+        });
+
+        document.getElementById('share-whatsapp').addEventListener('click', function() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://api.whatsapp.com/send?text=${text}%20${url}`, 'sharer', 'width=626,height=436');
+        });
+
+        document.getElementById('share-email').addEventListener('click', function() {
+            const url = encodeURIComponent(window.location.href);
+            const subject = encodeURIComponent(document.title);
+            const body = encodeURIComponent(`Check out this page: ${url}`);
+            window.location.href = `mailto:?subject=${subject}&body=${body}`;
+        });
+
+        document.getElementById('share-linkedin').addEventListener('click', function() {
+            const url = encodeURIComponent(window.location.href);
+            const title = encodeURIComponent(document.title);
+            const summary = encodeURIComponent('Check out this page:');
+            window.open(`https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${title}&summary=${summary}`, 'sharer', 'width=626,height=436');
+        });
+
+        document.getElementById('share-sms').addEventListener('click', function() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`sms:?&body=${text}%20${url}`);
+        });
+
+
+
+        </script>
         
 
         
