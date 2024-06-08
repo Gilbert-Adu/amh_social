@@ -28,20 +28,29 @@
                 <form action="/admin/r/messaging" method="POST" style="margin-top: 2vh;">
                   <input type="text" id="firstName" name="firstName" placeholder="First name" required><br><br>
                   <input type="text" id="lastName" name="lastName" placeholder="Last name (optional)"><br><br>
-
+                  <input type="password" id="password" name="password"  placeholder="Password" required><br><br>
                     <input type="email" id="email" name="email" placeholder="Email" required><br><br>
                     <input type="text" id="phone" name="phone" placeholder="Phone number (optional)"><br><br>
 
-                    <input type="password" id="password" name="password"  placeholder="Password" required><br><br>
 
-                    <input type="text" id="city" name="city" placeholder="Your City" required><br><br>
-                    <input type="text" id="state" name="state" placeholder="Your State" required><br><br>
-
+                    <label for="options"></label>
+                    <select id="options" name="branchOption" style="width: 23vw;height: 7vh;border: 1px solid #ddd;margin-bottom: 5vh;margin-left: 5vw;">
+                        <option value="Please select a branch">Please select a branch</option>
+                        <% for (let i = 0; i < branches.length; i++) { %>
+                            <option value="<%= branches[i].name %>"><%= branches[i].name %></option>
+                        <% } %>
+                
+                    </select><br>
+            
                     <label for="age" id="age-label">I am 18+</label>
                     <input type="checkbox" name="age"><br><br>
+                    <label for="notRobot" id="robot-label">I am not a robot</label>
+                    <input type="checkbox" id="notRobot" name="notRobot" required style="margin-bottom: 3vh;"> <br><br>
+    
 
                     <input type="submit" id="log-in" value="Create account" onclick="logIn()">
                 </form>
+
             </div>
             
         </span>

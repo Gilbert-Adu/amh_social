@@ -108,7 +108,7 @@ app.set('view engine', 'ejs');
 
 app.get("/", async (req, res) =>{
     try {
-        let posts = await Post.find();
+        let posts = await Post.find({blogDecision: 'yes'});
         let branches = await Branch.find();
         let announs = await Announcement.find();
         let articles = await Article.find();
@@ -133,8 +133,9 @@ app.get("/register", async (req, res) => {
     res.render('register', {branches: branches});
 });
 //get admin register page
-app.get("/admin/register", (req, res) => {
-    res.render('adminRegister');
+app.get("/admin/register", async(req, res) => {
+    const branches = await Branch.find();
+    res.render('adminRegister', {branches: branches});
 });
 
 app.get("/admin/dashboard", (req, res) => {
@@ -274,7 +275,6 @@ app.post("/admin/r/messaging", async (req, res) => {
 
     sendConfirmationEmail(theUser);
 
-    console.log(newUser);
     res.render('confirmationPage');
 
 
@@ -562,11 +562,45 @@ app.get("/allusers", async(req, res) => {
 
 });
 
+app.post("/approveBlog/:userID/:blogID", async(req, res) => {
 
+
+    await Post.updateOne({ _id: req.params.blogID }, { $set: { blogDecision: req.body.blogDecision } });
+    
+    const blogs = await Post.find();
+    const theUser = await User.findById(req.params.userID);
+    const users = await User.find();
+    const allAnons = await Announcement.find();
+    const articles = await Article.find();
+    const branches = await Branch.find();
+
+    res.render('adminDashboard', {data: theUser, anons:allAnons, users:users, blogs:blogs, articles:articles, branches: branches});
+
+
+});
+
+//toggle branch member count
+app.post("/showMemberCount/:userID/:branchID", async(req, res) => {
+
+
+    await Branch.updateOne({ _id: req.params.branchID }, { $set: { memberCount: req.body.memberCount } });
+    
+    const blogs = await Post.find();
+    const theUser = await User.findById(req.params.userID);
+    const users = await User.find();
+    const allAnons = await Announcement.find();
+    const articles = await Article.find();
+    const branches = await Branch.find();
+
+
+
+    res.render('adminDashboard', {data: theUser, anons:allAnons, users:users, blogs:blogs, articles:articles, branches: branches});
+
+
+});
 //change to view all blogs
 app.get('/blog/:blogID', async (req, res) => {
     //const blogContent = await req.body.data;
-    //console.log('submitted not showing')
     try {
         const ID = req.params.blogID;
     const message = await Post.findById(ID);
@@ -574,13 +608,11 @@ app.get('/blog/:blogID', async (req, res) => {
     let rawHeaders = req.rawHeaders;
     let commenter = {  _id: '66462b6058281e33f6c169d8'};
     let signedIn = false;
-    //console.log(req.rawHeaders)
     if (req.headers.referer.includes('http://localhost:3000/allblogs') || req.headers.referer.includes('https://amh-social.onrender.com/allblogs')) {
         commenter = await User.findById(req.headers.referer.split("/")[req.headers.referer.split('/').length - 1]);
         signedIn = true;
 
     }else{
-        console.log(req.headers.referer)
         commenter = {};
         signedIn = false;
 
@@ -621,7 +653,6 @@ app.post('/comment/:blogID/:commenterID', async (req, res) => {
         //const message = await Post.findById(ID);
         //let initialComments = message.comments;
         //await Post.updateOne({ _id: ID }, { $set: { comments: initialComments.push(payload) } });
-        //console.log(await Comment.find())
         pusher.trigger('comment-channel', 'comment', payload);
         res.sendStatus(200);
 
@@ -635,6 +666,7 @@ app.post('/comment/:blogID/:commenterID', async (req, res) => {
 
 
 });
+
 
 
 app.get('/submit-a-blog/:userId', async(req, res) => {
@@ -684,7 +716,6 @@ app.post('/submit-a-blog/:userId', upload.array('mainImage', 10), async(req, res
     
             await newPost.save();
 
-            console.log(blogImages.path)
             const payload = { 
                 "title":title, 
                 "desc":desc, 
@@ -790,7 +821,6 @@ app.get('/submit-an-article/:userId', async(req, res) => {
 //article page
 app.get('/article/:blogID', async (req, res) => {
     //const blogContent = await req.body.data;
-    //console.log('submitted not showing')
     try {
         const ID = req.params.blogID;
         const message = await Article.findById(ID);
@@ -807,7 +837,7 @@ app.get('/article/:blogID', async (req, res) => {
 
 
 app.get("/allblogs/:userID", async (req, res) => {
-    const posts = await Post.find();
+    const posts = await Post.find({blogDecision: 'yes'});
 
     const theUser = req.params.userID;
     const ads = []

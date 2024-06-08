@@ -119,7 +119,13 @@
                                     <a href="/blog/<%=blogs[i]._id%>" style="text-decoration: none;">
                                         <div class="allblogs-wrapper">
                                             <div class="blog-image">
-                                                <img src="/<%= blogs[i].mainImage[0].path %>" alt="">
+                                                <% if (blogs[i].mainImage.length != 0) { %>
+                                                    <img src="/<%= blogs[i].mainImage[0].path %>" alt="">
+                                                  <% } else { %>
+                                                    <img src="/images/ethiopia.png" alt="">
+                            
+                                                  <% } %>
+                                                
                                             </div>
                                             <div class="blog-heading">
                                                 <div class="blog-title"><%= blogs[i].title %></div><br>
@@ -188,8 +194,31 @@
                                 <div class="a-branch">
                                     <div class="branch-name"><%= branches[i].name %></div>
                                     <div class="toggle-btn">
-                                        <label for="memberCount"> Show members count</label>
-                                        <input type="checkbox" id="memberCount" name="memberCount" value="Bike" checked>
+                                        <form action="/showMemberCount/<%= data._id %>/<%=branches[i]._id%>" method="POST">
+                                            Show Member Count: &nbsp;&nbsp;
+
+                                            <% if (branches[i].memberCount == 'yes') { %>
+                                                <label for="memberCount"> Yes</label>
+                                                <input type="checkbox" id="memberCount" name="memberCount" value="yes" checked>
+                                                <label for="memberCount"> No</label>
+                                                <input type="checkbox" id="memberCount" name="memberCount" value="no"> &nbsp;
+                                                <input type="submit" value="Update">
+
+                        
+                                              <% } else { %>
+                                                <label for="memberCount"> Yes</label>
+                                                <input type="checkbox" id="memberCount" name="memberCount" value="yes">
+                                                <label for="memberCount"> No</label>
+                                                <input type="checkbox" id="memberCount" name="memberCount" value="no" checked>&nbsp;
+                                                <input type="submit" value="Update">
+
+                        
+                        
+                                              <% } %>
+                                            
+                                        
+                                        </form>
+                                        
                                     </div>
                                 </div>
                                 
@@ -261,17 +290,45 @@
                             <a href="/blog/<%=blogs[i]._id%>" style="text-decoration: none;">
                                 <div class="a-blog">
                                     <div class="a-blog-image">
-                                        <img src="/<%= blogs[i].mainImage[0].path %>" alt="">
+                                        <% if (blogs[i].mainImage.length != 0) { %>
+                                            <img src="/<%= blogs[i].mainImage[0].path %>" alt="">
+                    
+                                          <% } else { %>
+                                            <img src="/images/ethiopia.png" alt="">
+                    
+                                          <% } %>
+                                        
                                     </div>
                                     <div class="a-blog-title">
                                         <div class="actual-title"><%= blogs[i].title %></div><br>
                                         <div class="actual-date" style="font-size: 10px;color: #DDDDDD; font-weight: bold;">
                                             <%= blogs[i].postedOn %>
-                                            <div class="a-blog-decision">
-                                                <label for="blogDecision"> Approve</label>
-                                                <input type="checkbox" id="blogDecision" name="blogDecision" checked>
-                
-                                            </div>
+                                            
+                                                <div class="a-blog-decision">
+                                                    <form action="/approveBlog/<%= data._id %>/<%=blogs[i]._id%>" method="POST">
+
+                                                    <% if (blogs[i].blogDecision == 'yes') { %>
+                                                        <label for="blogDecision">Yes</label>
+                                                        <input type="checkbox" id="blogDecision" name="blogDecision" value="yes" checked>
+
+                                                        <label for="blogDecision">No</label>
+                                                        <input type="checkbox" id="blogDecision" name="blogDecision" value="no">
+        
+        
+                                                      <% } else { %>
+                                                        <label for="blogDecision">Yes</label>
+                                                        <input type="checkbox" id="blogDecision" name="blogDecision" value="yes">
+
+                                                        <label for="blogDecision">No</label>
+                                                        <input type="checkbox" id="blogDecision" name="blogDecision" value="no" checked>
+        
+
+                                                      <% } %>
+                                                    
+                                                    <input type="submit" value="Update">
+                                                </form>
+
+                                                </div>
                                         </div>
     
                                         
@@ -298,11 +355,14 @@
                                         <div class="article-title"><%= articles[i].title%></div><br>
                                         <div class="article-date" style="font-size: 10px;color: #DDDDDD; font-weight: bold;"><%= articles[i].postedOn%></div>
                                     </div>
-                                    <div class="a-blog-decision">
-                                        <label for="blogDecision"> Approve</label>
-                                        <input type="checkbox" id="blogDecision" name="blogDecision">
-        
-                                    </div>
+                                        <div class="a-blog-decision">
+                                            <label for="blogDecision"> Approve</label>
+                                            <input type="checkbox" id="blogDecision" name="blogDecision">
+                                            <input type="checkbox" id="blogDecision" name="blogDecision">
+
+                                            <input type="submit">
+            
+                                        </div>
                                 </div>
                                 
                                 
@@ -318,6 +378,20 @@
                 
             </div>
         </div>
+
+        <script>
+        const checkbox = document.getElementById("blogDecision");
+
+            checkbox.addEventListener("change", () => {
+        if (checkbox.checked) {
+            console.log("Checkbox is checked");
+        } else {
+            console.log("Checkbox is unchecked");
+        }
+    });
+
+
+        </script>
 
         <script>
             function selectTab(event, contentId) {

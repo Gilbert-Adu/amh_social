@@ -10,6 +10,8 @@ const branchSchema = new mongoose.Schema({
     
     leadership: {type: Array, 
         default: () => []},
+
+    memberCount: {type: String, default: 'no'},
     
     members: {type: Array, 
             default: () => []},

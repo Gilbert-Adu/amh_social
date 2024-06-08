@@ -139,7 +139,9 @@ input[type=checkbox] {
   
 }
 
-#age-label {
+#age-label, #robot-label {
+
+  margin-left: 5vw;
 
 
 }

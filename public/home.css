@@ -295,19 +295,20 @@ input[type=text], input[type=password] {
     height: fit-content;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     overflow-x: scroll;
   
   }
   
   .guest-article {
-    border: 1px solid #DDDDDD;
     background-color: #FFF7F1;
     width: 20vw;
     height: fit-content;
-    margin-left: 2vw;
+    margin-left: 0.5vw;
     margin-top: 10vh;
     cursor: pointer;
   }
+  /*#DDDDDD*/
   
   .article-info-container {
     display: flex;

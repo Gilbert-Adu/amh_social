@@ -30,33 +30,37 @@
             <% } else { %>
                 <div class="main-blogs">
                     <% for (let i = 0; i < blogs.length; i++) { %>
-                        <a href="/blog/<%= blogs[i]._id%>" style="text-decoration: none;">
-                            <div class="a-blog-container">
-                                <div class="blog-content">
-                                    <div class="poster-info">
-                                        <span class="postedBy"><%= blogs[i].postedBy %></span> |
-                                        <span class="postedOn"><%= blogs[i].postedOn %></span><br><br>
+
+                            <a href="/blog/<%= blogs[i]._id%>" style="text-decoration: none;">
+                                <div class="a-blog-container">
+                                    <div class="blog-content">
+                                        <div class="poster-info">
+                                            <span class="postedBy"><%= blogs[i].postedBy %></span> |
+                                            <span class="postedOn"><%= blogs[i].postedOn %></span><br><br>
+                                        </div>
+                                        <div class="blog-text">
+        
+                                            <% if (Array.isArray(blogs[i].title)) { %>
+                                                <h2 class="blog-title"><%= blogs[i].title[0] %></h2>
+        
+                                              <% } else { %>
+                                                <h2 class="blog-title"><%= blogs[i].title %></h2>
+                                              <% } %>
+                                            
+                                            <p class="blog-desc"><%= blogs[i].desc %> </p>
+                                        </div>
                                     </div>
-                                    <div class="blog-text">
-    
-                                        <% if (Array.isArray(blogs[i].title)) { %>
-                                            <h2 class="blog-title"><%= blogs[i].title[0] %></h2>
-    
-                                          <% } else { %>
-                                            <h2 class="blog-title"><%= blogs[i].title %></h2>
-                                          <% } %>
-                                        
-                                        <p class="blog-desc"><%= blogs[i].desc %> </p>
+                                    <div class="blog-image">
+                                        <img src="/<%= blogs[i].mainImage[0].path %>" alt="">
                                     </div>
                                 </div>
-                                <div class="blog-image">
-                                    <img src="/<%= blogs[i].mainImage[0].path %>" alt="">
-                                </div>
-                            </div>
+                                
+                            </a>
                             
-                        </a>
+    
+
                         
-                    <% } %>
+                <% } %>
         
                     
                 </div>

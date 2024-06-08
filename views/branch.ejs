@@ -31,7 +31,16 @@
         <!--branch header-->
         <div class="branch-header">
             <!--branch name-->
-            <h2 class="branch-name"><span style="color: #007F73; font-family: Clash Display;text-decoration: underline;"> <%= branch.name %></span> <span style="font-size: 14px;display: none;">(<%= branch.numMembers %> members)</span> </h2>
+            <h2 class="branch-name">
+              <span style="color: #007F73; font-family: Clash Display;text-decoration: underline;">
+                <%= branch.name %></span> <span style="font-size: 14px;">
+                  <% if (branch.memberCount == 'yes') { %>
+                    (<%= branch.numMembers %> members)</span>
+
+
+                  <% } %>
+                
+                </h2>
         </div>
 
         
