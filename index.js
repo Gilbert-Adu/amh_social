@@ -475,7 +475,7 @@ app.post("/messaging", async (req, res) => {
                 const branches = await Branch.find();
 
 
-                res.render('adminDashboard', {data: theUser, anons:allAnons, users:users, blogs:blogs, articles:articles, branches: branches});
+                res.render('adminDashboard', {data: theUser, anons:allAnons, users:users, blogs:blogs, articles:articles, branches: branches, signedIn: true});
             }
             else {
                 res.render('dashboard', {data: theUser, messages: messages, annons: annons});

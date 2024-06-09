@@ -307,7 +307,15 @@
                                         
                                     </div>
                                     <div class="a-blog-title">
-                                        <div class="actual-title"><%= blogs[i].title %></div><br>
+                                        <div class="actual-title">
+                                            <% if (Array.isArray(blogs[i].title)) { %>
+                                                <%= blogs[i].title[0] %>
+        
+                                              <% } else { %>
+                                                <%= blogs[i].title %>
+                                              <% } %>
+                                            
+                                        </div><br>
                                         <div class="actual-date" style="font-size: 10px;color: #DDDDDD; font-weight: bold;">
                                             <%= blogs[i].postedOn %>
                                             
