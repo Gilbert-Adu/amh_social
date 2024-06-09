@@ -617,6 +617,7 @@ app.post("/showMemberCount/:userID/:branchID", async(req, res) => {
 
 });
 //change to view all blogs
+//see if image persists in chat
 app.get('/blog/:blogID', async (req, res) => {
     //const blogContent = await req.body.data;
     try {
