@@ -116,7 +116,7 @@
 
 <section class="guest-articles-container">
     <% if (articles.length > 0) { %>
-        <% for(let i = 0; i < posts.length; i++) { %>
+        <% for(let i = 0; i < articles.length; i++) { %>
         
             <div>
                 <a href="/article/<%= articles[i]._id %>" style="text-decoration: none;cursor: pointer;">
@@ -135,7 +135,12 @@
                             <div class="article-image">
 
                                 <% if (articles[i].mainImage != []) { %>
-                                    <img src="/<%= articles[i].mainImage[0].path%>" alt="">
+                                    <!--
+                                        <img src="/<%= articles[i].mainImage[0].path%>" alt="">
+
+                                    -->
+                                    <img src="/images/ethiopia.png" alt="">
+
 
                                   <% } else { %>
                                     <img src="/images/ethiopia.png" alt="">
@@ -314,7 +319,11 @@
                                     <div class="article-image">
 
                                         <% if (posts[i].mainImage.length != 0) { %>
-                                            <img src="https://amh-social.onrender.com/<%= posts[i].mainImage[0].path %>" alt="">
+                                            <!--
+                                                <img src="https://amh-social.onrender.com/<%= posts[i].mainImage[0].path %>" alt="">
+                                            -->
+                                            <img src="/images/ethiopia.png" alt="">
+
                     
                                           <% } else { %>
                                             <img src="/images/ethiopia.png" alt="">

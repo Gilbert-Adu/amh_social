@@ -714,13 +714,16 @@ app.get('/submit-a-blog/:userId', async(req, res) => {
 });
 
 //get the blog content
-app.post('/submit-a-blog/:userId', upload.array('mainImage', 10), async(req, res) => {
+//removed upload.array('mainImage', 10)
+app.post('/submit-a-blog/:userId', async(req, res) => {
 
     const numSections = req.body.title.length;
     req.body.userId = req.params.userId;
 
     const { title, desc, altText, content} = req.body;
-    const blogImages = req.files;
+    //const blogImages = req.files;
+    //  "mainImage": blogImages,
+
 
     try {
         const user = await User.findById(req.body.userId);
@@ -729,7 +732,6 @@ app.post('/submit-a-blog/:userId', upload.array('mainImage', 10), async(req, res
             const newPost = new Post({
                 "title": title,
                 "desc": desc,
-                "mainImage": blogImages,
                 "altText": altText,
                 "content": content,
                 "userId": req.params.userId,
@@ -745,7 +747,6 @@ app.post('/submit-a-blog/:userId', upload.array('mainImage', 10), async(req, res
                 "desc":desc, 
                 "altText":altText, 
                 "content":content,
-                "mainImage": blogImages,
                 "postedOn": newPost.postedOn,
                 "postedBy": user.firstName + ' ' + user.lastName
             };
@@ -768,13 +769,13 @@ app.post('/submit-a-blog/:userId', upload.array('mainImage', 10), async(req, res
 
 //submit an article -- invitation only
 //get the blog content
-app.post('/submit-an-article/:userId', upload.array('mainImage', 10), async(req, res) => {
+//removed upload.array('mainImage', 10)
+app.post('/submit-an-article/:userId', async(req, res) => {
 
     const numSections = req.body.title.length;
     req.body.userId = req.params.userId;
 
     const { title, desc, altText, content} = req.body;
-    const blogImages = req.files;
 
     try {
         const user = await User.findById(req.body.userId);
@@ -783,7 +784,6 @@ app.post('/submit-an-article/:userId', upload.array('mainImage', 10), async(req,
             const newArticle = new Article({
                 "title": title,
                 "desc": desc,
-                "mainImage": blogImages,
                 "altText": altText,
                 "content": content,
                 "userId": req.params.userId,
@@ -799,7 +799,6 @@ app.post('/submit-an-article/:userId', upload.array('mainImage', 10), async(req,
                 "desc":desc, 
                 "altText":altText, 
                 "content":content,
-                "mainImage": blogImages,
                 "postedOn": newArticle.postedOn,
                 "postedBy": user.firstName + ' ' + user.lastName
             };

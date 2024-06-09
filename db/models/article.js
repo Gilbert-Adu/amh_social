@@ -3,8 +3,8 @@ const mongoose = require("mongoose");
 const articleSchema = new mongoose.Schema({
     title: {type: mongoose.Schema.Types.Mixed, required: true},
     desc: String,
-    mainImage: {type: mongoose.Schema.Types.Mixed, required: true},
-    altText: {type: mongoose.Schema.Types.Mixed, required: true},
+    mainImage: {type: mongoose.Schema.Types.Mixed, required: false},
+    altText: {type: mongoose.Schema.Types.Mixed, required: false},
     content: {type: mongoose.Schema.Types.Mixed, required: true},
     comments: {type: Array, default: () => []},
     userId: String,

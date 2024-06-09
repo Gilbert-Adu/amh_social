@@ -31,12 +31,16 @@
         </div>
 
         <section class="form-section">
-          <form action="/submit-a-blog/<%= data %>" method="POST" class="blog-form" id="blog-form" enctype="multipart/form-data">
+          <!--removed  enctype="multipart/form-data"-->
+          <form action="/submit-a-blog/<%= data %>" method="POST" class="blog-form" id="blog-form">
             <input type="text" placeholder="Blog title" id="title" name="title" style="width: 100%;height: 4vh;border: 1px solid #ddd; margin-bottom: 0.5vh;"><br>
             <input type="text" placeholder="Your description goes here..." id="desc" name="desc" style="width: 100%;height: 7vh;border: 1px solid #ddd;margin-bottom: 0.5vh;"><br>
-            <input type="file"  accept="image/*" id="mainImage" name="mainImage" style="width: 100%;height: 7vh;border: 1px solid #ddd;margin-bottom: 0.5vh;"><br>
+            <!--
+              <input type="file"  accept="image/*" id="mainImage" name="mainImage" style="width: 100%;height: 7vh;border: 1px solid #ddd;margin-bottom: 0.5vh;"><br>
+
+            -->
             <input type="text" placeholder="Short image description" id="altText" name="altText" style="width: 100%;height: 4vh;border: 1px solid #ddd; margin-bottom: 0.5vh;"><br>
-            <textarea name="content" id="" cols="70" rows="15" style="border: 1px solid #ddd;">Your text here...</textarea><br>
+            <textarea name="content" id="" cols="89" rows="15" style="border: 1px solid #ddd;">Your text here...</textarea><br>
             <section class="new-form-section" id="new-form-section"></section>
             <input type="submit" value="Submit" style="background-color: #007F73;border: 1px solid #007F73;color: white;border-radius: 5px;cursor: pointer;">
 
@@ -46,6 +50,8 @@
         
         <script>
           var timesClicked = 1;
+          //removed <input type="file"  accept="image/*" id="mainImage" name="mainImage" style="width: 100%;height: 7vh;border: 1px solid #ddd;margin-bottom: 0.5vh;margin-bottom: 2vh"><br>
+
             document.getElementById('add-section').addEventListener('click', function() {
               var newSection = document.createElement('section');
               timesClicked++;
@@ -53,9 +59,8 @@
               <strong>Paragraph ${timesClicked}</strong>
     
               <input type="text" placeholder="Your paragraph ${timesClicked} title goes here..." id="title" name="title" style="width: 100%;height: 4vh;border: 1px solid #ddd; margin-top: 3vh;margin-bottom: 2vh"><br>
-              <input type="file"  accept="image/*" id="mainImage" name="mainImage" style="width: 100%;height: 7vh;border: 1px solid #ddd;margin-bottom: 0.5vh;margin-bottom: 2vh"><br>
             <input type="text" placeholder="Short image description" id="altText" name="altText" style="width: 100%;height: 4vh;border: 1px solid #ddd; margin-bottom: 0.5vh;margin-bottom: 2vh"><br>
-              <textarea name="content" id="" cols="70" rows="15" style="border: 1px solid #ddd;margin-bottom: 2vh">Your paragraph ${timesClicked} text goes here...</textarea><br>
+              <textarea name="content" id="" cols="89" rows="15" style="border: 1px solid #ddd;margin-bottom: 2vh">Your paragraph ${timesClicked} text goes here...</textarea><br>
               `;
 
               document.getElementById('new-form-section').appendChild(newSection);

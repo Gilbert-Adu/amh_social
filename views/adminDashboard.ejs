@@ -122,13 +122,11 @@
                                         <a href="/blog/<%=blogs[i]._id%>" style="text-decoration: none;">
                                             <div class="allblogs-wrapper">
                                                 <div class="blog-image">
-                                                    <% if (blogs[i].mainImage.length != 0) { %>
-                                                        <img src="/<%= blogs[i].mainImage[0].path %>" alt="">
-                                                      <% } else { %>
+                                                        
                                                         <img src="/images/ethiopia.png" alt="">
-                                
-                                                      <% } %>
-                                                    
+
+                                                        
+                                                      
                                                 </div>
                                                 <div class="blog-heading">
                                                     <div class="blog-title"><%= blogs[i].title %></div><br>
@@ -153,7 +151,10 @@
                                     <a href="/article/<%=articles[i]._id%>" style="text-decoration: none;">
                                         <div class="allblogs-wrapper">
                                             <div class="blog-image">
-                                                <img src="/<%= articles[i].mainImage[0].path %>" alt="">
+                                                
+                                                <img src="/images/ethiopia.png" alt="">
+
+                                                
                                             </div>
                                             <div class="blog-heading">
                                                 <div class="blog-title"><%= articles[i].title %></div><br>
@@ -297,14 +298,11 @@
                             <a href="/blog/<%=blogs[i]._id%>" style="text-decoration: none;">
                                 <div class="a-blog">
                                     <div class="a-blog-image">
-                                        <% if (blogs[i].mainImage.length != 0) { %>
-                                            <img src="/<%= blogs[i].mainImage[0].path %>" alt="">
-                    
-                                          <% } else { %>
+                                            
                                             <img src="/images/ethiopia.png" alt="">
+
                     
-                                          <% } %>
-                                        
+                                          
                                     </div>
                                     <div class="a-blog-title">
                                         <div class="actual-title">
@@ -364,7 +362,9 @@
                             <a href="/article/<%=articles[i]._id%>" style="text-decoration: none;">
                                 <div class="a-blog">
                                     <div class="a-blog-image">
-                                        <img src="/<%= articles[i].mainImage[0].path %>" alt="">
+                                        
+                                        <img src="/images/ethiopia.png" alt="">
+
                                     </div>
                                     <div class="a-blog-title">
                                         <div class="article-title"><%= articles[i].title%></div><br>
