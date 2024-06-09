@@ -55,7 +55,7 @@
                                 <div class="summary-name" style="color: white;">Total Users</div>
                                 <div class="summary-number" style="color: white;"><%= users.length%></div>
                                 <hr>
-                                <div class="summary-date" style="color: #007F73; font-weight: bold;"><a href="/" style="text-decoration: none;">Join the Chat</a></div>
+                                <div class="summary-date" style="color: #007F73; font-weight: bold;"><a href="/adminChat/<%= data._id %>" style="text-decoration: none;">Join the Chat</a></div>
 
                             </div>
                             <!--2-->
@@ -116,24 +116,31 @@
                                 <div class="section-name">APPROVED BLOGS</div>
                                 <!--blogs start-->
                                 <% for (let i = blogs.length-1; i >= 0; i--) { %>
-                                    <a href="/blog/<%=blogs[i]._id%>" style="text-decoration: none;">
-                                        <div class="allblogs-wrapper">
-                                            <div class="blog-image">
-                                                <% if (blogs[i].mainImage.length != 0) { %>
-                                                    <img src="/<%= blogs[i].mainImage[0].path %>" alt="">
-                                                  <% } else { %>
-                                                    <img src="/images/ethiopia.png" alt="">
-                            
-                                                  <% } %>
-                                                
+
+                                    <% if (blogs[i].blogDecision == 'yes') { %>
+
+                                        <a href="/blog/<%=blogs[i]._id%>" style="text-decoration: none;">
+                                            <div class="allblogs-wrapper">
+                                                <div class="blog-image">
+                                                    <% if (blogs[i].mainImage.length != 0) { %>
+                                                        <img src="/<%= blogs[i].mainImage[0].path %>" alt="">
+                                                      <% } else { %>
+                                                        <img src="/images/ethiopia.png" alt="">
+                                
+                                                      <% } %>
+                                                    
+                                                </div>
+                                                <div class="blog-heading">
+                                                    <div class="blog-title"><%= blogs[i].title %></div><br>
+                                                    <div class="author-name"><%= blogs[i].postedBy %></div>
+                                                </div>
                                             </div>
-                                            <div class="blog-heading">
-                                                <div class="blog-title"><%= blogs[i].title %></div><br>
-                                                <div class="author-name"><%= blogs[i].postedBy %></div>
-                                            </div>
-                                        </div>
-                                        
-                                    </a>
+                                            
+                                        </a>
+                
+                                      <% } %>
+                                    
+                                    
                                 <% } %>
                         
                                 <!--blog end-->

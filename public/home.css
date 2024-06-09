@@ -4,6 +4,7 @@
     margin: 0 auto;
 }
 
+
 .en-text {
   text-align: center;
   margin: 5vh 10vw;
@@ -12,6 +13,8 @@
   font-size: 30px;
   font-weight: bold;
   color: #007F73;
+  font-family: "Poppins", sans-serif;
+
 
 
 
@@ -23,6 +26,8 @@
   height: fit-content;
   font-size: 30px;
   color: #007F73;
+  font-family: "Poppins", sans-serif;
+
 
 
 }
@@ -36,12 +41,16 @@
     text-align: left;
     font-size: 25px;
     color: #007F73;
+    font-family: "Poppins", sans-serif;
+
     
 }
 
 .hero-container {
     height: 100vh;
     width: 100vw;
+    font-family: "Poppins", sans-serif;
+
 }
 
 .hero-img {
@@ -66,6 +75,8 @@
     background-color: white;
     padding: 2vh 5vw;
     border-radius: 20px;
+    font-family: "Poppins", sans-serif;
+
 
 }
 
@@ -76,11 +87,15 @@ input[type=text], input[type=password] {
     margin: 5px 0 22px 0;
     border: none;
     background: #f1f1f1;
+    font-family: "Poppins", sans-serif;
+
   }
   
   input[type=text]:focus, input[type=password]:focus {
     background-color: #ddd;
     outline: none;
+    font-family: "Poppins", sans-serif;
+
   }
   
   /* Set a style for the submit button */
@@ -92,6 +107,8 @@ input[type=text], input[type=password] {
     cursor: pointer;
     width: 100%;
     opacity: 0.9;
+    font-family: "Poppins", sans-serif;
+
   }
   
   .btn:hover {
@@ -102,12 +119,16 @@ input[type=text], input[type=password] {
     font-size: 10px;
     text-align: center;
     padding: 2vh 0;
+    font-family: "Poppins", sans-serif;
+
   }
 
   .mission-container {
     display: flex;
     flex-direction: row;
     height: 170vh;
+    font-family: "Poppins", sans-serif;
+
   }
 
   .mission-left {
@@ -163,6 +184,8 @@ input[type=text], input[type=password] {
     height: auto;
     display: grid;
     padding: 3vh 5vw;
+    font-family: "Poppins", sans-serif;
+
   }
 
   .team-member {
@@ -180,6 +203,8 @@ input[type=text], input[type=password] {
     height: 18%;
     padding: 1vh 1vw;
     height: 5vh;
+    font-family: "Poppins", sans-serif;
+
   }
 
   .member-img {
@@ -215,6 +240,8 @@ input[type=text], input[type=password] {
     color: #007F73;
     font-weight: bold;
     font-size: 30px;
+    font-family: "Poppins", sans-serif;
+
 }
 
 .branches-container {
@@ -223,6 +250,8 @@ input[type=text], input[type=password] {
     border: 2px solid #ddd;
     overflow-x: scroll;
   overscroll-behavior: contain;
+  font-family: "Poppins", sans-serif;
+
 
 
 }
@@ -287,6 +316,8 @@ input[type=text], input[type=password] {
     font-weight: bold;
     font-size: 30px;
     color: #007F73;
+    font-family: "Poppins", sans-serif;
+
     
   }
 
@@ -297,6 +328,8 @@ input[type=text], input[type=password] {
     flex-direction: row;
     justify-content: space-between;
     overflow-x: scroll;
+    font-family: "Poppins", sans-serif;
+
   
   }
   
@@ -318,7 +351,8 @@ input[type=text], input[type=password] {
     margin-top: 3vh;
     justify-content: end;
     background-color: #FFF7F1;
-  
+    font-family: "Poppins", sans-serif;
+
   }
   
   .article-poster {
@@ -372,6 +406,8 @@ input[type=text], input[type=password] {
     height: fit-content;
     margin-left: 2vw;
     margin-right: 2vw;
+    font-family: "Poppins", sans-serif;
+
   }
   
   .all-messages {
@@ -407,6 +443,8 @@ input[type=text], input[type=password] {
     margin-left: 5vw;
     margin-right: 5vw;
     height: fit-content;
+    font-family: "Poppins", sans-serif;
+
   }
   
   .no-announs {
@@ -423,6 +461,8 @@ input[type=text], input[type=password] {
     margin-right: 5vw;
     height: fit-content;
     text-align: center;
+    font-family: "Poppins", sans-serif;
+
   }
   
   

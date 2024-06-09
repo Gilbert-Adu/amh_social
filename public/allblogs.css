@@ -49,6 +49,7 @@
     flex-direction: row;
     height: 100%;
     padding-top: 5vh;
+    font-family: "Poppins", sans-serif;
   }
   .main-blogs {
     margin-left: 10vw;

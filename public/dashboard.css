@@ -340,19 +340,28 @@ input[type=text] {
   border: 1px solid #007F73;
   border-radius: 5px;
   cursor: pointer;
+  font-family: "Poppins", sans-serif;
+
 }
 
 .moving-text {
   display: inline-block;
+  font-size: 10px;
+  font-family: 'Poppins', sans-serif;
 
   animation: annonTab 30s ease-in-out infinite;
+
 }
 @keyframes annonTab {
+  
+  
   0%,
   25% {transform: translateX(0%); right: 100%;}
   75%,
-  100% {transform:translateX(-1000%); left: 0%;}
+  100% {transform:translateX(-1500%); left: 0%;}
 
+
+  
 }
 
 
@@ -377,6 +386,7 @@ input[type=text] {
     border: 1px solid #007F73;
     border-radius: 5px;
     cursor: pointer;
+    font-family: "Poppins", sans-serif;
   }
   .app-name {
     margin-left: 2vw;

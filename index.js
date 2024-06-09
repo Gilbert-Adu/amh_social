@@ -222,6 +222,23 @@ app.post("/r/messaging", async (req, res) => {
         
 });
 
+
+//admin chat
+app.get("/adminChat/:userID", async(req, res) => {
+
+    const theUser = await User.findById(req.params.userID);
+    const annons = await Announcement.find();
+    let messages = await Message.find();
+
+    
+    
+    messages = messages.slice(Math.floor(messages.length / 2), messages.length);
+    res.render('dashboard', {data: theUser, messages: messages, annons: annons});
+
+
+
+});
+
 //post admin register
 app.post("/admin/r/messaging", async (req, res) => {
     try {
@@ -439,7 +456,7 @@ app.post("/messaging", async (req, res) => {
 
             const userBranches = user.branches;
 
-            allAnons = await Announcement.find();
+            const allAnons = await Announcement.find();
 
             
             let annons = [];
