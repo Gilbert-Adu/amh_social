@@ -82,6 +82,7 @@ app.use(requestIp.mw());
 app.use('/uploads', express.static('uploads'));
 
 
+
 /*
 app.use((req, res, next) => {
     const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
@@ -624,7 +625,7 @@ app.get('/blog/:blogID', async (req, res) => {
     let rawHeaders = req.rawHeaders;
     let commenter = {  _id: '66462b6058281e33f6c169d8'};
     let signedIn = false;
-    if (req.headers.referer.includes('http://localhost:3000/allblogs') || req.headers.referer.includes('https://amh-social.onrender.com/allblogs')) {
+    if (req.headers.referer.includes('http://localhost:3000/allblogs') || req.headers.referer.includes('https://amh-social.onrender.com/allblogs') || req.headers.referer.includes('https://amharaunity.com/allblogs')) {
         commenter = await User.findById(req.headers.referer.split("/")[req.headers.referer.split('/').length - 1]);
         signedIn = true;
 
@@ -643,6 +644,12 @@ app.get('/blog/:blogID', async (req, res) => {
         res.send({"error": err})
 
     }
+});
+
+app.get("/blogs", async(req, res) => {
+
+    const blogs = await Post.find()
+    res.send(blogs[blogs.length-1])
 });
 
 app.post('/comment/:blogID/:commenterID', async (req, res) => {
