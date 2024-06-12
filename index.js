@@ -29,7 +29,7 @@ require('dotenv').config();
 
 
 const User = require("./db/models/user");
-const { sendConfirmationEmail } = require("./functions/emailer");
+const { sendConfirmationEmail, resetPassword } = require("./functions/emailer");
 const { userIdCleaner } = require("./functions/userIdCleaner");
 
 const Branch = require("./db/models/branch");
@@ -841,6 +841,7 @@ app.get('/submit-an-article/:userId', async(req, res) => {
 });
 
 
+
 //article page
 app.get('/article/:blogID', async (req, res) => {
     //const blogContent = await req.body.data;
@@ -1020,6 +1021,67 @@ app.get("/branch/:branchID", async (req, res) => {
     
 });
 
+app.get("/forgot-password", (req, res) => {
+
+    res.render("forgotPassword", {found: true})
+});
+
+app.post("/check-password", async(req, res) => {
+    const user = await User.find({email: req.body.email});
+    if (user.length == 0) {
+        res.render('forgotPassword', {found: false});
+    }else {
+        const theUser = user[0];
+        resetPassword(theUser);
+        res.send('Password reset link sent')
+    }
+});
+
+
+app.get("/reset-pwd/:userId", async(req, res) =>{
+
+    const theUser  = await User.findById(req.params.userId)
+    res.render("resetPwdFinal",{theUser: theUser})
+
+});
+
+app.post("/reset-pwd/:userId", async(req, res) =>{
+
+    const theUser  = await User.findById(req.params.userId)
+    const password = await req.body.pwd;
+    let messages = await Message.find();
+    messages = messages.slice(Math.floor(messages.length / 2), messages.length);
+    const userBranches = theUser.branches;
+    const allAnons = await Announcement.find();
+
+    let hashedPassword = await bcrypt.hash(password, 10);
+
+    await User.updateOne({ _id: req.params.userId }, { $set: { password: hashedPassword } });
+
+    let annons = [];
+    for (let i = 0; i < allAnons.length; i++) {
+
+    if (userBranches.includes(allAnons[i].branch)){
+        annons.push(allAnons[i].title)
+                }
+    };
+
+
+    if (theUser.role === 'admin') {
+                const users = await User.find();
+                const blogs = await Post.find();
+                const articles = await Article.find();
+                const branches = await Branch.find();
+
+
+        res.render('adminDashboard', {data: theUser, anons:allAnons, users:users, blogs:blogs, articles:articles, branches: branches, signedIn: true});
+    }
+    else {
+        res.render('dashboard', {data: theUser, messages: messages, annons: annons});
+    }
+
+
+});
 app.listen(port, () => {
     console.log("up on 3000!")
 });
