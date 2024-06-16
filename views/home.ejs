@@ -132,13 +132,11 @@
                                   <% } %>
                                 
                             </div>
-                            <div class="article-image">
+                            <!--
+                                <div class="article-image">
 
                                 <% if (articles[i].mainImage != []) { %>
-                                    <!--
-                                        <img src="/<%= articles[i].mainImage[0].path%>" alt="">
-
-                                    -->
+                                    
                                     <img src="/images/ethiopia.png" alt="">
 
 
@@ -148,6 +146,8 @@
                                   <% } %>
                                 
                             </div>
+                            
+                            -->
                             <div class="article-blurb">
                                 <%= articles[i].desc %>
                             </div>
@@ -212,6 +212,16 @@
                 <span style="font-size: 10px;"></span>
                 
             </div>
+        <!--
+            <div class="team-member">
+            <div class="member-img">
+                <img src="/images/ethiopia.png" alt="">
+            </div>
+            <div class="member-info">
+                <span class="member-name">To be elected</span> <br>
+                <span style="font-size: 10px;"></span>
+                
+            </div>
         </div>
         <div class="team-member">
             <div class="member-img">
@@ -255,6 +265,9 @@
         </div>
         
 
+
+        -->
+        
     </section>
     <h2 class="section-name">Our Branches</h2>
     <section class="branches-container">
@@ -316,12 +329,11 @@
                                           <% } %>
                                         
                                     </div>
-                                    <div class="article-image">
+                                    <!--
+                                        <div class="article-image">
 
                                         <% if (posts[i].mainImage.length != 0) { %>
-                                            <!--
-                                                <img src="https://amh-social.onrender.com/<%= posts[i].mainImage[0].path %>" alt="">
-                                            -->
+                                            
                                             <img src="/images/ethiopia.png" alt="">
 
                     
@@ -333,6 +345,8 @@
                                         
                                         
                                     </div>
+                                    
+                                    -->
                                     <div class="article-blurb">
                                         <%= posts[i].desc %>
                                     </div>
