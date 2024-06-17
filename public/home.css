@@ -842,6 +842,7 @@ input[type=text], input[type=password] {
     .hero-container {
         height: 100vh;
         width: fit-content;
+        margin-top: 30vh;
     }
     
     .hero-img {
@@ -858,7 +859,7 @@ input[type=text], input[type=password] {
 
     .hero-form {
         position: absolute;
-        top: 235%;
+        top: 265%;
         left: 15%;
         border: 1px solid #ddd;
         width: 70vw;
@@ -928,7 +929,8 @@ input[type=text], input[type=password] {
       .mission-right {
         border: 1px solid #ddd;
         width: 100vw;
-        height: 105vh;
+        height: 190vh;
+        margin-bottom: 20vh;
     
     
       }
