@@ -10,6 +10,36 @@
   background-color: #007F73;
 
 }
+/* styles.css */
+#text-container {
+  font-family: Arial, sans-serif;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+}
+
+.large-text {
+  color:  #007F73;
+  font-weight: bold;
+  font-size: 2rem;
+
+  
+
+}
+
+.small-text {
+  color: black;
+  font-size: 1rem;
+  margin-left: 20vw;
+  margin-right: 20vw;
+  height: fit-content;
+
+
+}
+
 
 .site-container {
   height: 100vh;
