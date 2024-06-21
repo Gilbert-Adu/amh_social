@@ -613,21 +613,24 @@ input[type=text], input[type=password] {
 /* for tablets */
 @media only screen and (min-width: 768px) and (max-width: 1025px) {
 
+ 
     .welcome-text {
         font-size: 18px;
     }
-
     .hero-form {
-        position: absolute;
-        top: 205%;
-        left: 15%;
-        border: 1px solid #ddd;
-        width: 70vw;
-        height: 50vh;
-        background-color: white;
-        padding: 2vh 5vw;
-        border-radius: 20px;
-    }
+    
+      border: 1px solid #ddd;
+      width: 70vw;
+      margin-left: 15vw;
+      height: 60vh;
+      background-color: white;
+      padding: 2vh 5vw;
+      margin-top: 15vh;
+      border-radius: 10px;
+      font-family: "Poppins", sans-serif;
+  
+  
+  }
     
     /* Full-width input fields */
     input[type=text], input[type=password] {
@@ -669,34 +672,10 @@ input[type=text], input[type=password] {
         flex-direction: column;
       }
     
-      .mission-left {
-        width: 100vw;
-        height: 50vh;
-        font-family: Clash Display;
-        text-align: center;
-        padding: 15vh 0;
-        background-color: #007F73;
-        color: white;
-        font-size: 50px;
-     }
-    
-     .mission-text {
-        text-align: center;
-        margin: 5vh 5vw;
-        height: fit-content;
-     }
-      .mission-right {
-        border: 1px solid #ddd;
-        width: 100vw;
-        height: 90vh;
-        padding: 5vh 0;
-
-    
-    
-      }
+      
 
       .gallery-container {
-        height: 30vh;
+        height: 100vh;
       }
     
       div.scroll-container {
@@ -761,28 +740,30 @@ input[type=text], input[type=password] {
       
     }
     
-    .section-name {
-        text-align: center;
-        margin-top: 10vh;
-    }
 
-    .guest-section-title {
-        text-align: center;
-        margin-bottom: 2vh;
-        font-size: 25px;
-        margin-top: 10vh;
-      
-      }
-    
-    
-      .guest-articles-container {
-        height: fit-content;
-        display: flex;
-        flex-direction: row;
-        overflow-x: scroll;
-      
-      }
-      
+      /*start*/
+
+    .section-name {
+      text-align: center;
+      margin-top: 10vh;
+  }
+
+  .guest-section-title {
+    text-align: center;
+    font-size: 25px;
+    margin-top: 50vh;
+  
+  }
+
+
+  .guest-articles-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+  
+  }
+      /*end*/
       .guest-article {
         border: 1px solid #DDDDDD;
         background-color: #FFF7F1;
@@ -886,6 +867,24 @@ input[type=text], input[type=password] {
 @media only screen and (max-width: 767px) {
   #mission-text {
     font-size: 12px;
+  }
+  .large-text {
+    color:  #007F73;
+    font-weight: bold;
+    font-size: 2em;
+  
+    
+  
+  }
+  
+  .small-text {
+    color: black;
+    font-size: 1em;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    height: fit-content;
+  
+  
   }
   .message-board-container {
     margin-top: 20vh;
