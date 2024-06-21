@@ -4,15 +4,56 @@
     margin: 0 auto;
 }
 
+.title-text {
+  height: 100vh;
+  padding-top: 30vh;
+  background-color: #007F73;
+
+}
+
+.site-container {
+  height: 100vh;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+.section {
+  height: 100vh;
+  scroll-snap-align: start;
+  
+}
+.section-footer {
+  height: 30vh;
+  scroll-snap-align: start;
+  
+}
+.our-mission {
+  text-align: center;
+  padding-top: 30vh;
+  font-size: 50px;
+  font-weight: bold;
+  color: #007F73;
+
+}
+
+.typing-container {
+  color: #333;
+  overflow: hidden;
+  height: fit-content;
+}
+
+
+
 
 .en-text {
   text-align: center;
   margin: 5vh 10vw;
   margin-top: 10vh;
   height: fit-content;
-  font-size: 30px;
+  font-size: 40px;
+  color: white;
   font-weight: bold;
-  color: #007F73;
   font-family: "Poppins", sans-serif;
 
 
@@ -25,10 +66,15 @@
   margin-bottom: 10vw;
   height: fit-content;
   font-size: 30px;
-  color: #007F73;
+  color: white;
   font-family: "Poppins", sans-serif;
 
 
+
+}
+.mission-text {
+  text-align: left;
+  font-family: "Poppins", sans-serif;
 
 }
 .welcome-text {
@@ -50,30 +96,22 @@
     height: 100vh;
     width: 100vw;
     font-family: "Poppins", sans-serif;
+    border: 1px solid #91DDCF;
+    background-color: #91DDCF;
 
 }
 
-.hero-img {
-    height: 100vh;
-    width: 100vw;
-}
-
-.hero-img img {
-    height: 100vh;
-    width: 100vw;
-    object-fit: cover;
-}
 
 
 .hero-form {
-    position: absolute;
-    top: 235%;
-    left: 25%;
+    
     border: 1px solid #ddd;
     width: 50vw;
     height: 60vh;
     background-color: white;
     padding: 2vh 5vw;
+    margin-top: 20vh;
+    margin-left: 25vw;
     border-radius: 20px;
     font-family: "Poppins", sans-serif;
 
@@ -124,37 +162,8 @@ input[type=text], input[type=password] {
   }
 
   .mission-container {
-    display: flex;
-    flex-direction: row;
-    height: 170vh;
-    font-family: "Poppins", sans-serif;
-
-  }
-
-  .mission-left {
-    width: 50vw;
-    height: 170vh;
-    font-family: Clash Display;
-    text-align: center;
-    padding: 60vh 0;
-    background-color: #007F73;
-    color: white;
-    font-size: 30px;
- }
-
- .mission-text {
-    text-align: left;
-    margin: 5vh 5vw;
-    height: fit-content;
-    font-size: 15px;
-    line-height: 2;
- }
-  .mission-right {
-    border: 1px solid #ddd;
-    width: 50vw;
-    height: 170vh;
-
-
+    border: 1px solid #91DDCF;
+    height: 100vh;
   }
 
   .show-down {
@@ -162,7 +171,8 @@ input[type=text], input[type=password] {
   }
 
   .gallery-container {
-    height: 50vh;
+    height: 100vh;
+    padding-top: 20vh;
   }
 
   div.scroll-container {
@@ -185,6 +195,7 @@ input[type=text], input[type=password] {
     display: grid;
     padding: 3vh 5vw;
     font-family: "Poppins", sans-serif;
+    height: 100vh;
 
   }
 
@@ -246,7 +257,7 @@ input[type=text], input[type=password] {
 
 .branches-container {
     padding: 5vh 0;
-    height: 50vh;
+    height: 90vh;
     border: 2px solid #ddd;
     overflow-x: scroll;
   overscroll-behavior: contain;
@@ -311,24 +322,31 @@ input[type=text], input[type=password] {
   
   .guest-section-title {
     text-align: center;
-    margin-bottom: 2vh;
+    margin-bottom: 0;
     margin-top: 10vh;
+    padding-top: 5vh;
+    padding-bottom: 10vh;
     font-weight: bold;
     font-size: 30px;
-    color: #007F73;
+    color: white;
     font-family: "Poppins", sans-serif;
+    background-color: #55AD9B;
+    height: 10vh;
+
 
     
   }
 
 
   .guest-articles-container {
-    height: fit-content;
+    height: 100vh;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     overflow-x: scroll;
     font-family: "Poppins", sans-serif;
+    border: 1px solid #55AD9B;
+    background-color: #55AD9B;
 
   
   }
@@ -366,16 +384,15 @@ input[type=text], input[type=password] {
   
   }
   .article-blurb {
-    margin-top: 3vh;
     height: fit-content;
-  
+  border: 1px solid red;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
     max-width: 15.8vw;
   
     font-size: 10.5px;
-    background-color: #FFF7F1;
+    background-color: red;
   
   }
   .article-image {
@@ -427,6 +444,7 @@ input[type=text], input[type=password] {
     margin-bottom: 5vh;
     font-size: 45px;
     color: #12372A;
+    
   
   }
   
@@ -767,7 +785,6 @@ input[type=text], input[type=password] {
       
       }
       .article-blurb {
-        margin-top: 3vh;
         height: fit-content;
       
         overflow: hidden;
@@ -791,7 +808,6 @@ input[type=text], input[type=password] {
       }
       
       .article-title {
-        height: 10vh;
         width: fit-content;
         font-weight: bold;
         font-size: 13px;
@@ -838,36 +854,110 @@ input[type=text], input[type=password] {
 
 /* for mobile */
 @media only screen and (max-width: 767px) {
+  #mission-text {
+    font-size: 12px;
+  }
+  .message-board-container {
+    margin-top: 20vh;
+    height: fit-content;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    font-family: "Poppins", sans-serif;
 
-    .hero-container {
-        height: 100vh;
-        width: fit-content;
-        margin-top: 30vh;
-    }
-    
-    .hero-img {
-        height: 100vh;
-        width: 100%;
-    }
-    
-    .hero-img img {
-        height: 100vh;
-        width: 100%;
-        object-fit: cover;
-    }
-    
 
-    .hero-form {
-        position: absolute;
-        top: 265%;
-        left: 15%;
-        border: 1px solid #ddd;
-        width: 70vw;
-        height: 65vh;
-        background-color: white;
-        padding: 2vh 5vw;
-        border-radius: 20px;
-    }
+  }
+  .board-title {
+    text-align: center;
+    margin-bottom: 5vh;
+    font-size: 20px;
+    font-family: Clash Display;
+
+  
+  }
+  .all-messages {
+    margin-left: 10vw;
+    margin-right: 10vw;
+
+    padding-top: 5vh;
+    height: 50vh;
+    width: 80vw;
+    overflow-x: scroll;
+    overscroll-behavior: contain;
+
+  
+  }
+  .site-container {
+    height: 100vh;
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+  }
+  
+  .section {
+    height: 100vh;
+    scroll-snap-align: start;
+    
+  }
+  .section-footer {
+    height: 30vh;
+    scroll-snap-align: start;
+    
+  }
+  .title-text {
+    height: 100vh;
+    text-align: center;
+    padding-top: 30vh;
+  }
+
+  .box {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+  .en-text {
+    font-size: 23px;
+  }
+  .am-text {
+    font-size: 12px;
+  }
+  .hero-container {
+    height: 100vh;
+    width: 100vw;
+    font-family: "Poppins", sans-serif;
+    border: 1px solid #91DDCF;
+    background-color: #91DDCF;
+
+}
+
+
+
+.hero-form {
+    
+    border: 1px solid #ddd;
+    width: 70vw;
+    margin-left: 15vw;
+    height: 60vh;
+    background-color: white;
+    padding: 2vh 5vw;
+    margin-top: 15vh;
+    border-radius: 10px;
+    font-family: "Poppins", sans-serif;
+
+
+}
     
     /* Full-width input fields */
     input[type=text], input[type=password] {
@@ -907,6 +997,7 @@ input[type=text], input[type=password] {
       .mission-container {
         display: flex;
         flex-direction: column;
+        height: 100vh;
       }
     
       .mission-left {
@@ -924,13 +1015,11 @@ input[type=text], input[type=password] {
         text-align: center;
         margin: 15vh 5vw;
         height: fit-content;
-        font-size: 10px;
+        font-size: 14px;
      }
       .mission-right {
-        border: 1px solid #ddd;
         width: 100vw;
-        height: 190vh;
-        margin-bottom: 20vh;
+
     
     
       }
@@ -943,7 +1032,8 @@ input[type=text], input[type=password] {
       }
 
       .gallery-container {
-        height: 20vh;
+        height: 100vh;
+        
       }
     
       div.scroll-container {
@@ -954,14 +1044,14 @@ input[type=text], input[type=password] {
       }
       
       div.scroll-container img {
-        padding: 10px;
-        height: 20vh;
-        width: 40vw;
+        padding: 2px;
+        height: 100vh;
+        width: 100vw;
         object-fit: cover;
       }
       .team-container {
         grid-template-columns: auto auto;
-        height: auto;
+        height: 100vh;
         display: grid;
         padding: 3vh 0;
       }
@@ -1017,6 +1107,7 @@ input[type=text], input[type=password] {
         padding: 5vh 0;
         overflow-x: scroll;
         overscroll-behavior: contain;
+        height: 80vh;
       
     
     }
@@ -1067,15 +1158,14 @@ input[type=text], input[type=password] {
 
       .guest-section-title {
         text-align: center;
-        margin-bottom: 2vh;
         font-size: 25px;
-        margin-top: 10vh;
+        margin-top: 50vh;
       
       }
     
     
       .guest-articles-container {
-        height: fit-content;
+        height: 100vh;
         display: flex;
         flex-direction: row;
         overflow-x: scroll;
@@ -1114,7 +1204,6 @@ input[type=text], input[type=password] {
       
       }
       .article-blurb {
-        margin-top: 3vh;
         height: fit-content;
       
         overflow: hidden;
@@ -1138,7 +1227,6 @@ input[type=text], input[type=password] {
       }
       
       .article-title {
-        height: 10vh;
         width: fit-content;
         font-weight: bold;
         font-size: 10px;
