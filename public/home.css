@@ -384,7 +384,7 @@ input[type=text], input[type=password] {
   .guest-article {
     background-color: #FFF7F1;
     width: 20vw;
-    height: fit-content;
+    height: 10vh;
     margin-left: 0.5vw;
     margin-top: 10vh;
     cursor: pointer;
@@ -768,7 +768,7 @@ input[type=text], input[type=password] {
         border: 1px solid #DDDDDD;
         background-color: #FFF7F1;
         width: 50vw;
-        height: 36vh;
+        height: 10vh;
         margin-left: 2vw;
         margin-top: 2vh;
         cursor: pointer;
@@ -1205,7 +1205,7 @@ input[type=text], input[type=password] {
         border: 1px solid #DDDDDD;
         background-color: #FFF7F1;
         width: 40vw;
-        height: 33vh;
+        height: 10vh;
         margin-left: 2vw;
         margin-top: 2vh;
         cursor: pointer;
