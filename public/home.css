@@ -184,9 +184,9 @@ input[type=text], input[type=password] {
   }
 
   .signup-container  {
-    font-size: 10px;
+    font-size: 13px;
     text-align: center;
-    padding: 2vh 0;
+    padding: 5vh 0;
     font-family: "Poppins", sans-serif;
 
   }
@@ -369,7 +369,7 @@ input[type=text], input[type=password] {
 
 
   .guest-articles-container {
-    height: 50vh;
+    height: 30vh;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -662,9 +662,9 @@ input[type=text], input[type=password] {
       }
     
       .signup-container  {
-        font-size: 10px;
+        font-size: 18px;
         text-align: center;
-        padding: 2vh 0;
+        padding: 5vh 0;
       }
 
       .mission-container {
@@ -757,7 +757,7 @@ input[type=text], input[type=password] {
 
 
   .guest-articles-container {
-    height: 100vh;
+    height: 30vh;
     display: flex;
     flex-direction: row;
     overflow-x: scroll;
@@ -1194,7 +1194,7 @@ input[type=text], input[type=password] {
     
     
       .guest-articles-container {
-        height: 100vh;
+        height: 30vh;
         display: flex;
         flex-direction: row;
         overflow-x: scroll;
@@ -1205,7 +1205,7 @@ input[type=text], input[type=password] {
         border: 1px solid #DDDDDD;
         background-color: #FFF7F1;
         width: 40vw;
-        height: 10vh;
+        height: 15vh;
         margin-left: 2vw;
         margin-top: 2vh;
         cursor: pointer;
