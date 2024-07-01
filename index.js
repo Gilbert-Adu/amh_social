@@ -133,6 +133,7 @@ app.get("/register", async (req, res) => {
     const branches = await Branch.find();
     res.render('register', {branches: branches});
 });
+//made changes to db
 //get admin register page
 app.get("/admin/register", async(req, res) => {
     const branches = await Branch.find();
