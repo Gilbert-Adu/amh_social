@@ -17,19 +17,24 @@ const emailTemplate = fs.readFileSync(emailTemplatePath, 'utf8');
 const htmlContent = ejs.render(emailTemplate, {user: user})
 
 
+
 var transporter = nodemailer.createTransport({
-    service: 'gmail',
-    host: 'smtp.gmail.com',
-    port: 3000,
+    name: 'mail.amharaunity.com',
+    host: 'mail.amharaunity.com',
+    port: 465,
+    secure: true, 
     auth: {
-      user: 'kobbyenos.770@gmail.com',
+      user: 'admin@amharaunity.com',
       pass: process.env.EMAIL_PASSWORD
+    },
+    tls: {
+      rejectUnauthorized: false
     }
   });
   
 
 var mailOptions = {
-  from: 'kobbyenos.770@gmail.com',
+  from: 'admin@amharaunity.com',
   to: user.email,
   subject: 'VERIFY EMAIL',
   text: '',
@@ -57,18 +62,22 @@ const htmlContent = ejs.render(emailTemplate, {user: user})
 
 
 var transporter = nodemailer.createTransport({
-  service: 'gmail',
-  host: 'smtp.gmail.com',
-  port: 3000,
+  name: 'mail.amharaunity.com',
+  host: 'mail.amharaunity.com',
+  port: 465,
+  secure: true,
   auth: {
-    user: 'kobbyenos.770@gmail.com',
+    user: 'admin@amharaunity.com',
     pass: process.env.EMAIL_PASSWORD
+  },
+  tls: {
+    rejectUnauthorized: false
   }
 });
 
 
 var mailOptions = {
-from: 'kobbyenos.770@gmail.com',
+from: 'admin@amharaunity.com',
 to: user.email,
 subject: 'RESET PASSWORD LINK',
 text: '',
