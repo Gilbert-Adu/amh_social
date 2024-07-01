@@ -471,13 +471,27 @@
             charIndex++;
             setTimeout(typeText, typingSpeed);
         } else {
-            setTimeout(() => {
+            if (document.getElementsByClassName('large-text')[0]) {
+                setTimeout(() => {
+                
+                textContainer.innerHTML = '';
+                textIndex = (textIndex + 1) % texts.length;
+                charIndex = 0;
+                textContainer.className = texts[textIndex].class;
+                typeText();
+            }, 2000);
+
+            }else {
+                setTimeout(() => {
+                
                 textContainer.innerHTML = '';
                 textIndex = (textIndex + 1) % texts.length;
                 charIndex = 0;
                 textContainer.className = texts[textIndex].class;
                 typeText();
             }, displayDuration);
+            }
+            
         }
     }
 

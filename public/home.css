@@ -225,7 +225,7 @@ input[type=text], input[type=password] {
     display: grid;
     padding: 3vh 5vw;
     font-family: "Poppins", sans-serif;
-    height: 100vh;
+    height: fit-content;
 
   }
 

@@ -916,6 +916,20 @@ app.get("/deleteMessages", async(req, res) => {
     res.send("messages deleted")
 });
 
+app.get("/deleteUsers", async(req, res) => {
+    await User.deleteMany({})
+    res.send("users deleted")
+});
+
+app.get("/deleteArticles", async(req, res) => {
+    await Article.deleteMany({})
+    res.send("articles deleted")
+});
+
+app.get("/deleteAnnouncements", async(req, res) => {
+    await Announcement.deleteMany({})
+    res.send("announcements deleted")
+});
 
 
 app.post("/createBranch", async(req, res) => {
