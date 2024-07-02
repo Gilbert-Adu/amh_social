@@ -18,6 +18,7 @@ const htmlContent = ejs.render(emailTemplate, {user: user})
 
 
 
+
 var transporter = nodemailer.createTransport({
     name: 'mail.amharaunity.com',
     host: 'mail.amharaunity.com',
@@ -47,7 +48,6 @@ transporter.sendMail(mailOptions, function(error, info){
   } else {
     console.log('Email sent: ' + info.response);
   }
-  console.log(info);
 });  
   
 }

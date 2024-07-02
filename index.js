@@ -908,29 +908,18 @@ app.post("/admin/announcement", async (req, res) => {
 });
 
 
-app.get("/deletePosts", async(req, res) => {
+
+app.get("/reset", async(req, res) => {
     await Post.deleteMany({})
-    res.send("posts deleted")
-});
-
-app.get("/deleteMessages", async(req, res) => {
     await Message.deleteMany({})
-    res.send("messages deleted")
-});
-
-app.get("/deleteUsers", async(req, res) => {
     await User.deleteMany({})
-    res.send("users deleted")
-});
-
-app.get("/deleteArticles", async(req, res) => {
     await Article.deleteMany({})
-    res.send("articles deleted")
-});
-
-app.get("/deleteAnnouncements", async(req, res) => {
     await Announcement.deleteMany({})
-    res.send("announcements deleted")
+    await Branch.updateMany( { $set: { numMembers: 1 } });
+
+    res.send("reset made");
+
+
 });
 
 
