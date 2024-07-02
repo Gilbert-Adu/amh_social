@@ -10,8 +10,10 @@ const multer = require("multer");
 const requestIp = require("request-ip");
 const Pusher = require('pusher');
 const app = express();
+require('dotenv').config();
 
-const port = process.env.PORT || 3000;
+const port = 3000;
+const PORT = process.env.PORT || port;
 
 
 const pusher = new Pusher({
@@ -22,7 +24,6 @@ const pusher = new Pusher({
     useTLS: true
 
 });
-require('dotenv').config();
 
 
 
@@ -627,7 +628,7 @@ app.get('/blog/:blogID', async (req, res) => {
     let rawHeaders = req.rawHeaders;
     let commenter = {  _id: '66462b6058281e33f6c169d8'};
     let signedIn = false;
-    if (req.headers.referer.includes('http://localhost:3000/allblogs') || req.headers.referer.includes('https://amh-social.onrender.com/allblogs') || req.headers.referer.includes('https://amharaunity.com/allblogs')) {
+    if (req.headers.referer.includes(`http://localhost:${PORT}/allblogs`) || req.headers.referer.includes('https://amh-social.onrender.com/allblogs') || req.headers.referer.includes('https://amharaunity.com/allblogs')) {
         commenter = await User.findById(req.headers.referer.split("/")[req.headers.referer.split('/').length - 1]);
         signedIn = true;
 
@@ -1097,6 +1098,6 @@ app.post("/reset-pwd/:userId", async(req, res) =>{
 
 
 });
-app.listen(port, () => {
+app.listen(PORT, () => {
     console.log("up on 3000!")
 });
