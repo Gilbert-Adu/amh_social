@@ -9,6 +9,7 @@ const geoip = require('geoip-lite');
 const multer = require("multer");
 const requestIp = require("request-ip");
 const Pusher = require('pusher');
+const cors = require("cors");
 const app = express();
 require('dotenv').config();
 
@@ -79,6 +80,7 @@ const upload = multer({ storage: storage, fileFilter: fileFilter});
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(requestIp.mw());
+app.use(cors());
 //no problem rn but could be a concern later
 app.use('/uploads', express.static('uploads'));
 
