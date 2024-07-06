@@ -481,6 +481,7 @@ app.post("/messaging", async (req, res) => {
                 const branches = await Branch.find();
 
 
+
                 res.render('adminDashboard', {data: theUser, anons:allAnons, users:users, blogs:blogs, articles:articles, branches: branches, signedIn: true});
             }
             else {
@@ -576,6 +577,7 @@ app.get("/messaging/:userID", async (req, res) => {
 
     
 });
+
 
 app.get("/allusers", async(req, res) => {
 
@@ -828,19 +830,25 @@ app.post('/submit-an-article/:userId', async(req, res) => {
 //get invitational article
 app.get('/submit-an-article/:userId', async(req, res) => {
 
-    const ID = req.params.userId;
-    const user = await User.findById(ID);
+    try{
+        const ID = req.params.userId;
+        const user = await User.findById(ID);
+    
+    
+    
+        if (verifyToken(user)) {
+    
+            res.render('submitArticle', {data: ID});
+    
+        }else {
+            res.send("you are not logged in")
+        }
+    
 
-
-
-    if (verifyToken(user)) {
-
-        res.render('submitArticle', {data: ID});
-
-    }else {
-        res.send("you are not logged in")
+    }catch(err){
+        console.log(err.message)
+        
     }
-
 
 
     //use a new view ejs file
