@@ -585,6 +585,7 @@ app.get("/allusers", async(req, res) => {
 
 });
 
+//test server
 app.post("/approveBlog/:userID/:blogID", async(req, res) => {
 
 
