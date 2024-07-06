@@ -40,7 +40,7 @@
 
             -->
             <input type="text" placeholder="Short image description" id="altText" name="altText" style="width: 100%;height: 4vh;border: 1px solid #ddd; margin-bottom: 0.5vh;"><br>
-            <textarea name="content" id="" cols="89" rows="15" style="border: 1px solid #ddd;">Your text here...</textarea><br>
+            <textarea name="content" id="" cols="89" rows="15" style="border: 1px solid #ddd;margin-bottom: 10vh;">Your text here...</textarea><br>
             <section class="new-form-section" id="new-form-section"></section>
             <input type="submit" value="Submit" style="background-color: #007F73;border: 1px solid #007F73;color: white;border-radius: 5px;cursor: pointer;">
 
@@ -51,18 +51,21 @@
         <script>
           var timesClicked = 1;
           //removed <input type="file"  accept="image/*" id="mainImage" name="mainImage" style="width: 100%;height: 7vh;border: 1px solid #ddd;margin-bottom: 0.5vh;margin-bottom: 2vh"><br>
+          //<input type="text" placeholder="Short image description" id="altText" name="altText" style="width: 100%;height: 4vh;border: 1px solid ${colors[timesClicked-1]}; margin-bottom: 0.5vh;margin-bottom: 2vh"><br>
 
+          var colors = ['#FF0000', 'green', '#003285', '#850F8D', '#006769', '#8E3E63', '#344C64',
+            '#9B3922', '#0C0C0C', '#430A5D', '#092635', '#940B92', '#005B41', '#116D6E', '#ED2B2A', 
+            '#1A120B', '#C147E9', '#FB2576', '#B25068', '#F10086', '#B85C38', '#082032', '#6C0345', 
+            '#CD5C08', '#606C5D', '#32012F', '#FA7070'];
             document.getElementById('add-section').addEventListener('click', function() {
               var newSection = document.createElement('section');
               timesClicked++;
               newSection.innerHTML = `
-              <strong>Paragraph ${timesClicked}</strong>
+              <strong style="color: ${colors[timesClicked]};">Paragraph ${timesClicked}</strong>
     
-              <input type="text" placeholder="Your paragraph ${timesClicked} title goes here..." id="title" name="title" style="width: 100%;height: 4vh;border: 1px solid #ddd; margin-top: 3vh;margin-bottom: 2vh"><br>
-            <input type="text" placeholder="Short image description" id="altText" name="altText" style="width: 100%;height: 4vh;border: 1px solid #ddd; margin-bottom: 0.5vh;margin-bottom: 2vh"><br>
-              <textarea name="content" id="" cols="89" rows="15" style="border: 1px solid #ddd;margin-bottom: 2vh">Your paragraph ${timesClicked} text goes here...</textarea><br>
+              <input type="text" placeholder="Your paragraph ${timesClicked} title goes here..." id="title" name="title" style="width: 100%;height: 4vh;border: 1px solid ${colors[timesClicked]}; margin-top: 3vh;margin-bottom: 2vh"><br>
+              <textarea name="content" id="" cols="89" rows="15" style="border: 1px solid ${colors[timesClicked]};margin-bottom: 10vh">Your paragraph ${timesClicked} text goes here...</textarea><br>
               `;
-
               document.getElementById('new-form-section').appendChild(newSection);
 
             });

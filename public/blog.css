@@ -60,14 +60,21 @@
   }
 
   .image {
-    width: 80vw;
-    height: 62vh;
+    width: 60vw;
+    height: 50vh;
+    margin-left: 5vw;
+    margin-bottom: 6vh;
+
   }
 
   .image img {
-    width: 80vw;
-    height: 62vh;
+    width: 60vw;
+    height: 50vh;
     object-fit: cover;
+    margin-left: 5vw;
+    margin-bottom: 6vh;
+
+
   }
 
   .alt-text {
