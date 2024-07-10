@@ -721,14 +721,14 @@ app.get('/submit-a-blog/:userId', async(req, res) => {
     //use a new view ejs file
 });
 
+
 //get the blog content
 //removed upload.array('mainImage', 10)
 app.post('/submit-a-blog/:userId', async(req, res) => {
 
-    const numSections = req.body.title.length;
     req.body.userId = req.params.userId;
 
-    const { title, desc, altText, content} = req.body;
+    const { content, title } = req.body;
     //const blogImages = req.files;
     //  "mainImage": blogImages,
 
@@ -738,10 +738,8 @@ app.post('/submit-a-blog/:userId', async(req, res) => {
 
         if (verifyToken(user)) {
             const newPost = new Post({
-                "title": title,
-                "desc": desc,
-                "altText": altText,
                 "content": content,
+                "title": title,
                 "userId": req.params.userId,
                 "postedBy": user.firstName + " " + user.lastName,
                 
@@ -751,18 +749,14 @@ app.post('/submit-a-blog/:userId', async(req, res) => {
             await newPost.save();
 
             const payload = { 
-                "title":title, 
-                "desc":desc, 
-                "altText":altText, 
                 "content":content,
+                "title": title,
                 "postedOn": newPost.postedOn,
                 "postedBy": user.firstName + ' ' + user.lastName
             };
-        
-
-
     
-            res.render('blog', {message: payload, numSections: numSections, comments: [], commenter: user, signedIn: true});
+    
+            res.render('blog', {message: payload, comments: [], commenter: user, signedIn: true});
     
         }else {
             res.send("you are not logged in")

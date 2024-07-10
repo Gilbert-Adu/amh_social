@@ -1,12 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-            <% if (Array.isArray(message.title)) { %>
-                <title>Amhara Unity | <%= message.title[0] %></title>
-              <% } else { %>
                 <title>Amhara Unity | <%= message.title %></title>
-              <% } %>
-            
+              
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
@@ -19,6 +15,9 @@
         <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/marked@3.0.7/marked.min.js"></script>
+        <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+
     </head>
     <body>
 
@@ -39,18 +38,11 @@
         </div>
 
         <div class="content-container">
-            <div class="blog-title">
-                <% if (Array.isArray(message.title)) { %>
-                    <h1><%= message.title[0] %></h1>
-                  <% } else { %>
-                    <h1><%= message.title %></h1>
-                  <% } %>
-                
-            </div>
             <div class="blog-poster">
                 <span>Submitted by: <%= message.postedBy %></span><br>
                 <span><%= message.postedOn %></span>
             </div>
+            <h2 class="added-section-heading"><%= message.title %></h2>
             <div class="hero-image-wrapper">
                 <div class="image">
                         
@@ -59,54 +51,12 @@
 
                                           
                 </div>
-                <div class="alt-text">
-                    <% if (Array.isArray(message.altText)) { %>
-                        <div><%= message.altText[0] %></div>
-                      <% } else { %>
-                        <div><%= message.altText %></div>
-                      <% } %>
-                    
-                </div>
-            </div>
-            <div class="blurb">
-                <p><%= message.desc %></p>
             </div>
 
-            <div class="blog-content">
-                <% if (Array.isArray(message.content)) { %>
-                    <p><%= message.content[0] %></p>
-                  <% } else { %>
-                    <p><%= message.content %></p>
-                  <% } %>
-                
-            
-            
-            <section class="added-section">
-                
-
-                <% if (Array.isArray(message.title)) { %>
-                    <% for (let i = 1; i < message.title.length; i++) { %>
-                        <h2 class="added-section-heading"><%= message.title[i] %></h2>
-                        <div class="image">
-                                
-                                <img src="/images/ethiopia.png" alt="">
-
-        
-                              
-                        </div>
-                        <div class="alt-text"><%= message.altText[i] %></div>
-                        <p style="margin-top: 3vh;"><%= message.content[i] %></p>
-        
-
-                      <% } %>
-    
-                  <% } 
-
-                 %>
-
-                
-            </section>
+            <div class="blog-content" id="blog-content">
+                  
             </div>
+            <div class="editor-container" id="editor-container"></div>
             <section class="comments-section">
                 <!--replies -->
                 <div class="replies-heading">
@@ -170,7 +120,7 @@
             <div class="footer">
                 <section class="contacts">
                     <h3>Contact</h3><br><br>
-                    <span>info@amharaunity.com</span><br>
+                    <span>admin@amharaunity.com</span><br>
 
                 </section>
                 <section class="legals">
@@ -201,9 +151,15 @@
         
 
     </footer>
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
     <script>
-                document.getElementById('share-facebook').addEventListener('click', function() {
+        document.getElementById('blog-content').innerHTML = '<strong>merci</strong>'
+
+    </script>
+
+    <script>
+            document.getElementById('share-facebook').addEventListener('click', function() {
             const url = encodeURIComponent(window.location.href);
             const text = encodeURIComponent(document.title);
             window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${text}`, 'sharer', 'width=626,height=436');
