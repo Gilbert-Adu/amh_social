@@ -2,9 +2,6 @@ const mongoose = require("mongoose");
 
 const postSchema = new mongoose.Schema({
     title: {type: mongoose.Schema.Types.Mixed, required: true},
-    desc: String,
-    mainImage: {type: mongoose.Schema.Types.Mixed, required: false},
-    altText: {type: mongoose.Schema.Types.Mixed, required: false},
     content: {type: mongoose.Schema.Types.Mixed, required: true},
     comments: {type: Array, default: () => []},
     blogDecision: {type: String, default: 'no'},

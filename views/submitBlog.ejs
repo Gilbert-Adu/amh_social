@@ -27,21 +27,16 @@
 
         <div class="navbar-container">
           <a href="/" style="text-decoration: none; cursor: pointer;"><div class="app-name">Amhara Unity</div></a>
-            <button class="add-section" id="add-section" style="height: 5vh; margin-top: 2vh;margin-right: 2vw;background-color: #007F73;border: 1px solid #007F73;color: white;border-radius: 10px;cursor: pointer;">Add Paragraph</button>
+          <!--
+                        <button class="add-section" id="add-section" style="height: 5vh; margin-top: 2vh;margin-right: 2vw;background-color: #007F73;border: 1px solid #007F73;color: white;border-radius: 10px;cursor: pointer;">Add Paragraph</button>
+          -->
         </div>
 
         <section class="form-section">
           <!--removed  enctype="multipart/form-data"-->
           <form action="/submit-a-blog/<%= data %>" method="POST" class="blog-form" id="blog-form">
             <input type="text" placeholder="Blog title" id="title" name="title" style="width: 100%;height: 4vh;border: 1px solid #ddd; margin-bottom: 0.5vh;"><br>
-            <input type="text" placeholder="Your description goes here..." id="desc" name="desc" style="width: 100%;height: 7vh;border: 1px solid #ddd;margin-bottom: 0.5vh;"><br>
-            <!--
-              <input type="file"  accept="image/*" id="mainImage" name="mainImage" style="width: 100%;height: 7vh;border: 1px solid #ddd;margin-bottom: 0.5vh;"><br>
-
-            -->
-            <input type="text" placeholder="Short image description" id="altText" name="altText" style="width: 100%;height: 4vh;border: 1px solid #ddd; margin-bottom: 0.5vh;"><br>
             <textarea name="content" id="" cols="89" rows="15" style="border: 1px solid #ddd;margin-bottom: 10vh;">Your text here...</textarea><br>
-            <section class="new-form-section" id="new-form-section"></section>
             <input type="submit" value="Submit" style="background-color: #007F73;border: 1px solid #007F73;color: white;border-radius: 5px;cursor: pointer;">
 
           </form>

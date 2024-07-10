@@ -725,10 +725,9 @@ app.get('/submit-a-blog/:userId', async(req, res) => {
 //removed upload.array('mainImage', 10)
 app.post('/submit-a-blog/:userId', async(req, res) => {
 
-    const numSections = req.body.title.length;
     req.body.userId = req.params.userId;
 
-    const { title, desc, altText, content} = req.body;
+    const { title, content} = req.body;
     //const blogImages = req.files;
     //  "mainImage": blogImages,
 
@@ -739,8 +738,6 @@ app.post('/submit-a-blog/:userId', async(req, res) => {
         if (verifyToken(user)) {
             const newPost = new Post({
                 "title": title,
-                "desc": desc,
-                "altText": altText,
                 "content": content,
                 "userId": req.params.userId,
                 "postedBy": user.firstName + " " + user.lastName,
@@ -752,8 +749,6 @@ app.post('/submit-a-blog/:userId', async(req, res) => {
 
             const payload = { 
                 "title":title, 
-                "desc":desc, 
-                "altText":altText, 
                 "content":content,
                 "postedOn": newPost.postedOn,
                 "postedBy": user.firstName + ' ' + user.lastName
@@ -762,7 +757,7 @@ app.post('/submit-a-blog/:userId', async(req, res) => {
 
 
     
-            res.render('blog', {message: payload, numSections: numSections, comments: [], commenter: user, signedIn: true});
+            res.render('blog', {message: payload, comments: [], commenter: user, signedIn: true});
     
         }else {
             res.send("you are not logged in")
@@ -780,10 +775,9 @@ app.post('/submit-a-blog/:userId', async(req, res) => {
 //removed upload.array('mainImage', 10)
 app.post('/submit-an-article/:userId', async(req, res) => {
 
-    const numSections = req.body.title.length;
     req.body.userId = req.params.userId;
 
-    const { title, desc, altText, content} = req.body;
+    const { title, content} = req.body;
 
     try {
         const user = await User.findById(req.body.userId);
@@ -791,8 +785,6 @@ app.post('/submit-an-article/:userId', async(req, res) => {
         if (verifyToken(user)) {
             const newArticle = new Article({
                 "title": title,
-                "desc": desc,
-                "altText": altText,
                 "content": content,
                 "userId": req.params.userId,
                 "postedBy": user.firstName + " " + user.lastName,
@@ -804,8 +796,6 @@ app.post('/submit-an-article/:userId', async(req, res) => {
 
             const payload = { 
                 "title":title, 
-                "desc":desc, 
-                "altText":altText, 
                 "content":content,
                 "postedOn": newArticle.postedOn,
                 "postedBy": user.firstName + ' ' + user.lastName
@@ -814,7 +804,7 @@ app.post('/submit-an-article/:userId', async(req, res) => {
 
 
     
-            res.render('article', {message: payload, numSections: numSections});
+            res.render('article', {message: payload});
     
         }else {
             res.send("you are not logged in")
@@ -931,6 +921,16 @@ app.get("/reset", async(req, res) => {
 
     res.send("reset made");
 
+
+});
+
+app.get("/deleteBlogs", async(req, res) =>{
+    await Post.deleteMany({})
+    await Article.deleteMany({})
+
+    res.send("blogs and articles removed")
+
+    
 
 });
 

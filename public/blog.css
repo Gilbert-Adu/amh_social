@@ -60,18 +60,16 @@
   }
 
   .image {
-    width: 60vw;
+    width: 100%;
     height: 50vh;
-    margin-left: 5vw;
     margin-bottom: 6vh;
 
   }
 
   .image img {
-    width: 60vw;
+    width: 100%;
     height: 50vh;
     object-fit: cover;
-    margin-left: 5vw;
     margin-bottom: 6vh;
 
 
@@ -135,7 +133,9 @@
   .blog-content {
     margin-left: 10vw;
     margin-right: 10vw;
-    margin-top: 5vh;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+
     height: fit-content;
     font-family: Helvetica Neue;
 
@@ -221,7 +221,7 @@
 
   footer {
     border-top: 1px solid #0A6847;
-    margin-top: 20vh;
+    margin-top: 50vh;
     
   }
   
