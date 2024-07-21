@@ -929,9 +929,21 @@ app.get("/deleteBlogs", async(req, res) =>{
     await Article.deleteMany({})
 
     res.send("blogs and articles removed")
+});
 
-    
 
+
+app.get("/deleteBlog/:id", async(req, res) =>{
+    try {
+        const id = req.params.id;
+    await Post.deleteOne({_id: id})
+    //await Article.deleteMany({})
+    res.send(id, "deleted")
+
+    }catch(err) {
+        console.log(err.message)
+        res.send(err.message)
+    }
 });
 
 

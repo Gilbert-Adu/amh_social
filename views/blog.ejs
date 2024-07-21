@@ -38,7 +38,15 @@
 
         <div class="content-container">
             <div class="blog-title">
+                <% if (Array.isArray(message.title)) { %>
+                    <h1><%= message.title[0] %></h1>
+
+                    
+                <% } else { %>
                     <h1><%= message.title %></h1>
+
+                <% } %>
+            
                     
                   
                 
@@ -59,8 +67,17 @@
             </div>
             
             <div class="blog-content">
+
+                <% if (Array.isArray(message.content)) { %>
+                    <% for (let i = 0; i < message.content.length; i++) { %>
+                        <h3 style="font-size: 16px;font-weight: bold;margin-top: 5vh;"><%= message.title[i] %></h3>
+                        <p><%= message.content[i] %></p>
+                    <% } %>
+            
+                <% } else { %>
                     <p><%= message.content %></p>
-                  
+
+                <% } %>
             
             
             </div>
