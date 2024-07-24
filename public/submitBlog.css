@@ -52,6 +52,32 @@
     padding: 2vh 2vw;
     height: fit-content;
     width: 50vw;
-    }
+  }
+
+  .submit-notif {
+    background-color: #007F73;
+    color: white;
+    margin-left: 30vw;
+    margin-right: 30vw;
+    text-align: center;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    border-radius: 10px;
+    visibility: hidden;
+  }
+
+  .error-notif {
+    background-color: red;
+    color: white;
+    margin-left: 30vw;
+    margin-right: 30vw;
+    text-align: center;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    border-radius: 10px;
+    visibility: hidden;
+
+
+  }
 
  

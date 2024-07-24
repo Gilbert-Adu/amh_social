@@ -75,7 +75,7 @@
                     <% } %>
             
                 <% } else { %>
-                    <p><%= message.content %></p>
+                    <p><%- message.sanitizedHtml %></p>
 
                 <% } %>
             
@@ -144,7 +144,7 @@
             <div class="footer">
                 <section class="contacts">
                     <h3>Contact</h3><br><br>
-                    <span>info@amharaunity.com</span><br>
+                    <span>admin@amharaunity.com</span><br>
 
                 </section>
                 <section class="legals">

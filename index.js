@@ -6,7 +6,6 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const jwt = require('jsonwebtoken');
 const geoip = require('geoip-lite');
-const multer = require("multer");
 const requestIp = require("request-ip");
 const Pusher = require('pusher');
 const cors = require("cors");
@@ -53,28 +52,6 @@ db.once('open', () => console.log('connected to MongoDB'));
 const {generateToken, verifyToken} = require("./middlewares/tokens");
 const { rmSync } = require("fs");
 
-//multer config for file uploads
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, 'uploads/');
-    },
-    filename: function (req, file, cb) {
-        cb(null, Date.now() + path.extname(file.originalname));
-    }
-});
-
-
-const fileFilter = (req, file, cb) => {
-
-    //accept images and videos
-    if (file.mimetype.startsWith('image/') || file.mimetype.startsWith('video/')) {
-        cb(null, true)
-    }else {
-        cb(new Error('Invalid file type. Only Images and Videos accpeted!'), false)
-    }
-}
-
-const upload = multer({ storage: storage, fileFilter: fileFilter});
 
 
 
@@ -364,43 +341,7 @@ app.post("/send/:userID", async(req, res) => {
     
 });
 
-//send image/vide in text
-app.post('/upload/:userID', upload.single('media'), async (req, res) => {
 
-    try {
-
-        if (!req.file) {
-            return res.status(400).send('No file uploaded.');
-        }
-    
-        // Send a real-time notification with Pusher
-        const userID = req.params.userID;
-        const user = await User.findById(userID);
-        const message = `/uploads/${req.file.filename}`;
-    
-        let newMessage = new Message({
-            "user": user,
-            "message": message,
-            "userID": userID
-        });
-        await newMessage.save();
-    
-        pusher.trigger('media-channel', 'new-media', {
-            url: `/uploads/${req.file.filename}`,
-            user: user
-        });
-    
-    
-        res.sendStatus(200);
-    }catch(err) {
-        res.render('error', {message: err.message, desc: "Cannot upload image now", solution: "Try again", code: err.statusCode});
-
-
-    }
-
-
-
-});
 
 
 
@@ -700,7 +641,6 @@ app.post('/comment/:blogID/:commenterID', async (req, res) => {
 });
 
 
-
 app.get('/submit-a-blog/:userId', async(req, res) => {
 
     const ID = req.params.userId;
@@ -722,15 +662,60 @@ app.get('/submit-a-blog/:userId', async(req, res) => {
 });
 
 //get the blog content
+
+
 //removed upload.array('mainImage', 10)
 app.post('/submit-a-blog/:userId', async(req, res) => {
 
-    req.body.userId = req.params.userId;
+
+    try {
+        req.body.userId = req.params.userId;
+
+        const  {title, content} = await req.body;
+
+        const user = await User.findById(req.body.userId);
+
+        if (verifyToken(user)) {
+            const newPost = new Post({
+                "title": title,
+                "content": content,
+                "userId": req.params.userId,
+                "postedBy": user.firstName + " " + user.lastName,
+                
+            });
+        
+    
+            await newPost.save();
+            console.log('blog saved')
+
+            const payload = { 
+                "title":title, 
+                "content":content,
+                "postedOn": newPost.postedOn,
+                "postedBy": user.firstName + ' ' + user.lastName,
+                "sanitizedHtml": newPost.sanitizedHtml
+            };
+
+            res.render('blog', {message: payload, comments: [], commenter: user, signedIn: true});
+    
+        }else {
+            res.send("you are not logged in")
+        }
+
+
+    }catch(err) {
+        console.log(err.message);
+        res.send(err.message)
+    }
+    
+
+    
+ /**
+  *    req.body.userId = req.params.userId;
 
     const { title, content} = req.body;
     //const blogImages = req.files;
     //  "mainImage": blogImages,
-
 
     try {
         const user = await User.findById(req.body.userId);
@@ -767,6 +752,7 @@ app.post('/submit-a-blog/:userId', async(req, res) => {
         console.error(error);
         res.status(500).json({message: "Internal server error"})
     }
+  */
 });
 
 
@@ -798,7 +784,9 @@ app.post('/submit-an-article/:userId', async(req, res) => {
                 "title":title, 
                 "content":content,
                 "postedOn": newArticle.postedOn,
-                "postedBy": user.firstName + ' ' + user.lastName
+                "postedBy": user.firstName + ' ' + user.lastName,
+                "sanitizedHtml": newArticle.sanitizedHtml
+
             };
         
 
@@ -946,7 +934,15 @@ app.get("/deleteBlog/:id", async(req, res) =>{
     }
 });
 
+app.get("/getUser", async(req, res) =>{
+    //await User.updateOne({ email: userEmail }, { $set: { branches: user.branches.push(theBranch.name) } });
+    //
+    const theUser =  await User.findOne({firstName: 'Amde Selassie'});
+    //const theUser = await User.updateOne({ email: 'shifera@hotmail.com' }, { $set: { email: 'admin@amharaunity.com' } });
+    console.log(theUser);
+    res.send(theUser);
 
+});
 app.post("/createBranch", async(req, res) => {
 
     try {
