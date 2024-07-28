@@ -8,6 +8,7 @@ const jwt = require('jsonwebtoken');
 const geoip = require('geoip-lite');
 const requestIp = require("request-ip");
 const Pusher = require('pusher');
+const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const app = express();
 require('dotenv').config();
@@ -56,6 +57,7 @@ const { rmSync } = require("fs");
 
 
 app.use(bodyParser.json());
+app.use(cookieParser());
 app.use(express.json());
 app.use(requestIp.mw());
 app.use(cors());
@@ -95,18 +97,18 @@ app.get("/", async (req, res) =>{
         let announs = await Announcement.find();
         let articles = await Article.find();
 
-
-
         res.render('home', {posts: posts, branches: branches, announs: announs, articles: articles});
-
-
-
 
     }catch(err) {
         res.render('error');
 
 
     }
+});
+
+app.get("/logout", (req, res) => {
+    res.clearCookie('user');
+    res.redirect("/");
 });
 
 
@@ -355,15 +357,25 @@ app.post("/messaging", async (req, res) => {
 
         const user = await User.findOne({email}).exec();
 
-        
+        //no user found
         if (!user) {
             return res.render('error', {message: "Email or Password is incorrect!", desc: "", solution: "Try another email or password", code: ""});
 
-            //res.send("user not found")
         }
         const passwordMatch = await bcrypt.compare(password, user.password);
+        //user found and password matches
         if (user && passwordMatch) {
             const {_id, firstName, lastName, email, password, phone, city, state, age, __v} = user;
+
+            //set cookie
+            res.cookie('user', user, {
+                maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
+                httpOnly: true,
+                secure: false,//change to true for production
+                sameSite: 'strict'
+
+            });
+
 
             const colors = ['#FF0000', 'green', '#003285', '#850F8D', '#006769', '#8E3E63', '#344C64',
             '#9B3922', '#0C0C0C', '#430A5D', '#092635', '#940B92', '#005B41', '#116D6E', '#ED2B2A', 
@@ -429,31 +441,16 @@ app.post("/messaging", async (req, res) => {
                 res.render('dashboard', {data: theUser, messages: messages, annons: annons});
             }
         }else {
-            //return res.send('an error occurred, Gilbert')
             res.render('error', {message: "Email or Password is incorrect", desc: "Check what you entered", code: "", solution: "Try again"})
-            //res.send('email or password is incorrect');
         }
-
-        
-
 
     }catch(err) {
         return res.json({message: err.message})
-        //res.render('error');
 
 
     }
 
     
-});
-
-
-
-app.get("/allmessages", async(req, res) => {
-
-    const mess = await Message.find();
-
-    console.log(mess);
 });
 
 //after email verification
